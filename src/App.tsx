@@ -1,158 +1,242 @@
-import { AcademicCapIcon, ExternalLinkIcon, MenuIcon } from '@heroicons/react/outline'
-import React, { useEffect, useRef, useState } from 'react'
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
-import { CSSTransition } from 'react-transition-group'
-import GPG from './views/GPG'
-import Home from './views/Home'
-import NotFound from './views/NotFound'
-import Projects from './views/Projects'
-import Social from './views/Social'
+import React from 'react'
+
+import {
+  AcademicCapIcon,
+  PencilIcon,
+  PaperClipIcon,
+  CodeIcon,
+  CubeTransparentIcon,
+  ServerIcon,
+  ClockIcon,
+  MailIcon,
+} from '@heroicons/react/outline'
+import {
+  Alibabacloud,
+  Cloudflare,
+  Cplusplus,
+  Github,
+  Go,
+  Googlescholar,
+  Java,
+  Javascript,
+  Jetbrains,
+  Nextdotjs,
+  Python,
+  Pytorch,
+  ReactJs,
+  Sinaweibo,
+  Tailwindcss,
+  Telegram,
+  Twitter,
+  Typescript,
+  Vercel,
+  Visualstudiocode,
+  Vuedotjs,
+} from '@icons-pack/react-simple-icons'
+
+import avatar from './assets/avatar.png'
+import wave from './assets/wave.png'
+import paimon from './assets/genshin-impact.svg'
 
 const App = () => {
-  const currentYear: number = new Date().getFullYear()
-  const [showMenu, setShowMenu] = useState(false)
-
-  // TO-DO: this should be refactored
-  const menuRef = useRef<any>(null)
-  const buttonRef = useRef<any>(null)
-
-  const closeMenu = () => {
-    setShowMenu(false)
-  }
-  const handleToggleMenu = (e: MouseEvent) => {
-    if (buttonRef.current && buttonRef.current.contains(e.target)) {
-      return
-    }
-    if (menuRef.current && !menuRef.current.contains(e.target)) {
-      closeMenu()
-    }
-  }
-
-  useEffect(() => {
-    document.addEventListener('click', handleToggleMenu)
-    return () => {
-      document.removeEventListener('click', handleToggleMenu)
-    }
-  }, [])
-
   return (
-    <Router>
-      <div className="min-h-screen flex flex-col dark:bg-gray-900 dark:text-white">
-        <div className="container mx-auto px-6 flex-grow max-w-5xl">
-          <nav className="mt-4 flex flex-row justify-between">
-            <Link
-              className="flex lg:p-2 py-2 rounded items-center lg:hover:bg-gray-100 lg:dark:hover:bg-gray-800"
-              to="/"
-            >
-              <AcademicCapIcon className="mr-4 w-5 h-5" />
-              <span>Home</span>
-            </Link>
+    <div className="min-h-screen">
+      <div className="container mx-auto px-6 pb-6 max-w-3xl bg-base-200 rounded">
+        <div className="mt-12 md:mt-36 p-6 bg-primary shadow-md rounded transform -translate-y-6">
+          <div className="flex flex-col space-y-4 md:flex-row md:space-x-8">
+            <img
+              className="w-24 h-24 rounded-full ring ring-secondary ring-offset-base-100 ring-offset-2"
+              src={avatar}
+              alt="avatar"
+            />
 
-            {/* Navigation on desktop devices */}
-            <div className="hidden md:flex">
-              <Link
-                className="text-blue-700 dark:text-yellow-400 p-2 mr-2 rounded hover:bg-blue-50 dark:hover:bg-gray-800"
-                to="/projects"
-              >
-                Projects
-              </Link>
-              <Link
-                className="text-blue-700 dark:text-yellow-400 p-2 mr-2 rounded hover:bg-blue-50 dark:hover:bg-gray-800"
-                to="/social"
-              >
-                Social
-              </Link>
-              <Link
-                className="text-blue-700 dark:text-yellow-400 p-2 rounded hover:bg-blue-50 dark:hover:bg-gray-800"
-                to="/gpg"
-              >
-                GPG
-              </Link>
-            </div>
-            <a
-              className="bg-pink-100 text-pink-700 p-2 rounded bg-opacity-40 hover:bg-opacity-80 dark:bg-opacity-10 dark:hover:bg-opacity-20 hidden md:block"
-              href="mailto:spencer.wushangbo@gmail.com"
-            >
-              Get in touch
-            </a>
+            <div>
+              <div className="flex items-center">
+                <div className="text-2xl md:text-3xl font-bold text-white">Hi, I'm Spencer Woo</div>
+                <img className="w-8 h-8 ml-2 wave" src={wave} alt="wave" />
+              </div>
 
-            {/* Navigation on mobile devices (dropdown menu) */}
-            <button
-              className="md:hidden p-2"
-              ref={buttonRef}
-              onClick={() => {
-                setShowMenu(true)
-              }}
-            >
-              <MenuIcon className="w-5 h-5" />
-            </button>
-            <CSSTransition in={showMenu} timeout={300} classNames="menu" unmountOnExit nodeRef={menuRef}>
-              <div className="absolute top-0 right-0" ref={menuRef}>
-                <div className="flex flex-col space-y-4 m-3 p-4 rounded bg-white dark:bg-gray-800 shadow-xl">
-                  <Link to="/projects" onClick={closeMenu}>
-                    Projects
-                  </Link>
-                  <Link to="/social" onClick={closeMenu}>
-                    Social
-                  </Link>
-                  <Link to="/gpg" onClick={closeMenu}>
-                    GPG
-                  </Link>
-                  <a className="flex items-center" href="mailto:spencer.wushangbo@gmail.com" onClick={closeMenu}>
-                    <span className="mr-2">Get in touch</span>
-                    <ExternalLinkIcon className="w-5 h-5" />
+              <div className="flex flex-wrap mt-8 gap-2">
+                <div className="flex flex-col space-y-1">
+                  <div className="flex items-center text-sm text-secondary">
+                    <AcademicCapIcon className="mr-1 w-4 h-4" />
+                    <span className="font-mono">edu.postgrad</span>
+                  </div>
+                  <a
+                    className="btn btn-sm btn-secondary indicator"
+                    href="https://www.gla.ac.uk/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span className="indicator-item flex h-3 w-3">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-3 w-3 bg-yellow-400"></span>
+                    </span>
+                    <div>University of Glasgow</div>
                   </a>
                 </div>
-              </div>
-            </CSSTransition>
-          </nav>
 
-          <div className="my-16">
-            <Switch>
-              <Route path="/projects">
-                <Projects />
-              </Route>
-              <Route path="/social">
-                <Social />
-              </Route>
-              <Route path="/gpg">
-                <GPG />
-              </Route>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route path="*">
-                <NotFound />
-              </Route>
-            </Switch>
+                <div className="flex flex-col space-y-1">
+                  <div className="flex items-center text-sm text-secondary">
+                    <AcademicCapIcon className="mr-1 w-4 h-4" />
+                    <span className="font-mono">edu.undergrad</span>
+                  </div>
+                  <a
+                    className="btn btn-sm btn-secondary"
+                    href="https://bit.edu.cn/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Beijing Institute of Technology
+                  </a>
+                </div>
+
+                <div className="flex flex-col space-y-1">
+                  <div className="flex items-center text-sm text-secondary">
+                    <PencilIcon className="mr-1 w-4 h-4" />
+                    <span className="font-mono">publish[0]</span>
+                  </div>
+                  <a
+                    className="btn btn-sm btn-secondary"
+                    href="https://sspai.com/u/spencerwoo/posts"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    SSPAI.COM
+                  </a>
+                </div>
+
+                <div className="flex flex-col space-y-1">
+                  <div className="flex items-center text-sm text-secondary">
+                    <PaperClipIcon className="mr-1 w-4 h-4" />
+                    <span className="font-mono">publish[1]</span>
+                  </div>
+                  <a
+                    className="btn btn-sm btn-secondary"
+                    href="https://blog.spencerwoo.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    blog.spencerwoo.com
+                  </a>
+                </div>
+
+                <div className="flex flex-col space-y-1">
+                  <div className="flex items-center text-sm text-secondary">
+                    <ClockIcon className="mr-1 w-4 h-4" />
+                    <span className="font-mono">timezone</span>
+                  </div>
+                  <div className="btn btn-sm btn-secondary">BST (GMT+1)</div>
+                </div>
+
+                <div className="flex flex-col space-y-1">
+                  <div className="flex items-center text-sm text-secondary">
+                    <span className="font-mono">genshin.impact</span>
+                  </div>
+                  <div className="btn btn-sm btn-secondary">
+                    <img src={paimon} alt="paimon" className="w-5 h-5 mr-1" />
+                    168305666
+                  </div>
+                </div>
+
+                <div className="flex flex-col space-y-1">
+                  <div className="flex items-center text-sm text-secondary">
+                    <CodeIcon className="mr-1 w-4 h-4" />
+                    <span className="font-mono">use.lang</span>
+                  </div>
+                  <div className="btn btn-sm btn-secondary space-x-1">
+                    <Python className="w-5 h-5" />
+                    <Javascript className="w-5 h-5" />
+                    <Typescript className="w-5 h-5" />
+                    <Cplusplus className="w-5 h-5" />
+                    <Java className="w-5 h-5" />
+                    <Go className="w-5 h-5" />
+                  </div>
+                </div>
+                <div className="flex flex-col space-y-1">
+                  <div className="flex items-center text-sm text-secondary">
+                    <CubeTransparentIcon className="mr-1 w-4 h-4" />
+                    <span className="font-mono">use.framework</span>
+                  </div>
+                  <div className="btn btn-sm btn-secondary space-x-1">
+                    <Pytorch className="w-5 h-5" />
+                    <ReactJs className="w-5 h-5" />
+                    <Nextdotjs className="w-5 h-5" />
+                    <Vuedotjs className="w-5 h-5" />
+                    <Tailwindcss className="w-5 h-5" />
+                  </div>
+                </div>
+                <div className="flex flex-col space-y-1">
+                  <div className="flex items-center text-sm text-secondary">
+                    <ServerIcon className="mr-1 w-4 h-4" />
+                    <span className="font-mono">use.service</span>
+                  </div>
+                  <div className="btn btn-sm btn-secondary space-x-1">
+                    <Visualstudiocode className="w-5 h-5" />
+                    <Jetbrains className="w-5 h-5" />
+                    <Vercel className="w-5 h-5" />
+                    <Cloudflare className="w-5 h-5" />
+                    <Alibabacloud className="w-5 h-5" />
+                  </div>
+                </div>
+                {/* here */}
+              </div>
+
+              <hr className="border-dashed border-secondary-focus mt-4" />
+
+              <div className="flex flex-wrap mt-4 gap-2">
+                <a
+                  className="btn btn-sm btn-secondary"
+                  href="https://github.com/spencerwooo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Github className="w-5 h-5" />
+                </a>
+                <a
+                  className="btn btn-sm btn-secondary"
+                  href="https://twitter.com/realSpencerWoo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Twitter className="w-5 h-5" />
+                </a>
+                <a
+                  className="btn btn-sm btn-secondary"
+                  href="https://weibo.com/spencerwoo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Sinaweibo className="w-5 h-5" />
+                </a>
+                <a
+                  className="btn btn-sm btn-secondary"
+                  href="https://t.me/realSpencerWoo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Telegram className="w-5 h-5" />
+                </a>
+                <a
+                  className="btn btn-sm btn-secondary"
+                  href="https://scholar.google.com/citations?user=Mf-JoyQAAAAJ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Googlescholar className="w-5 h-5" />
+                </a>
+                <a className="btn btn-sm btn-secondary" href="mailto:spencer.wushangbo@gmail.com">
+                  <MailIcon className="w-5 h-5" />
+                </a>
+                {/* here */}
+              </div>
+            </div>
           </div>
         </div>
 
-        <footer className="w-full text-center bg-gray-800 text-gray-400 p-4">
-          <div className="container mx-auto">
-            <div>
-              Powered by{' '}
-              <a className="hover:text-white" href="https://reactjs.org/">
-                React
-              </a>
-              ,{' '}
-              <a className="hover:text-white" href="https://tailwindcss.com/">
-                Tailwind CSS
-              </a>
-              ,{' '}
-              <a className="hover:text-white" href="https://vitejs.dev/">
-                Vite
-              </a>{' '}
-              and{' '}
-              <a className="hover:text-white" href="https://www.typescriptlang.org/">
-                TypeScript.
-              </a>
-            </div>
-            <div>Spencer Woo © 2019-{currentYear}</div>
-          </div>
-        </footer>
+        <div>Projects. Publications.</div>
       </div>
-    </Router>
+    </div>
   )
 }
 
