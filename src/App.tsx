@@ -79,7 +79,7 @@ const App = () => {
                 <img className="w-8 h-8 ml-2 wave" src={wave} alt="wave" />
               </div>
 
-              <div className="flex flex-wrap mt-8 gap-2">
+              <div className="flex flex-wrap mt-8 gap-2 overflow-hidden">
                 <CardBtnLink
                   desc={'edu.postgrad'}
                   link={'https://www.gla.ac.uk/'}
