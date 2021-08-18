@@ -24,6 +24,7 @@ import {
   Java,
   Javascript,
   Jetbrains,
+  Neovim,
   Nextdotjs,
   Python,
   Pytorch,
@@ -37,6 +38,8 @@ import {
   Visualstudiocode,
   Vuedotjs,
 } from '@icons-pack/react-simple-icons'
+import toast, { Toaster } from 'react-hot-toast'
+import { useClipboard } from 'use-clipboard-copy'
 
 import { socials } from './config/socials'
 import { projects } from './config/projects'
@@ -62,10 +65,14 @@ const projectCards = projects.map(p => (
 
 const App = () => {
   const currentYear: number = new Date().getFullYear()
+  const clipboard = useClipboard()
+
   return (
     <div className="min-h-screen">
       <div className="container mx-auto px-6 pb-6 max-w-4xl bg-base-200 rounded">
         <div className="mt-12 md:mt-24 p-6 bg-primary shadow-md rounded transform -translate-y-6">
+          <Toaster />
+
           <div className="flex flex-col space-y-4 md:flex-row md:space-x-8">
             <img
               className="w-24 h-24 rounded-full ring ring-secondary ring-offset-base-100 ring-offset-2"
@@ -121,9 +128,17 @@ const App = () => {
                   desc={'genshin.impact'}
                   icon={PuzzleIcon}
                   content={
-                    <div className="btn btn-sm btn-secondary">
-                      <img src={paimon} alt="paimon" className="w-5 h-5 mr-1" />
-                      <span>UID: 168305666</span>
+                    <div
+                      className="btn btn-sm btn-secondary"
+                      onClick={() => {
+                        clipboard.copy('168305666')
+                        toast.success('Copied UID to clipboard.')
+                      }}
+                    >
+                      <div className="tooltip tooltip-bottom flex items-center" data-tip="原来你也玩原神 🍬">
+                        <img src={paimon} alt="paimon" className="w-5 h-5 mr-1" />
+                        <span>UID: 168305666</span>
+                      </div>
                     </div>
                   }
                 />
@@ -141,7 +156,7 @@ const App = () => {
                 <CardBtnIcons
                   desc={'use.service'}
                   descIcon={ServerIcon}
-                  icons={[Visualstudiocode, Jetbrains, Vercel, Cloudflare, Alibabacloud]}
+                  icons={[Visualstudiocode, Neovim, Jetbrains, Vercel, Cloudflare, Alibabacloud]}
                 />
               </div>
 
