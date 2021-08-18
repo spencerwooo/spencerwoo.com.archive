@@ -61,10 +61,11 @@ const projectCards = projects.map(p => (
 ))
 
 const App = () => {
+  const currentYear: number = new Date().getFullYear()
   return (
     <div className="min-h-screen">
       <div className="container mx-auto px-6 pb-6 max-w-4xl bg-base-200 rounded">
-        <div className="mt-12 md:mt-36 p-6 bg-primary shadow-md rounded transform -translate-y-6">
+        <div className="mt-12 md:mt-24 p-6 bg-primary shadow-md rounded transform -translate-y-6">
           <div className="flex flex-col space-y-4 md:flex-row md:space-x-8">
             <img
               className="w-24 h-24 rounded-full ring ring-secondary ring-offset-base-100 ring-offset-2"
@@ -160,17 +161,36 @@ const App = () => {
           </div>
         </div>
 
-        <div className="flex flex-col space-y-2">
+        <div className="flex flex-col space-y-4">
           <div className="flex items-center">
             <BeakerIcon className="w-6 h-6" />
             <span className="text-xl ml-2 font-bold">Projects</span>
           </div>
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">{projectCards}</div>
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">{projectCards}</div>
 
           <div className="flex items-center">
             <LibraryIcon className="w-6 h-6" />
             <span className="text-xl ml-2 font-bold">Publications</span>
           </div>
+          <a
+            href="https://arxiv.org/abs/2107.01396"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 rounded shadow bg-base-100 transition transform hover:shadow-md hover:-translate-y-1"
+          >
+            <div className="font-bold font-mono">
+              Demiguise Attack: Crafting Invisible Semantic Adversarial Perturbations with Perceptual Similarity
+            </div>
+            <p>
+              Yajie Wang*, <span className="font-bold">Shangbo Wu*</span>, Wenyi Jiang, Shengang Hao, Yu-an Tan, Quanxin
+              Zhang
+            </p>
+            <div className="flex flex-wrap gap-1">
+              <div className="badge badge-primary">IJCAI 2021</div>
+              <div className="badge badge-secondary">Adversarial Attack</div>
+              <div className="badge badge-secondary">Perceptual Similarity</div>
+            </div>
+          </a>
 
           <div className="flex items-center">
             <ChartBarIcon className="w-6 h-6" />
@@ -179,6 +199,28 @@ const App = () => {
           <div className="flex flex-wrap gap-1">{socialCards}</div>
         </div>
       </div>
+
+      <footer className="w-full text-center my-8">
+        <div>
+          Powered by{' '}
+          <a className="link" href="https://reactjs.org/">
+            React
+          </a>
+          ,{' '}
+          <a className="link" href="https://tailwindcss.com/">
+            Tailwind CSS
+          </a>
+          ,{' '}
+          <a className="link" href="https://vitejs.dev/">
+            Vite
+          </a>{' '}
+          and{' '}
+          <a className="link" href="https://www.typescriptlang.org/">
+            TypeScript.
+          </a>
+        </div>
+        <div>Spencer Woo © 2019-{currentYear}</div>
+      </footer>
     </div>
   )
 }
