@@ -178,17 +178,18 @@ const App = () => {
             rel="noopener noreferrer"
             className="p-2 rounded shadow bg-base-100 transition transform hover:shadow-md hover:-translate-y-1"
           >
-            <div className="font-bold font-mono">
+            <div className="font-bold">
               Demiguise Attack: Crafting Invisible Semantic Adversarial Perturbations with Perceptual Similarity
             </div>
-            <p>
+            <div className="text-sm">
               Yajie Wang*, <span className="font-bold">Shangbo Wu*</span>, Wenyi Jiang, Shengang Hao, Yu-an Tan, Quanxin
               Zhang
-            </p>
+            </div>
             <div className="flex flex-wrap gap-1">
               <div className="badge badge-primary">IJCAI 2021</div>
               <div className="badge badge-secondary">Adversarial Attack</div>
               <div className="badge badge-secondary">Perceptual Similarity</div>
+              <div className="badge badge-accent">Preprint</div>
             </div>
           </a>
 
