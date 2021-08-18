@@ -10,6 +10,9 @@ import {
   ClockIcon,
   MailIcon,
   PuzzleIcon,
+  ChartBarIcon,
+  BeakerIcon,
+  LibraryIcon,
 } from '@heroicons/react/outline'
 import {
   Alibabacloud,
@@ -35,19 +38,32 @@ import {
   Vuedotjs,
 } from '@icons-pack/react-simple-icons'
 
+import { socials } from './config/socials'
+import { projects } from './config/projects'
+
 import CardBtnLink from './components/CardBtnLink'
 import CardBtnCustom from './components/CardBtnCustom'
 import CardBtnIcons from './components/CardBtnIcons'
 import SocialIcons from './components/SocialIcons'
+import SocialCard from './components/SocialCard'
+import ProjectCard from './components/ProjectCard'
 
 import avatar from './assets/avatar.png'
 import wave from './assets/wave.png'
 import paimon from './assets/genshin-impact.svg'
 
+const socialCards = socials.map(s => (
+  <SocialCard key={s.name} name={s.name} link={s.link} icon={s.icon} apiUrl={s.apiUrl} color={s.color} />
+))
+
+const projectCards = projects.map(p => (
+  <ProjectCard key={p.name} name={p.name} link={p.link} slug={p.slug} bimg={p.bimg} />
+))
+
 const App = () => {
   return (
     <div className="min-h-screen">
-      <div className="container mx-auto px-6 pb-6 max-w-3xl bg-base-200 rounded">
+      <div className="container mx-auto px-6 pb-6 max-w-4xl bg-base-200 rounded">
         <div className="mt-12 md:mt-36 p-6 bg-primary shadow-md rounded transform -translate-y-6">
           <div className="flex flex-col space-y-4 md:flex-row md:space-x-8">
             <img
@@ -58,7 +74,7 @@ const App = () => {
 
             <div>
               <div className="flex items-center">
-                <div className="text-2xl md:text-3xl font-bold text-white">Hi, I'm Spencer Woo</div>
+                <div className="text-2xl md:text-3xl font-bold text-neutral-content">Hi, I'm Spencer Woo</div>
                 <img className="w-8 h-8 ml-2 wave" src={wave} alt="wave" />
               </div>
 
@@ -144,7 +160,24 @@ const App = () => {
           </div>
         </div>
 
-        <div>Projects. Publications.</div>
+        <div className="flex flex-col space-y-2">
+          <div className="flex items-center">
+            <BeakerIcon className="w-6 h-6" />
+            <span className="text-xl ml-2 font-bold">Projects</span>
+          </div>
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">{projectCards}</div>
+
+          <div className="flex items-center">
+            <LibraryIcon className="w-6 h-6" />
+            <span className="text-xl ml-2 font-bold">Publications</span>
+          </div>
+
+          <div className="flex items-center">
+            <ChartBarIcon className="w-6 h-6" />
+            <span className="text-xl ml-2 font-bold">Stats</span>
+          </div>
+          <div className="flex flex-wrap gap-1">{socialCards}</div>
+        </div>
       </div>
     </div>
   )

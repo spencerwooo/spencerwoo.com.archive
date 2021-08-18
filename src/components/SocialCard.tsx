@@ -28,27 +28,38 @@ const SocialCard = (props: SocialProps) => {
   }, [])
 
   return (
-    <a href={props.link} target="_blank" rel="noopener noreferrer" className="rounded inline-block m-1">
-      <div className="flex items-center space-x-2 rounded border-2 pl-2" style={{ borderColor: `${props.color}` }}>
-        {props.icon && <props.icon color={props.color} size={20} />}
-        <div>{props.name}</div>
-        <div
-          className="flex justify-center items-center font-bold text-white py-1 w-12 min-w-min h-8"
-          style={{ backgroundColor: `${props.color}` }}
+    <a href={props.link} target="_blank" rel="noopener noreferrer" className="btn btn-sm space-x-2">
+      {props.icon && <props.icon className="w-4 h-4" />}
+      <div>{props.name}</div>
+      <SwitchTransition>
+        <CSSTransition
+          key={isLoading ? 'loading' : 'loaded'}
+          timeout={200}
+          classNames="fade"
+          nodeRef={nodeRef}
+          unmountOnExit
         >
-          <SwitchTransition>
-            <CSSTransition
-              key={isLoading ? 'loading' : 'loaded'}
-              timeout={200}
-              classNames="fade"
-              nodeRef={nodeRef}
-              unmountOnExit
-            >
-              {isLoading ? <span ref={nodeRef} className="dot-flashing"></span> : <span ref={nodeRef}>{stat}</span>}
-            </CSSTransition>
-          </SwitchTransition>
-        </div>
-      </div>
+          {isLoading ? (
+            <span ref={nodeRef}>
+              <svg
+                className="animate-spin h-5 w-5 text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+            </span>
+          ) : (
+            <span ref={nodeRef}>{stat}</span>
+          )}
+        </CSSTransition>
+      </SwitchTransition>
     </a>
   )
 }

@@ -15,7 +15,7 @@ export const socials: SocialProps[] = [
     link: 'https://github.com/spencerwooo',
     icon: Github,
     apiUrl: 'https://api.spencerwoo.com/substats/?source=github&queryKey=spencerwooo',
-    color: '#2188ff',
+    color: '#24292F',
   },
   {
     name: 'RSS',
