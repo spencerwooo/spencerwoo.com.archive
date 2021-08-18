@@ -9,6 +9,7 @@ import {
   ServerIcon,
   ClockIcon,
   MailIcon,
+  PuzzleIcon,
 } from '@heroicons/react/outline'
 import {
   Alibabacloud,
@@ -34,6 +35,11 @@ import {
   Vuedotjs,
 } from '@icons-pack/react-simple-icons'
 
+import CardBtnLink from './components/CardBtnLink'
+import CardBtnCustom from './components/CardBtnCustom'
+import CardBtnIcons from './components/CardBtnIcons'
+import SocialIcons from './components/SocialIcons'
+
 import avatar from './assets/avatar.png'
 import wave from './assets/wave.png'
 import paimon from './assets/genshin-impact.svg'
@@ -57,178 +63,82 @@ const App = () => {
               </div>
 
               <div className="flex flex-wrap mt-8 gap-2">
-                <div className="flex flex-col space-y-1">
-                  <div className="flex items-center text-sm text-secondary">
-                    <AcademicCapIcon className="mr-1 w-4 h-4" />
-                    <span className="font-mono">edu.postgrad</span>
-                  </div>
-                  <a
-                    className="btn btn-sm btn-secondary indicator"
-                    href="https://www.gla.ac.uk/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span className="indicator-item flex h-3 w-3">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-3 w-3 bg-yellow-400"></span>
-                    </span>
-                    <div>University of Glasgow</div>
-                  </a>
-                </div>
+                <CardBtnLink
+                  desc={'edu.postgrad'}
+                  link={'https://www.gla.ac.uk/'}
+                  content={'University of Glasgow'}
+                  ping={true}
+                  pingColor={'bg-yellow-400'}
+                  icon={AcademicCapIcon}
+                />
+                <CardBtnLink
+                  desc={'edu.undergrad'}
+                  link={'https://www.bit.edu.cn/'}
+                  content={'Beijing Institute of Technology'}
+                  ping={false}
+                  icon={AcademicCapIcon}
+                />
+                <CardBtnLink
+                  desc={'publish[0]'}
+                  link={'https://sspai.com/u/spencerwoo/posts'}
+                  content={'sspai.com'}
+                  ping={true}
+                  pingColor={'bg-red-400'}
+                  icon={PencilIcon}
+                />
+                <CardBtnLink
+                  desc={'publish[1]'}
+                  link={'https://blog.spencerwoo.com/'}
+                  content={'blog.spencerwoo.com'}
+                  ping={true}
+                  pingColor={'bg-blue-400'}
+                  icon={PaperClipIcon}
+                />
 
-                <div className="flex flex-col space-y-1">
-                  <div className="flex items-center text-sm text-secondary">
-                    <AcademicCapIcon className="mr-1 w-4 h-4" />
-                    <span className="font-mono">edu.undergrad</span>
-                  </div>
-                  <a
-                    className="btn btn-sm btn-secondary"
-                    href="https://bit.edu.cn/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Beijing Institute of Technology
-                  </a>
-                </div>
+                <CardBtnCustom
+                  desc={'timezone'}
+                  icon={ClockIcon}
+                  content={<div className="btn btn-sm btn-secondary">BST (GMT+1)</div>}
+                />
+                <CardBtnCustom
+                  desc={'genshin.impact'}
+                  icon={PuzzleIcon}
+                  content={
+                    <div className="btn btn-sm btn-secondary">
+                      <img src={paimon} alt="paimon" className="w-5 h-5 mr-1" />
+                      <span>UID: 168305666</span>
+                    </div>
+                  }
+                />
 
-                <div className="flex flex-col space-y-1">
-                  <div className="flex items-center text-sm text-secondary">
-                    <PencilIcon className="mr-1 w-4 h-4" />
-                    <span className="font-mono">publish[0]</span>
-                  </div>
-                  <a
-                    className="btn btn-sm btn-secondary"
-                    href="https://sspai.com/u/spencerwoo/posts"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    SSPAI.COM
-                  </a>
-                </div>
-
-                <div className="flex flex-col space-y-1">
-                  <div className="flex items-center text-sm text-secondary">
-                    <PaperClipIcon className="mr-1 w-4 h-4" />
-                    <span className="font-mono">publish[1]</span>
-                  </div>
-                  <a
-                    className="btn btn-sm btn-secondary"
-                    href="https://blog.spencerwoo.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    blog.spencerwoo.com
-                  </a>
-                </div>
-
-                <div className="flex flex-col space-y-1">
-                  <div className="flex items-center text-sm text-secondary">
-                    <ClockIcon className="mr-1 w-4 h-4" />
-                    <span className="font-mono">timezone</span>
-                  </div>
-                  <div className="btn btn-sm btn-secondary">BST (GMT+1)</div>
-                </div>
-
-                <div className="flex flex-col space-y-1">
-                  <div className="flex items-center text-sm text-secondary">
-                    <span className="font-mono">genshin.impact</span>
-                  </div>
-                  <div className="btn btn-sm btn-secondary">
-                    <img src={paimon} alt="paimon" className="w-5 h-5 mr-1" />
-                    168305666
-                  </div>
-                </div>
-
-                <div className="flex flex-col space-y-1">
-                  <div className="flex items-center text-sm text-secondary">
-                    <CodeIcon className="mr-1 w-4 h-4" />
-                    <span className="font-mono">use.lang</span>
-                  </div>
-                  <div className="btn btn-sm btn-secondary space-x-1">
-                    <Python className="w-5 h-5" />
-                    <Javascript className="w-5 h-5" />
-                    <Typescript className="w-5 h-5" />
-                    <Cplusplus className="w-5 h-5" />
-                    <Java className="w-5 h-5" />
-                    <Go className="w-5 h-5" />
-                  </div>
-                </div>
-                <div className="flex flex-col space-y-1">
-                  <div className="flex items-center text-sm text-secondary">
-                    <CubeTransparentIcon className="mr-1 w-4 h-4" />
-                    <span className="font-mono">use.framework</span>
-                  </div>
-                  <div className="btn btn-sm btn-secondary space-x-1">
-                    <Pytorch className="w-5 h-5" />
-                    <ReactJs className="w-5 h-5" />
-                    <Nextdotjs className="w-5 h-5" />
-                    <Vuedotjs className="w-5 h-5" />
-                    <Tailwindcss className="w-5 h-5" />
-                  </div>
-                </div>
-                <div className="flex flex-col space-y-1">
-                  <div className="flex items-center text-sm text-secondary">
-                    <ServerIcon className="mr-1 w-4 h-4" />
-                    <span className="font-mono">use.service</span>
-                  </div>
-                  <div className="btn btn-sm btn-secondary space-x-1">
-                    <Visualstudiocode className="w-5 h-5" />
-                    <Jetbrains className="w-5 h-5" />
-                    <Vercel className="w-5 h-5" />
-                    <Cloudflare className="w-5 h-5" />
-                    <Alibabacloud className="w-5 h-5" />
-                  </div>
-                </div>
-                {/* here */}
+                <CardBtnIcons
+                  desc={'use.lang'}
+                  descIcon={CodeIcon}
+                  icons={[Python, Javascript, Typescript, Cplusplus, Java, Go]}
+                />
+                <CardBtnIcons
+                  desc={'use.framework'}
+                  descIcon={CubeTransparentIcon}
+                  icons={[Pytorch, ReactJs, Nextdotjs, Vuedotjs, Tailwindcss]}
+                />
+                <CardBtnIcons
+                  desc={'use.service'}
+                  descIcon={ServerIcon}
+                  icons={[Visualstudiocode, Jetbrains, Vercel, Cloudflare, Alibabacloud]}
+                />
               </div>
 
               <hr className="border-dashed border-secondary-focus mt-4" />
 
               <div className="flex flex-wrap mt-4 gap-2">
-                <a
-                  className="btn btn-sm btn-secondary"
-                  href="https://github.com/spencerwooo"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Github className="w-5 h-5" />
-                </a>
-                <a
-                  className="btn btn-sm btn-secondary"
-                  href="https://twitter.com/realSpencerWoo"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Twitter className="w-5 h-5" />
-                </a>
-                <a
-                  className="btn btn-sm btn-secondary"
-                  href="https://weibo.com/spencerwoo"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Sinaweibo className="w-5 h-5" />
-                </a>
-                <a
-                  className="btn btn-sm btn-secondary"
-                  href="https://t.me/realSpencerWoo"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Telegram className="w-5 h-5" />
-                </a>
-                <a
-                  className="btn btn-sm btn-secondary"
-                  href="https://scholar.google.com/citations?user=Mf-JoyQAAAAJ"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Googlescholar className="w-5 h-5" />
-                </a>
+                <SocialIcons link={'https://github.com/spencerwooo'} icon={Github} />
+                <SocialIcons link={'https://twitter.com/realSpencerWoo'} icon={Twitter} />
+                <SocialIcons link={'https://weibo.com/spencerwoo'} icon={Sinaweibo} />
+                <SocialIcons link={'https://t.me/realSpencerWoo'} icon={Telegram} />
+                <SocialIcons link={'https://scholar.google.com/citations?user=Mf-JoyQAAAAJ'} icon={Googlescholar} />
                 <a className="btn btn-sm btn-secondary" href="mailto:spencer.wushangbo@gmail.com">
                   <MailIcon className="w-5 h-5" />
                 </a>
-                {/* here */}
               </div>
             </div>
           </div>
