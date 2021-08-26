@@ -188,7 +188,7 @@ const App = () => {
             <span className="text-xl ml-2 font-bold">Publications</span>
           </div>
           <a
-            href="https://arxiv.org/abs/2107.01396"
+            href="https://doi.org/10.24963/ijcai.2021/430"
             target="_blank"
             rel="noopener noreferrer"
             className="p-2 rounded shadow bg-base-100 transition transform hover:shadow-md hover:-translate-y-1"
