@@ -204,7 +204,6 @@ const App = () => {
               <div className="badge badge-primary">IJCAI 2021</div>
               <div className="badge badge-secondary">Adversarial Attack</div>
               <div className="badge badge-secondary">Perceptual Similarity</div>
-              <div className="badge badge-accent">Preprint</div>
             </div>
           </a>
 
