@@ -62,7 +62,7 @@ export const socials: SocialProps[] = [
   },
   {
     name: 'Medium',
-    link: 'https://api.spencerwoo.com/substats/?source=medium&queryKey=%40SpencerWooo',
+    link: 'https://medium.com/spencerweekly',
     icon: Medium,
     apiUrl: 'https://api.spencerwoo.com/substats/?source=medium&queryKey=%40SpencerWooo',
     color: '#00a669',
