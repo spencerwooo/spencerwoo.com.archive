@@ -6,13 +6,13 @@ type HeroIcon = (props: React.ComponentProps<'svg'>) => JSX.Element
 const CardBtnIcons = (props: { desc: string; descIcon: HeroIcon; icons: Icon[] }) => {
   return (
     <div className="flex flex-col space-y-1">
-      <div className="flex items-center text-sm text-secondary">
+      <div className="flex items-center text-xs text-base-200">
         <props.descIcon className="mr-1 w-4 h-4" />
         <span className="font-mono">{props.desc}</span>
       </div>
-      <div className="btn btn-sm btn-secondary space-x-1">
+      <div className="btn btn-sm btn-outline btn-accent space-x-1">
         {props.icons.map((IconHere, i) => (
-          <IconHere key={i} className="w-5 h-5" />
+          <IconHere key={i} className="w-4 h-4" />
         ))}
       </div>
     </div>

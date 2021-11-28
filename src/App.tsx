@@ -17,6 +17,7 @@ import {
 import {
   Alibabacloud,
   Cloudflare,
+  R,
   Cplusplus,
   Github,
   Go,
@@ -69,13 +70,13 @@ const App = () => {
 
   return (
     <div className="min-h-screen">
-      <div className="container mx-auto px-6 pb-6 max-w-4xl bg-base-200 rounded">
-        <div className="mt-12 md:mt-24 p-6 bg-primary shadow-md rounded transform -translate-y-6">
+      <div className="container mx-auto px-6 pb-6 max-w-4xl bg-base-300 rounded">
+        <div className="mt-12 md:mt-24 p-6 bg-neutral shadow-md rounded transform -translate-y-6">
           <Toaster />
 
           <div className="flex flex-col space-y-4 md:flex-row md:space-x-8">
             <img
-              className="w-24 h-24 rounded-full ring ring-secondary ring-offset-base-100 ring-offset-2"
+              className="w-24 h-24 rounded-full ring ring-accent ring-offset-base-100 ring-offset-2"
               src={avatar}
               alt="avatar"
             />
@@ -122,21 +123,21 @@ const App = () => {
                 <CardBtnCustom
                   desc={'timezone'}
                   icon={ClockIcon}
-                  content={<div className="btn btn-sm btn-secondary">BST (GMT+1)</div>}
+                  content={<div className="btn btn-sm btn-outline btn-accent">CST (UTC+8)</div>}
                 />
                 <CardBtnCustom
                   desc={'genshin.impact'}
                   icon={PuzzleIcon}
                   content={
                     <div
-                      className="btn btn-sm btn-secondary"
+                      className="btn btn-sm btn-outline btn-accent"
                       onClick={() => {
                         clipboard.copy('168305666')
                         toast.success('Copied UID to clipboard.')
                       }}
                     >
                       <div className="tooltip tooltip-bottom flex items-center" data-tip="原来你也玩原神 🍬">
-                        <img src={paimon} alt="paimon" className="w-5 h-5 mr-1" />
+                        {/* <img src={paimon} alt="paimon" className="w-5 h-5 mr-1" /> */}
                         <span>UID: 168305666</span>
                       </div>
                     </div>
@@ -146,7 +147,7 @@ const App = () => {
                 <CardBtnIcons
                   desc={'use.lang'}
                   descIcon={CodeIcon}
-                  icons={[Python, Javascript, Typescript, Cplusplus, Java, Go]}
+                  icons={[Python, Javascript, Typescript, R, Cplusplus, Java, Go]}
                 />
                 <CardBtnIcons
                   desc={'use.framework'}
@@ -160,7 +161,7 @@ const App = () => {
                 />
               </div>
 
-              <hr className="border-dashed border-secondary-focus mt-4" />
+              <hr className="border-dashed mt-4" />
 
               <div className="flex flex-wrap mt-4 gap-2">
                 <SocialIcons link={'https://github.com/spencerwooo'} icon={Github} />
@@ -168,7 +169,7 @@ const App = () => {
                 <SocialIcons link={'https://weibo.com/spencerwoo'} icon={Sinaweibo} />
                 <SocialIcons link={'https://t.me/realSpencerWoo'} icon={Telegram} />
                 <SocialIcons link={'https://scholar.google.com/citations?user=Mf-JoyQAAAAJ'} icon={Googlescholar} />
-                <a className="btn btn-sm btn-secondary" href="mailto:spencer.wushangbo@gmail.com">
+                <a className="btn btn-sm btn-outline border-white text-white" href="mailto:spencer.wushangbo@gmail.com">
                   <MailIcon className="w-5 h-5" />
                 </a>
               </div>
