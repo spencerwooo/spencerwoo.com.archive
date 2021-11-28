@@ -25,7 +25,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ['Rubik', ...defaultTheme.fontFamily.sans],
+        sans: ['Overpass', ...defaultTheme.fontFamily.sans],
       },
     },
   },
