@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@400;700&display=swap');
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  @apply border-b border-b-gray-300 dark:border-b-gray-700 transition-all duration-100 no-underline hover:border-b-gray-500;
+}
+
+p {
+  @apply text-gray-600 lg:text-justify dark:text-gray-400;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*::selection {
+  @apply bg-pink-100/50 dark:bg-pink-800/50;
+}
+
+button {
+  background: none;
+  padding: 0;
+}
+
+.mobile-menu a {
+  border: none;
+}
