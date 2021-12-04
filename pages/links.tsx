@@ -16,10 +16,10 @@ const Links: NextPage = () => {
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
 
-      <div className="flex flex-col h-screen">
+      <div className="flex flex-col h-screen dark:bg-dark-900">
         <Navbar />
         <main className="container flex flex-col mx-auto flex-1 max-w-3xl px-6">
-          <h1 className="font-bold text-xl mb-8">Links</h1>
+          <h1 className="font-bold text-xl mb-8 dark:text-light-900">Links</h1>
           <p className="font-mono text-sm text-gray-400">🚧 Under construction ...</p>
         </main>
         <Footer />

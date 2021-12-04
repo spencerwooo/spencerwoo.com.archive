@@ -10,7 +10,11 @@ body {
 
 a {
   color: inherit;
-  @apply border-b border-b-gray-300 transition-all duration-100 no-underline hover:border-b-gray-500;
+  @apply border-b border-b-gray-300 dark:border-b-gray-700 transition-all duration-100 no-underline hover:border-b-gray-500;
+}
+
+p {
+  @apply text-gray-600 text-justify dark:text-gray-400;
 }
 
 * {
@@ -18,7 +22,7 @@ a {
 }
 
 *::selection {
-  @apply bg-pink-50;
+  @apply bg-pink-50 dark:bg-yellow-800;
 }
 
 button {

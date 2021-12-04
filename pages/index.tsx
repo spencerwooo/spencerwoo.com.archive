@@ -1,14 +1,12 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
 import Footer from '../components/Footer'
 import Main from '../components/Main'
 import Navbar from '../components/Navbar'
 
 const Home: NextPage = () => {
   return (
-    <div className="">
+    <div>
       <Head>
         <title>Spencer Woo</title>
         <meta name="description" content="Spencer Woo" />
@@ -19,7 +17,7 @@ const Home: NextPage = () => {
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
 
-      <div className="flex flex-col h-screen">
+      <div className="flex flex-col h-screen dark:bg-dark-900">
         <Navbar />
         <Main />
         <Footer />

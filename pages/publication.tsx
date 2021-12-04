@@ -16,26 +16,26 @@ const Publication: NextPage = () => {
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
 
-      <div className="flex flex-col h-screen font-serif">
+      <div className="flex flex-col font-serif h-screen dark:bg-dark-900">
         <Navbar />
         <main className="container flex flex-col mx-auto flex-1 max-w-3xl px-6">
-          <h1 className="font-bold text-xl mb-8">Publication</h1>
+          <h1 className="font-bold text-xl mb-8 dark:text-light-900">Publication</h1>
 
           <a
             href="https://doi.org/10.24963/ijcai.2021/430"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 -m-2 hover:bg-light-200 rounded border-none"
+            className="border-none rounded -m-2 p-2 hover:bg-light-200 dark:hover:bg-dark-700"
           >
-            <div className="flex space-x-1 uppercase text-xs font-mono mb-1">
-              <span className="px-2 rounded-full bg-green-200">IJCAI 2021</span>
-              <span className="px-2 rounded-full bg-red-200">Adversarial Attack</span>
-              <span className="px-2 rounded-full bg-blue-200">Perceptual Similarity</span>
+            <div className="flex flex-wrap font-mono text-xs mb-1 gap-1 uppercase">
+              <span className="rounded-full bg-green-200 px-2 dark:(bg-green-700 text-white) ">IJCAI 2021</span>
+              <span className="rounded-full bg-red-200 px-2 dark:(bg-red-700 text-white) ">Adversarial Attack</span>
+              <span className="rounded-full bg-blue-200 px-2 dark:(bg-blue-700 text-white) ">Perceptual Similarity</span>
             </div>
-            <h2 className="font-bold">
+            <h2 className="font-bold dark:text-gray-400">
               Demiguise Attack: Crafting Invisible Semantic Adversarial Perturbations with Perceptual Similarity
             </h2>
-            <div className="text-sm">
+            <div className="text-sm dark:text-gray-400">
               Yajie Wang*, <span className="font-bold">Shangbo Wu*</span>, Wenyi Jiang, Shengang Hao, Yu-an Tan, Quanxin
               Zhang
             </div>
