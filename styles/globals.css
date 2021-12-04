@@ -8,7 +8,6 @@ body {
 
 a {
   color: inherit;
-  @apply no-underline border-b border-b-gray-300 hover:border-b-gray-500 transition-all duration-100;
 }
 
 * {
@@ -19,6 +18,11 @@ a {
   @apply bg-pink-50;
 }
 
-.btn {
-  @apply p-2 rounded cursor-pointer hover:bg-gray-50 transition-all duration-100;
+button {
+  background: none;
+  padding: 0;
+}
+
+.styled-a {
+  @apply no-underline border-b border-b-gray-300 hover:border-b-gray-500 transition-all duration-100;
 }
