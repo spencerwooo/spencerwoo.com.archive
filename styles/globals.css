@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,400;1,700&display=swap');
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  @apply border-b border-b-pink-200 hover:border-b-pink-500 transition-all duration-100;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*::selection {
+  @apply bg-pink-50;
+}
+
+.btn {
+  @apply p-2 rounded cursor-pointer hover:bg-gray-50 transition-all duration-100;
+}
