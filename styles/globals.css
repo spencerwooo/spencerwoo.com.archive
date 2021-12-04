@@ -14,7 +14,7 @@ a {
 }
 
 p {
-  @apply text-gray-600 text-justify dark:text-gray-400;
+  @apply text-gray-600 lg:text-justify dark:text-gray-400;
 }
 
 * {
@@ -22,7 +22,7 @@ p {
 }
 
 *::selection {
-  @apply bg-pink-50 dark:bg-yellow-800;
+  @apply bg-pink-100/50 dark:bg-pink-800/50;
 }
 
 button {

@@ -1,10 +1,41 @@
 import type { NextPage } from 'next'
+import { useEffect, useRef, useState } from 'react'
 import Head from 'next/head'
 import Footer from '../components/Footer'
 import Main from '../components/Main'
 import Navbar from '../components/Navbar'
 
+import TOPOLOGY from 'vanta/dist/vanta.topology.min'
+
 const Home: NextPage = () => {
+  const [vantaEffect, setVantaEffect] = useState<any>(0)
+  const vantaRef = useRef(null)
+
+  useEffect(() => {
+    const p5 = require('p5')
+
+    if (!vantaEffect) {
+      setVantaEffect(
+        TOPOLOGY({
+          el: vantaRef.current,
+          p5: p5,
+          mouseControls: true,
+          touchControls: true,
+          minHeight: 200.0,
+          minWidth: 200.0,
+          scale: 1.0,
+          scaleMobile: 1.0,
+          color: 0x4e9196,
+          backgroundColor: 0x1522,
+        })
+      )
+    }
+
+    return () => {
+      if (vantaEffect) vantaEffect.destroy()
+    }
+  }, [vantaEffect])
+
   return (
     <div>
       <Head>
@@ -17,7 +48,7 @@ const Home: NextPage = () => {
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
 
-      <div className="flex flex-col h-screen dark:bg-dark-900">
+      <div className="flex flex-col h-screen bg-[#001522] dark" ref={vantaRef}>
         <Navbar />
         <Main />
         <Footer />

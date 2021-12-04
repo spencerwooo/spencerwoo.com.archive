@@ -13,7 +13,7 @@ const Main = () => {
           height={120}
         />
       </div>
-      <h1 className="font-bold mb-8 text-2xl dark:text-light-900">Spencer Woo</h1>
+      <h1 className="font-bold mb-8 text-2xl text-light-900">Spencer Woo</h1>
 
       <p className="mb-8">
         Developer / Designer / Writer /{' '}
