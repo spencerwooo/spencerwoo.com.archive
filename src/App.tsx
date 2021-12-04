@@ -17,6 +17,7 @@ import {
 import {
   Alibabacloud,
   Cloudflare,
+  R,
   Cplusplus,
   Github,
   Go,
@@ -24,6 +25,7 @@ import {
   Java,
   Javascript,
   Jetbrains,
+  Neovim,
   Nextdotjs,
   Python,
   Pytorch,
@@ -37,6 +39,8 @@ import {
   Visualstudiocode,
   Vuedotjs,
 } from '@icons-pack/react-simple-icons'
+import toast, { Toaster } from 'react-hot-toast'
+import { useClipboard } from 'use-clipboard-copy'
 
 import { socials } from './config/socials'
 import { projects } from './config/projects'
@@ -62,13 +66,17 @@ const projectCards = projects.map(p => (
 
 const App = () => {
   const currentYear: number = new Date().getFullYear()
+  const clipboard = useClipboard()
+
   return (
     <div className="min-h-screen">
-      <div className="container mx-auto px-6 pb-6 max-w-4xl bg-base-200 rounded">
-        <div className="mt-12 md:mt-24 p-6 bg-primary shadow-md rounded transform -translate-y-6">
+      <div className="container mx-auto px-6 pb-6 max-w-4xl bg-base-300 rounded">
+        <div className="mt-12 md:mt-24 p-6 bg-neutral shadow-md rounded transform -translate-y-6">
+          <Toaster />
+
           <div className="flex flex-col space-y-4 md:flex-row md:space-x-8">
             <img
-              className="w-24 h-24 rounded-full ring ring-secondary ring-offset-base-100 ring-offset-2"
+              className="w-24 h-24 rounded-full ring ring-accent ring-offset-base-100 ring-offset-2"
               src={avatar}
               alt="avatar"
             />
@@ -115,15 +123,23 @@ const App = () => {
                 <CardBtnCustom
                   desc={'timezone'}
                   icon={ClockIcon}
-                  content={<div className="btn btn-sm btn-secondary">BST (GMT+1)</div>}
+                  content={<div className="btn btn-sm btn-outline btn-accent">CST (UTC+8)</div>}
                 />
                 <CardBtnCustom
                   desc={'genshin.impact'}
                   icon={PuzzleIcon}
                   content={
-                    <div className="btn btn-sm btn-secondary">
-                      <img src={paimon} alt="paimon" className="w-5 h-5 mr-1" />
-                      <span>UID: 168305666</span>
+                    <div
+                      className="btn btn-sm btn-outline btn-accent"
+                      onClick={() => {
+                        clipboard.copy('168305666')
+                        toast.success('Copied UID to clipboard.')
+                      }}
+                    >
+                      <div className="tooltip tooltip-bottom flex items-center" data-tip="原来你也玩原神 🍬">
+                        {/* <img src={paimon} alt="paimon" className="w-5 h-5 mr-1" /> */}
+                        <span>UID: 168305666</span>
+                      </div>
                     </div>
                   }
                 />
@@ -131,7 +147,7 @@ const App = () => {
                 <CardBtnIcons
                   desc={'use.lang'}
                   descIcon={CodeIcon}
-                  icons={[Python, Javascript, Typescript, Cplusplus, Java, Go]}
+                  icons={[Python, Javascript, Typescript, R, Cplusplus, Java, Go]}
                 />
                 <CardBtnIcons
                   desc={'use.framework'}
@@ -141,11 +157,11 @@ const App = () => {
                 <CardBtnIcons
                   desc={'use.service'}
                   descIcon={ServerIcon}
-                  icons={[Visualstudiocode, Jetbrains, Vercel, Cloudflare, Alibabacloud]}
+                  icons={[Visualstudiocode, Neovim, Jetbrains, Vercel, Cloudflare, Alibabacloud]}
                 />
               </div>
 
-              <hr className="border-dashed border-secondary-focus mt-4" />
+              <hr className="border-dashed mt-4" />
 
               <div className="flex flex-wrap mt-4 gap-2">
                 <SocialIcons link={'https://github.com/spencerwooo'} icon={Github} />
@@ -153,7 +169,7 @@ const App = () => {
                 <SocialIcons link={'https://weibo.com/spencerwoo'} icon={Sinaweibo} />
                 <SocialIcons link={'https://t.me/realSpencerWoo'} icon={Telegram} />
                 <SocialIcons link={'https://scholar.google.com/citations?user=Mf-JoyQAAAAJ'} icon={Googlescholar} />
-                <a className="btn btn-sm btn-secondary" href="mailto:spencer.wushangbo@gmail.com">
+                <a className="btn btn-sm btn-outline border-white text-white" href="mailto:spencer.wushangbo@gmail.com">
                   <MailIcon className="w-5 h-5" />
                 </a>
               </div>
@@ -173,18 +189,18 @@ const App = () => {
             <span className="text-xl ml-2 font-bold">Publications</span>
           </div>
           <a
-            href="https://arxiv.org/abs/2107.01396"
+            href="https://doi.org/10.24963/ijcai.2021/430"
             target="_blank"
             rel="noopener noreferrer"
             className="p-2 rounded shadow bg-base-100 transition transform hover:shadow-md hover:-translate-y-1"
           >
-            <div className="font-bold font-mono">
+            <div className="font-bold">
               Demiguise Attack: Crafting Invisible Semantic Adversarial Perturbations with Perceptual Similarity
             </div>
-            <p>
+            <div className="text-sm">
               Yajie Wang*, <span className="font-bold">Shangbo Wu*</span>, Wenyi Jiang, Shengang Hao, Yu-an Tan, Quanxin
               Zhang
-            </p>
+            </div>
             <div className="flex flex-wrap gap-1">
               <div className="badge badge-primary">IJCAI 2021</div>
               <div className="badge badge-secondary">Adversarial Attack</div>
