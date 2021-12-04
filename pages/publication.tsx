@@ -30,7 +30,9 @@ const Publication: NextPage = () => {
             <div className="flex flex-wrap font-mono text-xs mb-1 gap-1 uppercase">
               <span className="rounded-full bg-green-200 px-2 dark:(bg-green-700 text-white) ">IJCAI 2021</span>
               <span className="rounded-full bg-red-200 px-2 dark:(bg-red-700 text-white) ">Adversarial Attack</span>
-              <span className="rounded-full bg-blue-200 px-2 dark:(bg-blue-700 text-white) ">Perceptual Similarity</span>
+              <span className="rounded-full bg-blue-200 px-2 dark:(bg-blue-700 text-white) ">
+                Perceptual Similarity
+              </span>
             </div>
             <h2 className="font-bold dark:text-gray-400">
               Demiguise Attack: Crafting Invisible Semantic Adversarial Perturbations with Perceptual Similarity
@@ -40,6 +42,10 @@ const Publication: NextPage = () => {
               Zhang
             </div>
           </a>
+
+          <p className="mt-12 font-mono text-xs">
+            <abbr title="💡 As soon as I start my PhD ...">More to come ...</abbr>
+          </p>
         </main>
         <Footer />
       </div>
