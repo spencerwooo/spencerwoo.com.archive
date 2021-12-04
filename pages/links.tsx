@@ -1,12 +1,9 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
-import Footer from '../components/Footer'
-import Main from '../components/Main'
 import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
-const Home: NextPage = () => {
+const Links: NextPage = () => {
   return (
     <div className="">
       <Head>
@@ -21,11 +18,14 @@ const Home: NextPage = () => {
 
       <div className="flex flex-col h-screen">
         <Navbar />
-        <Main />
+        <main className="container flex flex-col mx-auto flex-1 max-w-3xl px-8">
+          <h1 className="font-bold text-xl mb-8">Links</h1>
+          <p className="font-mono text-sm text-gray-400">🚧 Under construction ...</p>
+        </main>
         <Footer />
       </div>
     </div>
   )
 }
 
-export default Home
+export default Links

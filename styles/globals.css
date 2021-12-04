@@ -7,7 +7,8 @@ body {
 }
 
 a {
-  @apply border-b border-b-pink-200 hover:border-b-pink-500 transition-all duration-100;
+  color: inherit;
+  @apply no-underline border-b border-b-gray-300 hover:border-b-gray-500 transition-all duration-100;
 }
 
 * {
