@@ -36,8 +36,10 @@ const Navbar = () => {
     <header className="flex font-sans p-6 text-gray-500 items-center justify-between">
       <Link href="/">Spencer</Link>
       <nav className="flex space-x-4 hidden sm:block">
-        {navigations.map(n => (
-          <Link href={n.link}>{n.name}</Link>
+        {navigations.map((n, i) => (
+          <Link href={n.link} key={i}>
+            {n.name}
+          </Link>
         ))}
       </nav>
 
@@ -55,10 +57,10 @@ const Navbar = () => {
             leaveFrom="transform scale-100 opacity-100"
             leaveTo="transform scale-95 opacity-0"
           >
-            <Menu.Items className="bg-white rounded shadow-lg mt-2 origin-top-right right-0 shadow-gray-600 w-32 absolute ">
-              {navigations.map(n => (
+            <Menu.Items className="bg-white rounded shadow-lg mt-2 origin-top-right right-0 shadow-gray-600 w-32 absolute mobile-menu">
+              {navigations.map((n, i) => (
                 <div className="p-2">
-                  <Menu.Item>
+                  <Menu.Item key={i}>
                     <MenuItemLink href={n.link}>{n.name}</MenuItemLink>
                   </Menu.Item>
                 </div>

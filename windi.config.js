@@ -9,6 +9,8 @@ export default defineConfig({
         extend: {
             fontFamily: {
                 sans: ['Overpass'],
+                serif: ['"Old Standard TT"'],
+                mono: ['"Overpass Mono"'],
             }
         },
     },
