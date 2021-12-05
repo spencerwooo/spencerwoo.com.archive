@@ -27,13 +27,13 @@ const LinkCard: FC<LinkProps> = props => {
 
   return (
     <a
-      className="border-none rounded bg-light-100 p-4 relative overflow-hidden"
+      className="border-none rounded bg-light-100 p-4 relative overflow-hidden dark:bg-dark-700"
       href={props.link}
       target="_blank"
       rel="noopener noreferrer"
     >
       <div
-        className="font-bold font-mono opacity-10 transform transition-all bottom-0 right-0 text-6xl translate-x-2/3 translate-y-1/4 duration-100 absolute hover:opacity-20 "
+        className="font-bold font-mono opacity-20 transform transition-all right-0 bottom-0 text-6xl translate-x-2/3 translate-y-1/4 duration-100 filter absolute dark:invert hover:opacity-40"
         style={{ color: `${props.color}` }}
       >
         {props.color}
@@ -71,7 +71,7 @@ const Links: NextPage = () => {
         <main className="container flex flex-col mx-auto flex-1 max-w-3xl px-6">
           <h1 className="font-bold text-xl mb-8 dark:text-light-900">Links</h1>
 
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-8">
+          <div className="mb-8 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {socialLinks.map((l, i) => (
               <LinkCard
                 key={i}
@@ -85,7 +85,7 @@ const Links: NextPage = () => {
             ))}
           </div>
 
-          <p className="font-mono text-xs text-gray-400 text-center">
+          <p className="font-mono text-xs text-center text-gray-400">
             Powered by{' '}
             <a href="https://substats.spencerwoo.com" target="_blank" rel="noopener noreferrer">
               Substats
