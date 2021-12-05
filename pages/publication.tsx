@@ -7,7 +7,7 @@ const Publication: NextPage = () => {
   return (
     <div className="">
       <Head>
-        <title>Spencer Woo</title>
+        <title>Spencer Woo - Publication</title>
         <meta name="description" content="Spencer Woo" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
