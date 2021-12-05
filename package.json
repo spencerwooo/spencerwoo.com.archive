@@ -9,12 +9,14 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.4.2",
+    "@icons-pack/react-simple-icons": "^4.6.1",
     "next": "12.0.5",
     "next-themes": "^0.0.15",
     "p5": "^1.4.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-feather": "^2.0.9",
+    "swr": "^1.1.0",
     "three": "^0.135.0",
     "vanta": "^0.5.21"
   },
