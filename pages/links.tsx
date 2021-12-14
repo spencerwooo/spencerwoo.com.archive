@@ -72,16 +72,8 @@ const Links: NextPage = () => {
           <h1 className="font-bold text-xl mb-8 dark:text-light-900">Links</h1>
 
           <div className="mb-8 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {socialLinks.map((l, i) => (
-              <LinkCard
-                key={i}
-                name={l.name}
-                link={l.link}
-                icon={l.icon}
-                apiUrl={l.apiUrl}
-                color={l.color}
-                followerName={l.followerName}
-              />
+            {socialLinks.map((link: LinkProps) => (
+              <LinkCard key={link.name} {...link} />
             ))}
           </div>
 
