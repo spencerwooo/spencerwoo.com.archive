@@ -6,6 +6,8 @@ import { ExternalLink } from 'react-feather'
 
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+
+import { projectLinks, ProjectProps } from '../config/project'
 import { socialLinks, LinkProps } from '../config/link'
 
 const fetcher = (url: string) => fetch(url).then(res => res.json())
@@ -32,13 +34,13 @@ const LinkCard: FC<LinkProps> = props => {
       target="_blank"
       rel="noopener noreferrer"
     >
-      <div
-        className="font-bold font-mono opacity-20 transform transition-all right-0 bottom-0 text-6xl translate-x-2/3 translate-y-1/4 duration-100 filter absolute dark:invert hover:opacity-40"
+      {/* <div
+        className="font-bold font-mono opacity-20 transform transition-all right-0 bottom-0 text-6xl translate-x-1/4 translate-y-1/2 duration-100 filter absolute hover:opacity-40"
         style={{ color: `${props.color}` }}
       >
         {props.color}
-      </div>
-      <p className="flex items-center justify-between">
+      </div> */}
+      <p className="flex items-center justify-between hover:text-gray-500">
         <div>
           <div className="font-bold">{props.name}</div>
           <LinkFollowerText apiUrl={props.apiUrl} followerName={pronoun} />
@@ -49,6 +51,25 @@ const LinkCard: FC<LinkProps> = props => {
           <ExternalLink size={18} className="opacity-70" />
         )}
       </p>
+    </a>
+  )
+}
+
+const ProjectCard: FC<ProjectProps> = props => {
+  return (
+    <a
+      href={props.link}
+      className="border-none rounded bg-light-100 p-4 dark:bg-dark-700"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <div className="flex space-x-4 transition-all text-gray-600 duration-100 items-center justify-between dark:text-gray-400 hover:text-gray-500">
+        <div className="truncate">
+          <div className="font-bold">{props.name}</div>
+          <div className="font-mono text-sm">{props.slug}</div>
+        </div>
+        <props.icon size={24} className="flex-shrink-0" />
+      </div>
     </a>
   )
 }
@@ -66,12 +87,20 @@ const Links: NextPage = () => {
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
 
-      <div className="flex flex-col h-screen dark:bg-dark-900">
+      <div className="flex flex-col h-screen">
         <Navbar />
         <main className="container flex flex-col mx-auto flex-1 max-w-3xl px-6">
-          <h1 className="font-bold text-xl mb-8 dark:text-light-900">Links</h1>
+          <h1 className="font-bold text-xl mb-8 dark:text-light-900">Projects</h1>
 
-          <div className="mb-8 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
+            {projectLinks.map((project: ProjectProps) => (
+              <ProjectCard key={project.slug} {...project} />
+            ))}
+          </div>
+
+          <h1 className="font-bold my-8 text-xl dark:text-light-900">Socials</h1>
+
+          <div className="mb-8 grid gap-4 grid-cols-1 sm:grid-cols-2">
             {socialLinks.map((link: LinkProps) => (
               <LinkCard key={link.name} {...link} />
             ))}
