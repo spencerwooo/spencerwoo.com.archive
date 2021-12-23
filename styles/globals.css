@@ -10,11 +10,12 @@ body {
 
 a {
   color: inherit;
-  @apply border-b border-b-gray-300 dark:border-b-gray-700 transition-all duration-100 no-underline hover:border-b-gray-500;
+  @apply border-b border-b-gray-300 transition-all duration-100 no-underline dark:border-b-gray-700 hover:border-b-gray-500;
 }
 
-p {
-  @apply text-gray-600 lg:text-justify dark:text-gray-400;
+p,
+li {
+  @apply text-gray-600 leading-7 lg:text-justify dark:text-gray-400;
 }
 
 * {

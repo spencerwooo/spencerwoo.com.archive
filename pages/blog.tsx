@@ -28,30 +28,25 @@ const Blog: NextPage<{ posts: BlogPosts }> = ({ posts }) => {
         <main className="container flex flex-col mx-auto flex-1 max-w-3xl px-6">
           <h1 className="font-bold text-xl mb-8 dark:text-light-900">Blog</h1>
 
-          {posts.map(
-            (post: any) =>
-              post.properties.published.checkbox && (
-                <Link key={post.id} href={`/blog/${post.properties.slug.rich_text[0].text.content}`}>
-                  <div className="border-none rounded cursor-pointer -mx-2 mb-2 p-2 hover:bg-light-200 hover:opacity-80 dark:hover:bg-dark-700">
-                    <h2 className="text-lg leading-9 dark:text-gray-200">
-                      {post.properties.name.title[0].text.content}
-                    </h2>
+          {posts.map((post: any) => (
+            <Link key={post.id} href={`/blog/${post.properties.slug.rich_text[0].text.content}`}>
+              <div className="border-none rounded cursor-pointer -mx-2 mb-2 p-2 hover:bg-light-200 hover:opacity-80 dark:hover:bg-dark-700">
+                <h2 className="text-lg leading-9 dark:text-gray-200">{post.properties.name.title[0].text.content}</h2>
 
-                    <p className="text-gray-600 text-sm">{post.properties.preview.rich_text[0].text.content}</p>
+                <p className="text-gray-600 text-sm">{post.properties.preview.rich_text[0].text.content}</p>
 
-                    <div className="flex space-x-2 text-sm text-gray-500 items-center">
-                      <span>{post.properties.date.date.start}</span>
-                      <span>·</span>
-                      {post.properties.author.people.map((person: { name: string }) => (
-                        <span key={person.name}>{person.name.toLowerCase()}</span>
-                      ))}
-                      <span>·</span>
-                      <span>{post.properties.tag.select.name.toLowerCase()}</span>
-                    </div>
-                  </div>
-                </Link>
-              )
-          )}
+                <div className="flex space-x-2 text-sm text-gray-500 items-center">
+                  <span>{post.properties.date.date.start}</span>
+                  <span>·</span>
+                  {post.properties.author.people.map((person: { name: string }) => (
+                    <span key={person.name}>{person.name.toLowerCase()}</span>
+                  ))}
+                  <span>·</span>
+                  <span>{post.properties.tag.select.name.toLowerCase()}</span>
+                </div>
+              </div>
+            </Link>
+          ))}
         </main>
         <Footer />
       </div>
