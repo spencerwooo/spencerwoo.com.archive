@@ -1,8 +1,11 @@
 import '../styles/globals.css'
 import 'windi.css'
-import { ThemeProvider } from 'next-themes'
-import type { AppProps } from 'next/app'
+
 import { useEffect } from 'react'
+import type { AppProps } from 'next/app'
+
+import { ThemeProvider } from 'next-themes'
+import NextNProgress from 'nextjs-progressbar'
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -20,6 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <ThemeProvider attribute="class">
+      <NextNProgress height={1} color="rgb(63,63,70,0.9)" options={{ showSpinner: false }} />
       <Component {...pageProps} />
     </ThemeProvider>
   )

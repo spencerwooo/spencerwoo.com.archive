@@ -1,11 +1,18 @@
-import type { NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
+import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
+import Link from 'next/link'
 import Head from 'next/head'
+
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
-const Blog: NextPage = () => {
+import { getDatabase } from '../lib/notion'
+
+type BlogPosts = QueryDatabaseResponse['results']
+
+const Blog: NextPage<{ posts: BlogPosts }> = ({ posts }) => {
   return (
-    <div className="">
+    <div>
       <Head>
         <title>Spencer Woo - Blog</title>
         <meta name="description" content="Spencer Woo" />
@@ -20,18 +27,46 @@ const Blog: NextPage = () => {
         <Navbar />
         <main className="container flex flex-col mx-auto flex-1 max-w-3xl px-6">
           <h1 className="font-bold text-xl mb-8 dark:text-light-900">Blog</h1>
-          <p className="font-mono text-sm text-gray-400">
-            🚧 Migrating from{' '}
-            <a href="https://blog.spencerwoo.com" target="_blank" rel="noopener noreferrer">
-              blog.spencerwoo.com
-            </a>{' '}
-            ...
-          </p>
+
+          {posts.map(
+            (post: any) =>
+              post.properties.published.checkbox && (
+                <Link key={post.id} href={`/blog/${post.properties.slug.rich_text[0].text.content}`}>
+                  <div className="border-none rounded cursor-pointer -mx-2 mb-2 p-2 hover:bg-light-200 hover:opacity-80 dark:hover:bg-dark-700">
+                    <h2 className="text-lg leading-8 dark:text-gray-400">
+                      {post.properties.name.title[0].text.content}
+                    </h2>
+
+                    <p className="text-gray-600">{post.properties.preview.rich_text[0].text.content}</p>
+
+                    <div className="flex space-x-2 text-sm text-gray-500 items-center">
+                      <span>{post.properties.date.date.start}</span>
+                      <span>·</span>
+                      {post.properties.author.people.map((person: { name: string }) => (
+                        <span>{person.name.toLowerCase()}</span>
+                      ))}
+                      <span>·</span>
+                      <span>{post.properties.tag.select.name.toLowerCase()}</span>
+                    </div>
+                  </div>
+                </Link>
+              )
+          )}
         </main>
         <Footer />
       </div>
     </div>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const db = await getDatabase()
+  return {
+    props: {
+      posts: db,
+    },
+    revalidate: 1,
+  }
 }
 
 export default Blog
