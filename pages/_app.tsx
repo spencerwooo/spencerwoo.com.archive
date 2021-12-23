@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <ThemeProvider attribute="class">
-      <NextNProgress height={1} color="rgb(63,63,70,0.9)" options={{ showSpinner: false }} />
+      <NextNProgress height={1} color="rgb(156, 163, 175, 0.9)" options={{ showSpinner: false }} />
       <Component {...pageProps} />
     </ThemeProvider>
   )

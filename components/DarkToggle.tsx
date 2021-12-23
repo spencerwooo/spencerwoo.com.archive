@@ -5,7 +5,7 @@ import { Moon, Sun } from 'react-feather'
 
 const Toggle = () => {
   const [mounted, setMounted] = useState(false)
-  const { theme, setTheme } = useTheme()
+  const { resolvedTheme, setTheme } = useTheme()
 
   const { asPath } = useRouter()
 
@@ -19,11 +19,11 @@ const Toggle = () => {
   return (
     <button
       onClick={() => {
-        setTheme(theme === 'light' ? 'dark' : 'light')
+        setTheme(resolvedTheme === 'light' ? 'dark' : 'light')
       }}
       className="cursor-pointer inline-flex items-center hover:text-gray-500"
     >
-      {theme === 'light' ? <Moon className="inline" size={20} /> : <Sun className="inline" size={20} />}
+      {resolvedTheme === 'light' ? <Moon className="inline" size={20} /> : <Sun className="inline" size={20} />}
     </button>
   )
 }
