@@ -184,6 +184,8 @@ const renderNotionBlock = (block: any) => {
 }
 
 const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
+  if (!page || !blocks) return <div></div>
+
   return (
     <div>
       <Head>
