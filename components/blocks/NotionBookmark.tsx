@@ -1,7 +1,7 @@
 import { Link } from 'react-feather'
 import useSWR from 'swr'
 
-const previewFetcher = (url: string) => fetch(`/${encodeURIComponent(url)}`).then(res => res.json())
+const previewFetcher = (url: string) => fetch(`/api/bookmark/${encodeURIComponent(url)}`).then(res => res.json())
 
 const Bookmark = ({ value }: { value: any }) => {
   const { url } = value
