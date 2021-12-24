@@ -15,7 +15,11 @@ a {
 
 p,
 li {
-  @apply text-gray-600 leading-7 lg:text-justify dark:text-gray-400;
+  @apply text-gray-600 leading-7 dark:text-gray-400;
+}
+
+code {
+  @apply font-mono;
 }
 
 * {
@@ -23,7 +27,7 @@ li {
 }
 
 *::selection {
-  @apply bg-pink-100/50 dark:bg-pink-800/50;
+  @apply bg-fuchsia-300/20 dark:bg-fuchsia-600/20;
 }
 
 button {

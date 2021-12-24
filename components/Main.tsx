@@ -11,6 +11,7 @@ const Main = () => {
           alt="avatar"
           width={120}
           height={120}
+          priority
         />
       </div>
       <h1 className="font-bold mb-8 text-2xl text-light-900">Spencer Woo</h1>
