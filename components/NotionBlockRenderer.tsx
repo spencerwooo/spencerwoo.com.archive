@@ -7,6 +7,7 @@ import { Link as LinkIcon } from 'react-feather'
 import Link from 'next/link'
 
 import { Text } from './NotionTextBlock'
+import Bookmark from './blocks/NotionBookmark'
 
 export function renderNotionBlock(block: any) {
   const { type, id } = block
@@ -123,14 +124,7 @@ export function renderNotionBlock(block: any) {
         </p>
       )
     case 'bookmark':
-      return (
-        <Link href={value.url}>
-          <p className="rounded overflow-x-scroll cursor-pointer flex font-mono space-x-4 my-2 -mx-2 p-2 items-center hover:bg-light-200 hover:opacity-80 dark:hover:bg-dark-700">
-            <LinkIcon className="flex-shrink-0" size={18} />
-            <span>{value.url}</span>
-          </p>
-        </Link>
-      )
+      return <Bookmark value={value} />
     case 'code':
       return (
         <div className="my-2 relative">

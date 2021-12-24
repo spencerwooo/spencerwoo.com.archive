@@ -1,5 +1,5 @@
 {
-  "name": "portfolio-react",
+  "name": "spencerwoo.com",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -11,7 +11,6 @@
     "@headlessui/react": "^1.4.2",
     "@icons-pack/react-simple-icons": "^4.6.1",
     "@notionhq/client": "^0.4.11",
-    "link-preview-js": "^2.1.8",
     "next": "12.0.5",
     "next-themes": "^0.0.15",
     "nextjs-progressbar": "^0.0.13",
@@ -23,6 +22,7 @@
     "react-syntax-highlighter": "^15.4.5",
     "swr": "^1.1.0",
     "three": "^0.135.0",
+    "unfurl.js": "^5.6.2",
     "vanta": "^0.5.21"
   },
   "devDependencies": {
