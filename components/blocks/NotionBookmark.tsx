@@ -1,7 +1,7 @@
 import { Link } from 'react-feather'
 import useSWR from 'swr'
 
-const previewFetcher = (url: string) => fetch(`/api/bookmark/${encodeURIComponent(url)}`).then(res => res.json())
+const previewFetcher = (url: string) => fetch(`/${encodeURIComponent(url)}`).then(res => res.json())
 
 const Bookmark = ({ value }: { value: any }) => {
   const { url } = value
@@ -19,7 +19,9 @@ const Bookmark = ({ value }: { value: any }) => {
         <span>{url}</span>
       </a>
     )
-  if (!data) return <p>Loading...</p>
+
+  // TODO: add loading skeleton preview
+  if (!data) return <p>Loading link preview...</p>
 
   const {
     title,
@@ -30,22 +32,22 @@ const Bookmark = ({ value }: { value: any }) => {
 
   return (
     <div
-      className="border rounded flex text-gray-600 dark:text-gray-400 hover:bg-light-200 dark:hover:bg-dark-700"
+      className="border rounded cursor-pointer flex h-30 text-gray-600 dark:text-gray-400 hover:bg-light-200 dark:hover:bg-dark-700"
       onClick={() => {
         window.open(url)
       }}
     >
-      <div className="p-2">
-        <p className="font-bold text-sm mb-1 truncate">{title}</p>
-        <p className="text-sm mb-1 opacity-70 truncate">{description}</p>
-        <p className="flex font-mono text-sm opacity-70 items-center">
-          {favicon && <img src={favicon} className="h-3 w-3" />}
-          <span className="truncate">{url}</span>
+      <div className="flex flex-col flex-shrink p-2">
+        <p className="font-bold text-sm mb-1 overflow-ellipsis">{title}</p>
+        <p className="flex-1 text-sm mb-1 opacity-70 overflow-ellipsis">{description}</p>
+        <p className="flex space-x-2 text-sm opacity-70 items-center overflow-hidden">
+          {favicon && <img src={favicon} className="h-4 w-4" />}
+          <span className="flex-shrink-0">{url}</span>
         </p>
       </div>
       {images && images.length > 0 && (
         <div className="flex-shrink-0 h-30 w-60 overflow-hidden">
-          <img src={images[0]} alt={title} />
+          <img src={images[0].url} alt={title} className="border-l rounded object-cover h-30" />
         </div>
       )}
     </div>
