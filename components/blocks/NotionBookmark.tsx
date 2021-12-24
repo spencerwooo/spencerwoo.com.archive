@@ -20,15 +20,32 @@ const Bookmark = ({ value }: { value: any }) => {
       </a>
     )
 
-  // TODO: add loading skeleton preview
-  if (!data) return <p>Loading link preview...</p>
+  if (data)
+    return (
+      <div
+        className="border rounded cursor-pointer flex border-gray-400/50 max-h-30 text-gray-600 dark:text-gray-400 hover:bg-light-200 dark:hover:bg-dark-700"
+        onClick={() => {
+          window.open(url)
+        }}
+      >
+        <div className="flex flex-col flex-shrink space-y-2 flex-1 p-2">
+          <div className="rounded bg-gray-200 h-5 animate-pulse dark:bg-dark-400" />
+          <div className="rounded bg-gray-200 flex-1 animate-pulse dark:bg-dark-400" />
+          <p className="flex space-x-2 text-sm opacity-70 overflow-hidden">
+            <Link size={16} />
+            <span className="flex-shrink-0">{url}</span>
+          </p>
+        </div>
+        <div className="bg-gray-200 flex-shrink-0 h-30 animate-pulse w-60 overflow-hidden hidden sm:block dark:bg-dark-400" />
+      </div>
+    )
 
   const { title, description, favicon, open_graph } = data
   const images = open_graph?.images ?? []
 
   return (
     <div
-      className="border rounded cursor-pointer flex border-gray-400/50 max-h-30 text-gray-600 dark:text-gray-400 hover:bg-light-200 dark:hover:bg-dark-700"
+      className="border rounded cursor-pointer flex border-gray-400/50 max-h-30 text-gray-600 justify-between dark:text-gray-400 hover:bg-light-200 dark:hover:bg-dark-700"
       onClick={() => {
         window.open(url)
       }}
