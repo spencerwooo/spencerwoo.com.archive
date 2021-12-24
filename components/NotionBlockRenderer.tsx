@@ -14,7 +14,7 @@ export function renderNotionBlock(block: any) {
 
   const getMediaCtx = (value: any) => {
     const src = value.type === 'external' ? value.external.url : value.file.url
-    const expire = value.file.expiry_time || null
+    const expire = value.type === 'file' ? value.file.expiry_time : null
     const caption = value.caption[0] ? value.caption[0].plain_text : ''
     return { src, caption, expire }
   }
