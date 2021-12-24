@@ -29,7 +29,7 @@ const Bookmark = ({ value }: { value: any }) => {
         }}
       >
         <div className="flex flex-col flex-shrink space-y-2 flex-1 p-2">
-          <div className="rounded bg-gray-200 h-5 animate-pulse dark:bg-dark-400" />
+          <div className="rounded bg-gray-200 h-5 max-w-40 animate-pulse dark:bg-dark-400" />
           <div className="rounded bg-gray-200 flex-1 animate-pulse dark:bg-dark-400" />
           <p className="flex space-x-2 text-sm opacity-70 overflow-hidden">
             <Link size={16} />
@@ -45,21 +45,21 @@ const Bookmark = ({ value }: { value: any }) => {
 
   return (
     <div
-      className="border rounded cursor-pointer flex border-gray-400/50 max-h-30 text-gray-600 justify-between dark:text-gray-400 hover:bg-light-200 dark:hover:bg-dark-700"
+      className="border rounded cursor-pointer flex border-gray-400/50 max-h-28 text-gray-600 justify-between dark:text-gray-400 hover:bg-light-200 dark:hover:bg-dark-700"
       onClick={() => {
         window.open(url)
       }}
     >
-      <div className="flex flex-col flex-shrink p-2">
-        <p className="font-bold text-sm mb-1 overflow-ellipsis">{title}</p>
-        <p className="flex-1 text-sm mb-1 opacity-70 overflow-ellipsis">{description}</p>
-        <p className="flex space-x-2 text-sm opacity-70 overflow-hidden">
+      <div className="flex flex-col flex-shrink p-2 overflow-hidden">
+        <p className="font-bold h-6 text-sm mb-1 leading-6 truncate">{title}</p>
+        <p className="h-10 text-sm text-ellipsis mb-1 opacity-70 leading-5 overflow-hidden">{description}</p>
+        <p className="flex space-x-2 h-6 text-sm opacity-70 items-center">
           {favicon ? <img src={favicon} className="h-4 w-4" /> : <Link size={16} />}
-          <span className="flex-shrink-0">{url}</span>
+          <span className="transform leading-6 translate-y-0.5 truncate">{url}</span>
         </p>
       </div>
       {images && images.length > 0 && (
-        <div className="flex-shrink-0 h-30 max-w-60 overflow-hidden hidden sm:block">
+        <div className="flex-shrink-0 h-28 max-w-60 overflow-hidden hidden sm:block">
           <img src={images[0].url} alt={title} className="border-l rounded object-cover border-gray-400/50 h-30" />
         </div>
       )}

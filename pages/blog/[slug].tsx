@@ -7,8 +7,10 @@ import Link from 'next/link'
 
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
-import { getDatabase, getPage, getBlocks } from '../../lib/notion'
 import { renderNotionBlock } from '../../components/NotionBlockRenderer'
+
+import { getDatabase, getPage, getBlocks } from '../../lib/notion'
+import probeImageSize from '../../lib/imaging'
 
 const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
   if (!page || !blocks) return <div></div>
@@ -62,7 +64,7 @@ export const getStaticPaths = async () => {
   const db = await getDatabase()
   return {
     paths: db.map((p: any) => ({ params: { slug: p.properties.slug.rich_text[0].text.content } })),
-    fallback: true,
+    fallback: 'blocking',
   }
 }
 
@@ -76,6 +78,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const page = await getPage(post)
   const blocks = await getBlocks(post)
+
+  // Retrieve all child blocks fetched
   const childBlocks = await Promise.all(
     blocks
       .filter((b: any) => b.has_children)
@@ -92,6 +96,21 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }
     return b
   })
+
+  // Resolve all images' dimensions
+  await Promise.all(
+    blocksWithChildren
+      .filter((b: any) => b.type === 'image')
+      .map(async b => {
+        const { type } = b
+        const value = b[type]
+        const src = value.type === 'external' ? value.external.url : value.file.url
+
+        const { width, height } = await probeImageSize(src)
+        value['dim'] = { width, height }
+        b[type] = value
+      })
+  )
 
   return { props: { page, blocks: blocksWithChildren }, revalidate: 1 }
 }
