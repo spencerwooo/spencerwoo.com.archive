@@ -20,7 +20,7 @@ const Bookmark = ({ value }: { value: any }) => {
       </a>
     )
 
-  if (data)
+  if (!data)
     return (
       <div
         className="border rounded cursor-pointer flex border-gray-400/50 max-h-30 text-gray-600 dark:text-gray-400 hover:bg-light-200 dark:hover:bg-dark-700"
