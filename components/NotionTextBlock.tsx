@@ -13,7 +13,7 @@ export function Text({ text }: { text: any }) {
           bold ? 'font-bold' : '',
           code ? 'font-mono text-sm px-1 bg-light-300 dark:bg-dark-800 rounded' : '',
           italic ? 'italic' : '',
-          strikethrough ? 'strike' : '',
+          strikethrough ? 'line-through' : '',
           underline ? 'underline' : '',
         ].join(' ')}
         style={color !== 'default' ? { color } : {}}

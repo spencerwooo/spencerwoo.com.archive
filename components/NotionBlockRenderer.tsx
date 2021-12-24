@@ -2,9 +2,6 @@ import { Fragment } from 'react'
 import { LightAsync as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { nord } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import Latex from 'react-latex-next'
-import { Link as LinkIcon } from 'react-feather'
-
-import Link from 'next/link'
 
 import { Text } from './NotionTextBlock'
 import Bookmark from './blocks/NotionBookmark'
@@ -83,13 +80,14 @@ export function renderNotionBlock(block: any) {
     case 'child_page':
       return <p className="my-2">{value.title}</p>
     case 'image':
-      const { src: imageSrc, caption: imageCaption, expire: imageExpiryTime } = getMediaCtx(value)
+      const { src: imageSrc, caption: imageCaption } = getMediaCtx(value)
+      // const { src: imageSrc, caption: imageCaption, expire: imageExpiryTime } = getMediaCtx(value)
       return (
         <figure className="my-2 relative">
           <img src={imageSrc} alt={imageCaption} />
-          <p className="font-mono bg-black/10 text-sm p-2 top-0 left-0 text-white/50 absolute hover:text-white">
+          {/* <p className="font-mono bg-black/10 text-sm p-2 top-0 left-0 text-white/50 absolute hover:text-white">
             {imageExpiryTime ? new Date(imageExpiryTime).toLocaleString() : ''}
-          </p>
+          </p> */}
           {imageCaption && (
             <figcaption>
               <p className="my-2 text-center opacity-80">{imageCaption}</p>
@@ -98,12 +96,11 @@ export function renderNotionBlock(block: any) {
         </figure>
       )
     case 'video':
-      const { src: videoSrc, caption: videoCaption, expire: videoExpiryTime } = getMediaCtx(value)
+      const { src: videoSrc, caption: videoCaption } = getMediaCtx(value)
       return (
         <div className="rounded my-2 overflow-hidden">
           <video src={videoSrc} controls />
           <p className="my-2 text-center opacity-80">{videoCaption}</p>
-          <p>{videoExpiryTime ? new Date(videoExpiryTime).toLocaleString() : ''}</p>
         </div>
       )
     case 'divider':
