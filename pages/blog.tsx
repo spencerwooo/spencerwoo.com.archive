@@ -31,11 +31,11 @@ const Blog: NextPage<{ posts: BlogPosts }> = ({ posts }) => {
           {posts.map((post: any) => (
             <Link key={post.id} href={`/blog/${post.properties.slug.rich_text[0].text.content}`}>
               <div className="border-none rounded cursor-pointer -mx-2 mb-2 p-2 hover:bg-light-200 hover:opacity-80 dark:hover:bg-dark-700">
-                <h2 className="text-lg leading-9 dark:text-gray-200">{post.properties.name.title[0].text.content}</h2>
+                <h2 className="text-lg mb-2 dark:text-gray-200">{post.properties.name.title[0].text.content}</h2>
 
-                <p className="text-gray-600 text-sm">{post.properties.preview.rich_text[0].text.content}</p>
+                <p className="text-sm text-gray-600">{post.properties.preview.rich_text[0].text.content}</p>
 
-                <div className="flex space-x-2 text-sm text-gray-500 items-center">
+                <div className="flex flex-wrap text-sm text-gray-500 space-x-2 items-center">
                   <span>{post.properties.date.date.start}</span>
                   <span>·</span>
                   {post.properties.author.people.map((person: { name: string }) => (
