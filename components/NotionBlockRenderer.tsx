@@ -125,8 +125,8 @@ export function renderNotionBlock(block: any) {
     case 'bookmark':
       return (
         <Link href={value.url}>
-          <p className="rounded cursor-pointer flex font-mono space-x-4 my-2 -mx-2 p-2 items-center hover:bg-light-200 hover:opacity-80 dark:hover:bg-dark-700">
-            <LinkIcon size={18} />
+          <p className="rounded overflow-x-scroll cursor-pointer flex font-mono space-x-4 my-2 -mx-2 p-2 items-center hover:bg-light-200 hover:opacity-80 dark:hover:bg-dark-700">
+            <LinkIcon className="flex-shrink-0" size={18} />
             <span>{value.url}</span>
           </p>
         </Link>

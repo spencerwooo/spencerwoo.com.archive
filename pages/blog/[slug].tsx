@@ -32,7 +32,7 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
             <span>{page.properties.name.title[0].plain_text}</span>
             <span>{page.icon.emoji}</span>
           </h1>
-          <div className="flex space-x-2 mb-8 text-gray-500 items-center">
+          <div className="flex flex-wrap space-x-2 mb-8 text-gray-500 items-center">
             <span>{page.properties.date.date.start}</span>
             <span>·</span>
             {page.properties.author.people.map((person: { name: string }) => (
