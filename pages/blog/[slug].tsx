@@ -11,6 +11,7 @@ import { renderNotionBlock } from '../../components/NotionBlockRenderer'
 
 import { getDatabase, getPage, getBlocks } from '../../lib/notion'
 import probeImageSize from '../../lib/imaging'
+import Comments from '../../components/DisqusComment'
 
 const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
   if (!page || !blocks) return <div></div>
@@ -48,11 +49,13 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
             <Fragment key={block.id}>{renderNotionBlock(block)}</Fragment>
           ))}
 
-          <Link href="/blog">
+          {/* <Link href="/blog">
             <p className="border-none rounded cursor-pointer font-mono -mx-2 mt-8 text-sm mb-2 p-2 hover:bg-light-200 hover:opacity-80 dark:hover:bg-dark-700">
               cd /blog
             </p>
-          </Link>
+          </Link> */}
+
+          <Comments date={page.properties.date.date.start} slug={page.properties.slug.rich_text[0].text.content} />
         </main>
         <Footer />
       </div>
