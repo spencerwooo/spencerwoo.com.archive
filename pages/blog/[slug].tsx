@@ -55,7 +55,7 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
             </p>
           </Link> */}
 
-          <Comments date={page.properties.date.date.start} slug={page.properties.slug.rich_text[0].text.content} />
+          {/* <Comments date={page.properties.date.date.start} slug={page.properties.slug.rich_text[0].text.content} /> */}
         </main>
         <Footer />
       </div>

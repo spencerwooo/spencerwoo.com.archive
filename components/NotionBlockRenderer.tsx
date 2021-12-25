@@ -120,7 +120,7 @@ export function renderNotionBlock(block: any) {
     case 'code':
       return (
         <div className="my-2 relative">
-          <span className="rounded font-mono bg-white/10 opacity-50 p-2 top-0 right-0 text-light-50 absolute">
+          <span className="rounded text-sm font-mono bg-white/10 opacity-50 px-2 py-1 top-0 right-0 text-light-50 absolute hidden sm:block">
             {value.language}
           </span>
           <pre className="rounded font-mono text-sm overflow-hidden">

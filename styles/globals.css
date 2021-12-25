@@ -15,7 +15,7 @@ a {
 
 p,
 li {
-  @apply text-gray-600 leading-7 dark:text-gray-400;
+  @apply text-gray-600 leading-7 dark:text-gray-400 overflow-ellipsis overflow-hidden;
 }
 
 code {
