@@ -7,26 +7,37 @@ import { Text } from './blocks/NotionTextBlock'
 import Bookmark from './blocks/NotionBookmark'
 import NotionImage, { getMediaCtx } from './blocks/NotionImage'
 
-const textStyleClass = {
-  paragraph: 'my-2',
-  heading_1: 'font-bold mt-4 mb-2 text-2xl leading-7',
-  heading_2: 'font-bold mt-4 mb-2 text-xl leading-7',
-  heading_3: 'font-bold mt-4 mb-2 text-lg leading-7',
-}
-
 export function renderNotionBlock(block: any) {
   const { type, id } = block
   const value = block[type]
 
   switch (type) {
     case 'paragraph':
-    case 'heading_1':
-    case 'heading_2':
-    case 'heading_3':
       return (
-        <p className={textStyleClass[type as keyof typeof textStyleClass]}>
+        <p className="my-2">
           <Text text={value.text} />
         </p>
+      )
+
+    case 'heading_1':
+      return (
+        <h1 className="font-bold mt-4 mb-2 text-2xl leading-7">
+          <Text text={value.text} />
+        </h1>
+      )
+
+    case 'heading_2':
+      return (
+        <h2 className="font-bold mt-4 mb-2 text-xl leading-7">
+          <Text text={value.text} />
+        </h2>
+      )
+
+    case 'heading_3':
+      return (
+        <h3 className="font-bold mt-4 mb-2 text-lg leading-7">
+          <Text text={value.text} />
+        </h3>
       )
 
     case 'bulleted_list_item':
