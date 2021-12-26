@@ -3,7 +3,6 @@ import { Fragment } from 'react'
 import { ParsedUrlQuery } from 'querystring'
 
 import Head from 'next/head'
-import Link from 'next/link'
 
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
@@ -31,7 +30,7 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
       <div className="flex flex-col h-screen">
         <Navbar />
         <main className="container flex flex-col mx-auto flex-1 max-w-3xl px-6">
-          <h1 className="flex font-bold text-xl mb-2 justify-between dark:text-light-900">
+          <h1 className="flex font-bold space-x-2 text-xl mb-2 justify-between dark:text-light-900">
             <span>{page.properties.name.title[0].plain_text}</span>
             <span>{page.icon.emoji}</span>
           </h1>
