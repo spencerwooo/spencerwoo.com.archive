@@ -1,4 +1,5 @@
 import { defineConfig } from 'windicss/helpers'
+import defaultTheme from 'windicss/defaultTheme'
 
 export default defineConfig({
     darkMode: 'class',
@@ -7,12 +8,10 @@ export default defineConfig({
         exclude: ['node_modules', '.git', '.next'],
     },
     theme: {
-        extend: {
-            fontFamily: {
-                sans: ['Overpass'],
-                serif: ['"Old Standard TT"'],
-                mono: ['"Overpass Mono"'],
-            }
-        },
+        fontFamily: {
+            sans: ['Overpass', ...defaultTheme.fontFamily.sans],
+            serif: ['"Old Standard TT"', ...defaultTheme.fontFamily.serif],
+            mono: ['"Overpass Mono"', ...defaultTheme.fontFamily.mono],
+        }
     },
 })
