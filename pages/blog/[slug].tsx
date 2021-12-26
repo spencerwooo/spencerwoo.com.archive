@@ -10,7 +10,7 @@ import { renderNotionBlock } from '../../components/NotionBlockRenderer'
 
 import { getDatabase, getPage, getBlocks } from '../../lib/notion'
 import probeImageSize from '../../lib/imaging'
-import Comments from '../../components/DisqusComment'
+import Comments from '../../components/Comments'
 
 const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
   if (!page || !blocks) return <div></div>
@@ -54,7 +54,7 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
             </p>
           </Link> */}
 
-          {/* <Comments date={page.properties.date.date.start} slug={page.properties.slug.rich_text[0].text.content} /> */}
+          <Comments />
         </main>
         <Footer />
       </div>
