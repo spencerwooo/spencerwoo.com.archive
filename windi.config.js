@@ -2,7 +2,7 @@ import { defineConfig } from 'windicss/helpers'
 import defaultTheme from 'windicss/defaultTheme'
 
 export default defineConfig({
-    darkMode: 'class',
+    darkMode: 'media',
     extract: {
         include: ['**/*.{jsx,tsx,css}'],
         exclude: ['node_modules', '.git', '.next'],

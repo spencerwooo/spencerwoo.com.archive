@@ -9,5 +9,17 @@ module.exports = {
   webpack(config) {
     config.plugins.push(new WindiCSSWebpackPlugin())
     return config
-  }
+  },
+  redirects: [
+    {
+      source: "/posts/index.xml",
+      destination: "/feed",
+      permanent: false
+    },
+    {
+      source: "/feed.xml",
+      destination: "/feed",
+      permanent: false
+    }
+  ]
 }

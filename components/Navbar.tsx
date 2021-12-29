@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { Menu, Transition } from '@headlessui/react'
-import { Menu as MenuIcon } from 'react-feather'
+import { Menu as MenuIcon, Rss } from 'react-feather'
 import { Fragment } from 'react'
-import Toggle from './DarkToggle'
+// import Toggle from './DarkToggle'
 
 const navigations = [
   {
@@ -68,7 +68,15 @@ const Navbar = () => {
           </Menu>
         </div>
 
-        <Toggle />
+        <div
+          onClick={() => {
+            window.open('/feed')
+          }}
+          className="cursor-pointer inline-flex items-center hover:text-gray-500"
+        >
+          <Rss size={20} />
+        </div>
+        {/* <Toggle /> */}
       </div>
     </header>
   )
