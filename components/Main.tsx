@@ -16,7 +16,7 @@ const Main = () => {
       </div>
       <h1 className="font-bold mb-8 text-2xl text-light-900">Spencer Woo</h1>
 
-      <p className="mb-8">
+      <p className="mb-8 text-gray-400">
         Developer / Designer / Writer /{' '}
         <a href="https://genshin-impact.fandom.com/wiki/Hu_Tao" target="_blank" rel="noopener noreferrer">
           <abbr title="🔥 C6 by the way" className="!no-underline">
@@ -26,7 +26,7 @@ const Main = () => {
         haver
       </p>
 
-      <p>
+      <p className="text-gray-400">
         Postgrad at the{' '}
         <a href="https://www.gla.ac.uk/" target="_blank" rel="noopener noreferrer">
           University of Glasgow
@@ -51,14 +51,14 @@ const Main = () => {
         .
       </p>
 
-      <p className="mt-8">
+      <p className="mt-8 text-gray-400">
         Most of my work can be found on{' '}
         <a href="https://github.com/spencerwooo" target="_blank" rel="noopener noreferrer">
           GitHub
         </a>
         .
       </p>
-      <p className="flex space-x-2 items-center">
+      <p className="flex space-x-2 items-center text-gray-400">
         <Mail size={15} />
         <a href="mailto:spencer.wushangbo@gmail.com">spencer.wushangbo#gmail.com</a>
       </p>

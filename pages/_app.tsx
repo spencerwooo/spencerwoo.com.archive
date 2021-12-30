@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [])
 
   return (
-    <ThemeProvider>
+    <ThemeProvider attribute="class">
       <Script strategy="lazyOnload" src="https://www.googletagmanager.com/gtag/js?id=G-9B8G51C2XD" />
       <Script id="ga-analytics">
         {`
