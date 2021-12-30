@@ -23,7 +23,9 @@ const MenuItemLink = (props: { [x: string]: any; href: any; children: any }) => 
   const { href, children, ...rest } = props
   return (
     <Link href={href}>
-      <a {...rest}>{children}</a>
+      <a {...rest} className="dark:border-b-gray-700 hover:border-b-gray-500">
+        {children}
+      </a>
     </Link>
   )
 }
@@ -31,12 +33,18 @@ const MenuItemLink = (props: { [x: string]: any; href: any; children: any }) => 
 const Navbar = () => {
   return (
     <header className="flex p-6 text-gray-500 z-50 items-center justify-between dark:text-gray-400">
-      <Link href="/">Spencer</Link>
+      <Link href="/">
+        <a href="/" className="dark:border-b-gray-700 hover:border-b-gray-500">
+          Spencer
+        </a>
+      </Link>
       <div className="flex space-x-4 items-center">
         <nav className="flex space-x-4 items-center hidden sm:block">
           {navigations.map((n, i) => (
             <Link href={n.link} key={i}>
-              {n.name}
+              <a href={n.link} className="dark:border-b-gray-700 hover:border-b-gray-500">
+                {n.name}
+              </a>
             </Link>
           ))}
         </nav>
