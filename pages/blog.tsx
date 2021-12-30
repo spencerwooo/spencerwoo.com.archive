@@ -35,7 +35,7 @@ const Blog: NextPage<{ posts: BlogPosts }> = ({ posts }) => {
                   <span>{post.icon.emoji}</span>
                 </h2>
 
-                <p className="text-sm text-gray-600">{post.properties.preview.rich_text[0].text.content}</p>
+                <p className="text-sm text-gray-500">{post.properties.preview.rich_text[0].text.content}</p>
 
                 <div className="flex flex-wrap space-x-2 text-sm text-gray-500 items-center">
                   <span>{post.properties.date.date.start}</span>
