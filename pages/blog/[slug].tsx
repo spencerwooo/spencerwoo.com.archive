@@ -27,7 +27,7 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
 
-      <div className="flex flex-col h-screen">
+      <div className="flex flex-col min-h-screen dark:bg-dark-900">
         <Navbar />
         <main className="container flex flex-col mx-auto flex-1 max-w-3xl px-6">
           <h1 className="flex font-bold space-x-2 text-xl mb-2 justify-between dark:text-light-900">

@@ -45,7 +45,7 @@ const Bookmark = ({ value }: { value: any }) => {
 
   return (
     <div
-      className="border rounded cursor-pointer flex border-gray-400/50 max-h-28 text-gray-600 justify-between dark:text-gray-400 hover:bg-light-200 dark:hover:bg-dark-700"
+      className="border rounded cursor-pointer flex border-gray-400/50 my-1 max-h-28 text-gray-600 justify-between dark:text-gray-400 hover:bg-light-200 dark:hover:bg-dark-700"
       onClick={() => {
         window.open(url)
       }}

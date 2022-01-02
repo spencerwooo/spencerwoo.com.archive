@@ -7,8 +7,6 @@ const year = new Date().getFullYear()
 
 // Function for generating the RSS feed
 const generateRSS = (posts: any) => {
-  console.log(posts[0])
-
   // Create new feed object
   const feed = new Feed({
     id: domain,

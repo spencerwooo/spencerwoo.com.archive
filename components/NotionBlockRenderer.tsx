@@ -21,21 +21,21 @@ export function renderNotionBlock(block: any) {
 
     case 'heading_1':
       return (
-        <h1 className="font-bold mt-4 mb-2 text-2xl leading-7">
+        <h1 className="font-bold mt-4 mb-2 text-2xl leading-7 dark:text-white">
           <Text text={value.text} />
         </h1>
       )
 
     case 'heading_2':
       return (
-        <h2 className="font-bold mt-4 mb-2 text-xl leading-7">
+        <h2 className="font-bold mt-4 mb-2 text-xl leading-7 dark:text-white">
           <Text text={value.text} />
         </h2>
       )
 
     case 'heading_3':
       return (
-        <h3 className="font-bold mt-4 mb-2 text-lg leading-7">
+        <h3 className="font-bold mt-4 mb-2 text-lg leading-7 dark:text-white">
           <Text text={value.text} />
         </h3>
       )

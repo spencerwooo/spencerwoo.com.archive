@@ -48,7 +48,7 @@ const Home: NextPage = () => {
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
 
-      <div className="flex flex-col h-screen bg-[#001522] dark" ref={vantaRef}>
+      <div className="flex flex-col min-h-screen bg-[#001522] dark" ref={vantaRef}>
         <Navbar />
         <Main />
         <Footer />
