@@ -15,6 +15,7 @@ import Comments from '../../components/Comments'
 import Link from 'next/link'
 import { ArrowLeft } from 'react-feather'
 import BlogCopyright from '../../components/BlogCopyright'
+import BlogToc from '../../components/BlogToc'
 
 const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
   const router = useRouter()
@@ -36,7 +37,9 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
 
       <div className="flex flex-col min-h-screen dark:bg-dark-900">
         <Navbar />
-        <main className="container flex flex-col mx-auto flex-1 max-w-3xl px-6">
+
+        <main className="container flex flex-col mx-auto flex-1 max-w-3xl px-6 relative">
+          <BlogToc blocks={blocks} />
           <div className="rounded border-gray-400/30 -mx-4 p-4 md:border">
             <h1 className="flex font-bold space-x-2 text-xl mb-2 justify-between dark:text-light-900">
               <span>{page.properties.name.title[0].plain_text}</span>

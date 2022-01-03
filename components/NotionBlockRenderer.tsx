@@ -5,6 +5,7 @@ import Latex from 'react-latex-next'
 
 import { Text } from './blocks/NotionTextBlock'
 import Bookmark from './blocks/NotionBookmark'
+import { slugify } from 'transliteration'
 import NotionImage, { getMediaCtx } from './blocks/NotionImage'
 
 export function renderNotionBlock(block: any) {
@@ -21,21 +22,21 @@ export function renderNotionBlock(block: any) {
 
     case 'heading_1':
       return (
-        <h1 className="font-bold mt-4 mb-2 text-2xl leading-7 dark:text-white">
+        <h1 id={slugify(value.text[0].plain_text)} className="font-bold mt-4 mb-2 text-2xl leading-7 dark:text-white">
           <Text text={value.text} />
         </h1>
       )
 
     case 'heading_2':
       return (
-        <h2 className="font-bold mt-4 text-xl mb-2 leading-7 dark:text-white">
+        <h2 id={slugify(value.text[0].plain_text)} className="font-bold mt-4 text-xl mb-2 leading-7 dark:text-white">
           <Text text={value.text} />
         </h2>
       )
 
     case 'heading_3':
       return (
-        <h3 className="font-bold mt-4 text-lg mb-2 leading-7 dark:text-white">
+        <h3 id={slugify(value.text[0].plain_text)} className="font-bold mt-4 text-lg mb-2 leading-7 dark:text-white">
           <Text text={value.text} />
         </h3>
       )
