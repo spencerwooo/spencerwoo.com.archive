@@ -28,14 +28,14 @@ export function renderNotionBlock(block: any) {
 
     case 'heading_2':
       return (
-        <h2 className="font-bold mt-4 mb-2 text-xl leading-7 dark:text-white">
+        <h2 className="font-bold mt-4 text-xl mb-2 leading-7 dark:text-white">
           <Text text={value.text} />
         </h2>
       )
 
     case 'heading_3':
       return (
-        <h3 className="font-bold mt-4 mb-2 text-lg leading-7 dark:text-white">
+        <h3 className="font-bold mt-4 text-lg mb-2 leading-7 dark:text-white">
           <Text text={value.text} />
         </h3>
       )
@@ -119,11 +119,11 @@ export function renderNotionBlock(block: any) {
 
     case 'code':
       return (
-        <div className="my-2 relative">
-          <span className="rounded text-sm font-mono bg-white/10 opacity-50 px-2 py-1 top-0 right-0 text-light-50 absolute hidden sm:block">
+        <div className="rounded my-2 overflow-hidden">
+          <div className="font-mono bg-[#2e3440] text-right text-xs w-full opacity-70 py-1 px-2 text-light-50">
             {value.language}
-          </span>
-          <pre className="rounded font-mono text-sm overflow-hidden">
+          </div>
+          <pre className="font-mono text-sm overflow-hidden">
             <SyntaxHighlighter language={value.language} style={nord}>
               {value.text[0].plain_text}
             </SyntaxHighlighter>
