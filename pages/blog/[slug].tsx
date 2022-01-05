@@ -54,8 +54,8 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
               <span>·</span>
               <span>{page.properties.tag.select.name.toLowerCase()}</span>
               <span>·</span>
-              <Link href="#comments">
-                <a href="#comments">comments</a>
+              <Link href="#comments-section">
+                <a>comments</a>
               </Link>
             </div>
 
