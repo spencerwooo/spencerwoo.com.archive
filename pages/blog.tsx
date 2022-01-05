@@ -26,18 +26,18 @@ const Blog: NextPage<{ posts: BlogPosts }> = ({ posts }) => {
       <div className="flex flex-col min-h-screen dark:bg-dark-900">
         <Navbar />
         <main className="container flex flex-col mx-auto flex-1 max-w-3xl px-6">
-          <h1 className="font-bold text-xl mb-8 dark:text-light-900">Blog</h1>
+          <h1 className="font-bold text-xl mb-8 heading-text">Blog</h1>
           {posts.map((post: any) => (
             <Link key={post.id} href={`/blog/${post.properties.slug.rich_text[0].text.content}`}>
               <div className="border-none rounded cursor-pointer -mx-2 mb-2 p-2 hover:bg-light-200 hover:opacity-80 dark:hover:bg-dark-700">
-                <h2 className="flex space-x-2 text-lg mb-2 justify-between dark:text-gray-200">
+                <h2 className="flex space-x-2 text-lg mb-2 justify-between heading-text">
                   <span>{post.properties.name.title[0].text.content}</span>
                   <span>{post.icon.emoji}</span>
                 </h2>
 
-                <p className="text-sm text-gray-500">{post.properties.preview.rich_text[0].text.content}</p>
+                <p className="text-sm primary-text">{post.properties.preview.rich_text[0].text.content}</p>
 
-                <div className="flex flex-wrap space-x-2 text-sm text-gray-500 items-center">
+                <div className="flex flex-wrap space-x-2 text-sm secondary-text items-center">
                   <span>{post.properties.date.date.start}</span>
                   <span>·</span>
                   {post.properties.author.people.map((person: { name: string }) => (

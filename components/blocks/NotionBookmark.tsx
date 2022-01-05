@@ -45,14 +45,14 @@ const Bookmark = ({ value }: { value: any }) => {
 
   return (
     <div
-      className="border rounded cursor-pointer flex border-gray-400/50 my-1 max-h-28 text-gray-600 justify-between dark:text-gray-400 hover:bg-light-200 dark:hover:bg-dark-700"
+      className="border rounded cursor-pointer flex border-gray-400/50 my-1 max-h-28 primary-text justify-between hover:bg-light-200 dark:hover:bg-dark-700"
       onClick={() => {
         window.open(url)
       }}
     >
       <div className="flex flex-col flex-shrink p-2 overflow-hidden">
         <p className="font-bold h-6 text-sm mb-1 leading-6 truncate">{title}</p>
-        <p className="h-10 text-sm text-ellipsis mb-1 opacity-70 leading-5 overflow-hidden">{description}</p>
+        <p className="h-10 text-sm text-ellipsis mb-1 opacity-80 leading-5 overflow-hidden">{description}</p>
         <p className="flex space-x-2 h-6 text-sm opacity-70 items-center truncate overflow-hidden">
           {favicon ? <img src={favicon} className="h-4 w-4" /> : <Link size={16} />}
           <span className="transform leading-6 translate-y-0.5 truncate overflow-hidden">{url}</span>
@@ -60,7 +60,7 @@ const Bookmark = ({ value }: { value: any }) => {
       </div>
       {images && images.length > 0 && (
         <div className="flex-shrink-0 h-28 max-w-60 overflow-hidden hidden sm:block">
-          <img src={images[0].url} alt={title} className="border-l rounded object-cover border-gray-400/50 h-30" />
+          <img src={images[0].url} alt={title} className="border-l rounded object-cover border-gray-400/50 h-28" />
         </div>
       )}
     </div>

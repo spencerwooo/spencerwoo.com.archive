@@ -38,42 +38,45 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
       <div className="flex flex-col min-h-screen dark:bg-dark-900">
         <Navbar />
 
-        <main className="container flex flex-col mx-auto flex-1 max-w-3xl px-6 relative">
-          <BlogToc blocks={blocks} />
-          <div className="rounded border-gray-400/30 -mx-4 p-4 md:border">
-            <h1 className="flex space-x-2 text-xl mb-2 justify-between">
-              <span className="font-bold">{page.properties.name.title[0].plain_text}</span>
-              <span>{page.icon.emoji}</span>
-            </h1>
-            <div className="flex flex-wrap space-x-2 h-8 mb-8 secondary-text items-center">
-              <span>{page.properties.date.date.start}</span>
-              <span>·</span>
-              {page.properties.author.people.map((person: { name: string }) => (
-                <span key={person.name}>{person.name.toLowerCase()}</span>
+        <main className="container mx-auto max-w-3xl xl:max-w-6xl gap-8 px-6 grid grid-cols-10 relative">
+          <div className="flex flex-col col-span-10 xl:col-span-7">
+            <div className="rounded border-gray-400/30 -mx-4 p-4 md:border">
+              <h1 className="flex space-x-2 text-xl mb-2 justify-between">
+                <span className="font-bold">{page.properties.name.title[0].plain_text}</span>
+                <span>{page.icon.emoji}</span>
+              </h1>
+              <div className="flex flex-wrap space-x-2 h-8 mb-8 secondary-text items-center">
+                <span>{page.properties.date.date.start}</span>
+                <span>·</span>
+                {page.properties.author.people.map((person: { name: string }) => (
+                  <span key={person.name}>{person.name.toLowerCase()}</span>
+                ))}
+                <span>·</span>
+                <span>{page.properties.tag.select.name.toLowerCase()}</span>
+                <span>·</span>
+                <Link href="#comments-section">
+                  <a>comments</a>
+                </Link>
+              </div>
+
+              {blocks.map(block => (
+                <Fragment key={block.id}>{renderNotionBlock(block)}</Fragment>
               ))}
-              <span>·</span>
-              <span>{page.properties.tag.select.name.toLowerCase()}</span>
-              <span>·</span>
-              <Link href="#comments-section">
-                <a>comments</a>
-              </Link>
+
+              <BlogCopyright page={page} absoluteLink={`${hostname}/blog/${router.query.slug}`} />
             </div>
 
-            {blocks.map(block => (
-              <Fragment key={block.id}>{renderNotionBlock(block)}</Fragment>
-            ))}
+            <Link href="/blog">
+              <div className="border rounded cursor-pointer flex border-gray-400/30 mt-4 p-4 items-center justify-between md:-mx-4 hover:(bg-light-200 opacity-80) dark:hover:bg-dark-700 ">
+                <span>cd /blog</span>
+                <ArrowLeft />
+              </div>
+            </Link>
 
-            <BlogCopyright page={page} absoluteLink={`${hostname}/blog/${router.query.slug}`} />
+            <Comments />
           </div>
 
-          <Link href="/blog">
-            <div className="border rounded cursor-pointer flex border-gray-400/30 mt-4 p-4 items-center justify-between md:-mx-4 hover:(bg-light-200 opacity-80) dark:hover:bg-dark-700 ">
-              <span>cd /blog</span>
-              <ArrowLeft />
-            </div>
-          </Link>
-
-          <Comments />
+          <BlogToc blocks={blocks} />
         </main>
         <Footer />
       </div>

@@ -15,6 +15,17 @@ const BlogToc = ({ blocks }: { blocks: any }) => {
       return { id: b.id, type: b.type, text: b[b.type].text[0].plain_text, children: [] }
     })
 
+  if (headings.length === 0) {
+    return (
+      <div className="hidden xl:block sticky top-0 col-span-3 h-0">
+        <div className="border rounded border-gray-400/30 max-h-screen-md p-4">
+          <h1 className="primary-text leading-8 font-bold">Table of contents</h1>
+          <p className="secondary-text leading-6">There is no table of contents. Here is a cookie. 🍪</p>
+        </div>
+      </div>
+    )
+  }
+
   const nestedHeadings: headingType[] = []
   headings.forEach((h: headingType) => {
     if (h.type === 'heading_2') {
@@ -25,8 +36,9 @@ const BlogToc = ({ blocks }: { blocks: any }) => {
   })
 
   return (
-    <div className="h-0 ml-[750px] top-0 w-64 hidden xl:block sticky">
+    <div className="hidden xl:block sticky top-0 col-span-3 h-0">
       <div className="border rounded border-gray-400/30 max-h-screen-md p-4">
+        <h1 className="primary-text leading-8 font-bold">Table of contents</h1>
         <ul className="list-disc list-inside">
           {nestedHeadings.map((h: headingType) => (
             <Link href={`#${slugify(h.text)}`} key={h.id}>
