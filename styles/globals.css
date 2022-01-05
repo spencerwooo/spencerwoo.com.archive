@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@400;700&display=swap');
 
 a {
-  @apply border-b border-b-gray-300 transition-all duration-100 no-underline dark:border-b-gray-700 hover:border-b-gray-500;
+  @apply border-b border-b-dark-200/30 transition-all duration-100 no-underline dark:border-b-light-900/50 hover:border-b-dark-200/60 dark:hover:border-b-light-900/80;
 }
 
 p,

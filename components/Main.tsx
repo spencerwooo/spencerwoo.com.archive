@@ -6,7 +6,7 @@ const Main = () => {
     <main className="container flex flex-col mx-auto flex-1 max-w-3xl px-6 justify-center">
       <div className="mb-2">
         <Image
-          className="rounded-full transition-all duration-100 filter grayscale hover:grayscale-0"
+          className="rounded-full transition-all duration-100"
           src="/images/avatar.jpg"
           alt="avatar"
           width={120}
