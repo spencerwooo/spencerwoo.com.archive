@@ -29,10 +29,11 @@ const LinkCard: FC<LinkProps> = props => {
 
   return (
     <a
-      className="border-none rounded bg-light-300 p-4 relative overflow-hidden dark:bg-dark-700"
+      className="border-b-0 rounded bg-light-300 p-4 relative overflow-hidden dark:bg-dark-700 border-l-4"
       href={props.link}
       target="_blank"
       rel="noopener noreferrer"
+      style={{ borderLeftColor: props.color }}
     >
       <p className="flex items-center justify-between hover:opacity-80">
         <div>
@@ -53,7 +54,7 @@ const ProjectCard: FC<ProjectProps> = props => {
   return (
     <a
       href={props.link}
-      className="border-none rounded bg-light-300 p-4 dark:bg-dark-700"
+      className="border-b-0 rounded bg-light-300 p-4 dark:bg-dark-700 border-l-4"
       target="_blank"
       rel="noopener noreferrer"
     >

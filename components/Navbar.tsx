@@ -17,6 +17,10 @@ const navigations = [
     name: 'Links',
     link: '/links',
   },
+  {
+    name: 'Friends',
+    link: '/friends',
+  },
 ]
 
 const MenuItemLink = (props: { [x: string]: any; href: any; children: any }) => {
