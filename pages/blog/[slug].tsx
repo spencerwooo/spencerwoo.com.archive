@@ -41,11 +41,11 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
         <main className="container flex flex-col mx-auto flex-1 max-w-3xl px-6 relative">
           <BlogToc blocks={blocks} />
           <div className="rounded border-gray-400/30 -mx-4 p-4 md:border">
-            <h1 className="flex font-bold space-x-2 text-xl mb-2 justify-between dark:text-light-900">
-              <span>{page.properties.name.title[0].plain_text}</span>
+            <h1 className="flex space-x-2 text-xl mb-2 justify-between">
+              <span className="font-bold">{page.properties.name.title[0].plain_text}</span>
               <span>{page.icon.emoji}</span>
             </h1>
-            <div className="flex flex-wrap space-x-2 h-8 mb-8 text-gray-500 items-center">
+            <div className="flex flex-wrap space-x-2 h-8 mb-8 secondary-text items-center">
               <span>{page.properties.date.date.start}</span>
               <span>·</span>
               {page.properties.author.people.map((person: { name: string }) => (

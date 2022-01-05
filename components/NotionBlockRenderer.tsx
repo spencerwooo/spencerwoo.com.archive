@@ -121,7 +121,7 @@ export function renderNotionBlock(block: any) {
     case 'code':
       return (
         <div className="rounded my-2 overflow-hidden">
-          <div className="font-mono bg-[#2e3440] text-right text-xs w-full opacity-70 py-1 px-2 text-light-50">
+          <div className="font-mono bg-[#2e3440] text-right text-xs w-full opacity-90 py-1 px-2 text-light-50">
             {value.language}
           </div>
           <pre className="font-mono text-sm overflow-hidden">

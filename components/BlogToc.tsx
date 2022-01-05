@@ -26,7 +26,7 @@ const BlogToc = ({ blocks }: { blocks: any }) => {
 
   return (
     <div className="h-0 ml-[750px] top-0 w-64 hidden xl:block sticky">
-      <div className="border rounded border-gray-400/30 max-h-screen-md p-4 overflow-y-scroll">
+      <div className="border rounded border-gray-400/30 max-h-screen-md p-4">
         <ul className="list-disc list-inside">
           {nestedHeadings.map((h: headingType) => (
             <Link href={`#${slugify(h.text)}`} key={h.id}>

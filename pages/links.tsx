@@ -29,18 +29,12 @@ const LinkCard: FC<LinkProps> = props => {
 
   return (
     <a
-      className="border-none rounded bg-light-100 p-4 relative overflow-hidden dark:bg-dark-700"
+      className="border-none rounded bg-light-300 p-4 relative overflow-hidden dark:bg-dark-700"
       href={props.link}
       target="_blank"
       rel="noopener noreferrer"
     >
-      {/* <div
-        className="font-bold font-mono opacity-20 transform transition-all right-0 bottom-0 text-6xl translate-x-1/4 translate-y-1/2 duration-100 filter absolute hover:opacity-40"
-        style={{ color: `${props.color}` }}
-      >
-        {props.color}
-      </div> */}
-      <p className="flex items-center justify-between hover:text-gray-500">
+      <p className="flex items-center justify-between hover:opacity-80">
         <div>
           <div className="font-bold">{props.name}</div>
           <LinkFollowerText apiUrl={props.apiUrl} followerName={pronoun} />
@@ -59,11 +53,11 @@ const ProjectCard: FC<ProjectProps> = props => {
   return (
     <a
       href={props.link}
-      className="border-none rounded bg-light-100 p-4 dark:bg-dark-700"
+      className="border-none rounded bg-light-300 p-4 dark:bg-dark-700"
       target="_blank"
       rel="noopener noreferrer"
     >
-      <div className="flex space-x-4 transition-all text-gray-600 duration-100 items-center justify-between dark:text-gray-400 hover:text-gray-500">
+      <div className="flex space-x-4 transition-all duration-100 primary-text items-center justify-between hover:opacity-80">
         <div className="truncate">
           <div className="font-bold">{props.name}</div>
           <div className="font-mono text-sm">{props.slug}</div>
@@ -90,7 +84,7 @@ const Links: NextPage = () => {
       <div className="flex flex-col min-h-screen dark:bg-dark-900">
         <Navbar />
         <main className="container flex flex-col mx-auto flex-1 max-w-3xl px-6">
-          <h1 className="font-bold text-xl mb-8 dark:text-light-900">Projects</h1>
+          <h1 className="font-bold text-xl mb-8 heading-text">Projects</h1>
 
           <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
             {projectLinks.map((project: ProjectProps) => (
@@ -98,7 +92,7 @@ const Links: NextPage = () => {
             ))}
           </div>
 
-          <h1 className="font-bold my-8 text-xl dark:text-light-900">Socials</h1>
+          <h1 className="font-bold my-8 text-xl heading-text">Socials</h1>
 
           <div className="mb-8 grid gap-4 grid-cols-1 sm:grid-cols-2">
             {socialLinks.map((link: LinkProps) => (
@@ -106,7 +100,7 @@ const Links: NextPage = () => {
             ))}
           </div>
 
-          <p className="font-mono text-xs text-center text-gray-400">
+          <p className="font-mono text-xs text-center secondary-text">
             Powered by{' '}
             <a href="https://substats.spencerwoo.com" target="_blank" rel="noopener noreferrer">
               Substats

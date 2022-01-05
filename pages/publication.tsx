@@ -19,7 +19,7 @@ const Publication: NextPage = () => {
       <div className="flex flex-col min-h-screen dark:bg-dark-900">
         <Navbar />
         <main className="container flex flex-col mx-auto flex-1 max-w-3xl px-6">
-          <h1 className="font-bold text-xl mb-8 dark:text-light-900">Publication</h1>
+          <h1 className="font-bold text-xl mb-8 heading-text">Publication</h1>
 
           <a
             href="https://doi.org/10.24963/ijcai.2021/430"
@@ -34,10 +34,10 @@ const Publication: NextPage = () => {
                 Perceptual Similarity
               </span>
             </div>
-            <h2 className="font-bold dark:text-gray-400">
+            <h2 className="font-bold primary-text">
               Demiguise Attack: Crafting Invisible Semantic Adversarial Perturbations with Perceptual Similarity
             </h2>
-            <div className="text-sm dark:text-gray-400">
+            <div className="text-sm secondary-text">
               Yajie Wang*, <span className="font-bold">Shangbo Wu*</span>, Wenyi Jiang, Shengang Hao, Yu-an Tan, Quanxin
               Zhang
             </div>
