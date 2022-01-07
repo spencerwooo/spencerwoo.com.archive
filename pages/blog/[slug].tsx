@@ -1,4 +1,4 @@
-import type { GetStaticProps, NextPage } from 'next'
+import type { GetServerSideProps, GetStaticProps, NextPage } from 'next'
 import { Fragment } from 'react'
 import { ParsedUrlQuery } from 'querystring'
 
@@ -84,18 +84,18 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
   )
 }
 
-export const getStaticPaths = async () => {
-  const db = await getDatabase()
-  return {
-    paths: db.map((p: any) => ({ params: { slug: p.properties.slug.rich_text[0].text.content } })),
-    fallback: 'blocking',
-  }
-}
+// export const getStaticPaths = async () => {
+//   const db = await getDatabase()
+//   return {
+//     paths: db.map((p: any) => ({ params: { slug: p.properties.slug.rich_text[0].text.content } })),
+//     fallback: 'blocking',
+//   }
+// }
 
 interface Props extends ParsedUrlQuery {
   slug: string
 }
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const { slug } = params as Props
   const db = await getDatabase(slug)
   const post = db[0].id
@@ -136,7 +136,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       })
   )
 
-  return { props: { page, blocks: blocksWithChildren }, revalidate: 1 }
+  // return { props: { page, blocks: blocksWithChildren }, revalidate: 1 }
+  return { props: { page, blocks: blocksWithChildren } }
 }
 
 export default Post
