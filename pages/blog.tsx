@@ -28,7 +28,7 @@ const Blog: NextPage<{ posts: BlogPosts }> = ({ posts }) => {
         <main className="container flex flex-col mx-auto flex-1 max-w-3xl px-6">
           <h1 className="font-bold text-xl mb-8 heading-text">Blog</h1>
           {posts.map((post: any) => (
-            <Link key={post.id} href={`/blog/${post.properties.slug.rich_text[0].text.content}`}>
+            <Link key={post.id} href={`/blog/${post.properties.slug.rich_text[0].text.content}`} passHref>
               <div className="border-none rounded cursor-pointer -mx-2 mb-2 p-2 hover:bg-light-200 hover:opacity-80 dark:hover:bg-dark-700">
                 <h2 className="flex space-x-2 text-lg mb-2 justify-between heading-text">
                   <span>{post.properties.name.title[0].text.content}</span>

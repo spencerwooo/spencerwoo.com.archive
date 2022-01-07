@@ -54,7 +54,7 @@ const Bookmark = ({ value }: { value: any }) => {
         <p className="font-bold h-6 text-sm mb-1 leading-6 truncate">{title}</p>
         <p className="h-10 text-sm text-ellipsis mb-1 opacity-80 leading-5 overflow-hidden">{description}</p>
         <p className="flex space-x-2 h-6 text-sm opacity-70 items-center truncate overflow-hidden">
-          {favicon ? <img src={favicon} className="h-4 w-4" /> : <Link size={16} />}
+          {favicon ? <img src={favicon} className="h-4 w-4" alt="favicon" /> : <Link size={17} />}
           <span className="transform leading-6 translate-y-0.5 truncate overflow-hidden">{url}</span>
         </p>
       </div>

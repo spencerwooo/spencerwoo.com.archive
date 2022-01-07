@@ -41,13 +41,13 @@ const BlogToc = ({ blocks }: { blocks: any }) => {
         <h1 className="primary-text leading-8 font-bold">Table of contents</h1>
         <ul className="list-disc list-inside">
           {nestedHeadings.map((h: headingType) => (
-            <Link href={`#${slugify(h.text)}`} key={h.id}>
+            <Link href={`#${slugify(h.text)}`} key={h.id} passHref>
               <li>
                 <a href={`#${slugify(h.text)}`}>{h.text}</a>
                 {h.children.length > 0 && (
                   <ul className="list-disc list-inside ml-6">
                     {h.children.map((h: { id: string; type: 'heading_2' | 'heading_3'; text: string }) => (
-                      <Link href={`#${slugify(h.text)}`} key={h.id}>
+                      <Link href={`#${slugify(h.text)}`} key={h.id} passHref>
                         <li>
                           <a href={`#${slugify(h.text)}`}>{h.text}</a>
                         </li>
