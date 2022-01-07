@@ -81,10 +81,11 @@ const SearchModal: FC<{
 
               <div className="primary-text dark:bg-dark-800">
                 {results.loading && (
-                  <div className="flex flex-col gap-4 p-4">
-                    <div className="h-12 animate-pulse bg-gray-100 dark:bg-dark-500 rounded" />
-                    <div className="h-12 animate-pulse bg-gray-100 dark:bg-dark-500 rounded" />
-                    <div className="h-12 animate-pulse bg-gray-100 dark:bg-dark-500 rounded" />
+                  <div className="text-center">
+                    <div className="animate-pulse">
+                      <Image src="/images/purr-sleep.png" alt="purr loading" width={300} height={300} />
+                    </div>
+                    <div className="secondary-text pb-4">Loading ...</div>
                   </div>
                 )}
                 {results.error && (
@@ -103,11 +104,11 @@ const SearchModal: FC<{
                     ) : (
                       results.result.map((result: any, i: number) => (
                         <Link href={`/blog/${result.properties.slug.rich_text[0].plain_text}`} key={i} passHref>
-                          <div className="px-4 py-2 flex justify-between hover:bg-light-200 dark:hover:bg-dark-700 cursor-pointer border-b border-gray-400/30">
+                          <div className="p-4 flex justify-between hover:bg-light-200 dark:hover:bg-dark-700 cursor-pointer border-b border-gray-400/30">
                             <div className="w-9">{result.icon.emoji}</div>
                             <div className="flex-1 overflow-hidden truncate">
-                              <div className="font-medium">{result.properties.name.title[0].text.content}</div>
-                              <div className="secondary-text">{result.properties.preview.rich_text[0].plain_text}</div>
+                              <div className="font-medium pb-1">{result.properties.name.title[0].text.content}</div>
+                              <div className="secondary-text pb-1">{result.properties.preview.rich_text[0].plain_text}</div>
                               <div className="secondary-text text-xs font-mono">
                                 {result.properties.date.date.start}
                               </div>
