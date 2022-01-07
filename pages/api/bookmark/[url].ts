@@ -1,13 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { unfurl } from 'unfurl.js'
 
-type Data = Awaited<ReturnType<typeof unfurl>>
-
-export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse<Awaited<ReturnType<typeof unfurl>>>) {
   const { url } = req.query
-  const decodedUrl = decodeURIComponent(url as string)
 
-  const linkPreview = await unfurl(decodedUrl, {
+  const linkPreview = await unfurl(url as string, {
     userAgent:
       'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36',
   })

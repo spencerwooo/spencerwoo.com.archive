@@ -30,3 +30,12 @@ export const getBlocks = async (blockId: string) => {
   })
   return response.results
 }
+
+export const searchDatabase = async (query: string) => {
+  const response = await notion.search({
+    query: query,
+    filter: { value: 'page', property: 'object' },
+    page_size: 10,
+  })
+  return response.results
+}

@@ -34,7 +34,7 @@ const MenuItemLink = (props: { [x: string]: any; href: any; children: any }) => 
 
 const Navbar = () => {
   return (
-    <header className="flex p-6 z-50 items-center justify-between primary-text">
+    <header className="flex p-6 z-10 items-center justify-between primary-text">
       <Link href="/" passHref>
         <a>Spencer</a>
       </Link>
@@ -78,7 +78,7 @@ const Navbar = () => {
           onClick={() => {
             window.open('/feed')
           }}
-          className="cursor-pointer inline-flex items-center hover:text-gray-500"
+          className="cursor-pointer hover:text-gray-500"
         >
           <Rss size={20} />
         </div>

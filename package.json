@@ -12,6 +12,7 @@
     "@headlessui/react": "^1.4.2",
     "@icons-pack/react-simple-icons": "^4.6.1",
     "@notionhq/client": "^0.4.11",
+    "awesome-debounce-promise": "^2.1.0",
     "feed": "^4.2.2",
     "next": "12.0.5",
     "next-themes": "^0.0.15",
@@ -19,6 +20,7 @@
     "p5": "^1.4.0",
     "probe-image-size": "^7.2.2",
     "react": "17.0.2",
+    "react-async-hook": "^4.0.0",
     "react-dom": "17.0.2",
     "react-feather": "^2.0.9",
     "react-latex-next": "^2.1.0",
@@ -27,6 +29,7 @@
     "three": "^0.135.0",
     "transliteration": "^2.2.0",
     "unfurl.js": "^5.6.2",
+    "use-constant": "^1.1.0",
     "vanta": "^0.5.21"
   },
   "devDependencies": {

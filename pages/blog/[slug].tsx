@@ -13,7 +13,7 @@ import { getDatabase, getPage, getBlocks } from '../../lib/notion'
 import probeImageSize from '../../lib/imaging'
 import Comments from '../../components/Comments'
 import Link from 'next/link'
-import { ArrowLeft } from 'react-feather'
+import { ArrowLeft, Bookmark, MessageCircle } from 'react-feather'
 import BlogCopyright from '../../components/BlogCopyright'
 import BlogToc from '../../components/BlogToc'
 
@@ -38,8 +38,8 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
       <div className="flex flex-col min-h-screen dark:bg-dark-900">
         <Navbar />
 
-        <main className="container mx-auto max-w-3xl xl:max-w-6xl gap-8 px-6 grid grid-cols-10 relative">
-          <div className="flex flex-col col-span-10 xl:col-span-7">
+        <main className="container mx-auto max-w-3xl lg:max-w-5xl gap-8 px-6 grid grid-cols-10 relative">
+          <div className="flex flex-col col-span-10 lg:col-span-7">
             <div className="rounded border-gray-400/30 -mx-4 p-4 md:border">
               <h1 className="flex space-x-2 text-xl mb-2 justify-between">
                 <span className="font-bold">{page.properties.name.title[0].plain_text}</span>
@@ -52,10 +52,16 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
                   <span key={person.name}>{person.name.toLowerCase()}</span>
                 ))}
                 <span>·</span>
-                <span>{page.properties.tag.select.name.toLowerCase()}</span>
+                <div className="inline-flex items-center space-x-1">
+                  <Bookmark size={18} />
+                  <span>{page.properties.tag.select.name.toLowerCase()}</span>
+                </div>
                 <span>·</span>
-                <Link href="#comments-section">
-                  <a>comments</a>
+                <Link href="#comments-section" passHref>
+                  <div className="inline-flex items-center space-x-1 cursor-pointer">
+                    <MessageCircle size={18} />
+                    <a>comments</a>
+                  </div>
                 </Link>
               </div>
 

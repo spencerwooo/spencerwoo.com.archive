@@ -36,7 +36,7 @@ const BlogToc = ({ blocks }: { blocks: any }) => {
   })
 
   return (
-    <div className="hidden xl:block sticky top-0 col-span-3 h-0">
+    <div className="hidden lg:block sticky top-0 col-span-3 h-0">
       <div className="border rounded border-gray-400/30 max-h-screen-md p-4">
         <h1 className="primary-text leading-8 font-bold">Table of contents</h1>
         <ul className="list-disc list-inside">
