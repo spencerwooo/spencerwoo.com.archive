@@ -59,8 +59,8 @@ const Bookmark = ({ value }: { value: any }) => {
         </p>
       </div>
       {images && images.length > 0 && (
-        <div className="flex-shrink-0 h-28 max-w-60 overflow-hidden hidden sm:block">
-          <img src={images[0].url} alt={title} className="border-l rounded object-cover border-gray-400/50 h-28" />
+        <div className="flex-shrink-0 h-28 max-w-60 border-l overflow-hidden hidden sm:block">
+          <img src={images[0].url} alt={title} className="rounded object-cover border-gray-400/50 h-27.5" />
         </div>
       )}
     </div>

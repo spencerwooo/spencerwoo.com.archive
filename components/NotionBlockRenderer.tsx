@@ -43,20 +43,16 @@ export function renderNotionBlock(block: any) {
 
     case 'bulleted_list_item':
       return (
-        <ul className="list-disc list-inside my-1">
-          <li>
-            <Text text={value.text} />
-          </li>
-        </ul>
+        <li className="list-disc list-inside my-1">
+          <Text text={value.text} />
+        </li>
       )
 
     case 'numbered_list_item':
       return (
-        <ol className="list-decimal list-inside my-1">
-          <li>
-            <Text text={value.text} />
-          </li>
-        </ol>
+        <li className="list-decimal list-inside my-1">
+          <Text text={value.text} />
+        </li>
       )
 
     case 'to_do':
