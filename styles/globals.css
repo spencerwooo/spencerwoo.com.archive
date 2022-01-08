@@ -26,8 +26,12 @@ code {
   @apply font-mono;
 }
 
+button {
+  @apply focus-visible:outline-none focus:outline-none !important;
+}
+
 * {
-  @apply box-border focus-visible:outline-none focus:outline-none !important;
+  @apply box-border;
 }
 
 *::selection {

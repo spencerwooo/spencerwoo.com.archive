@@ -64,7 +64,7 @@ const SearchModal: FC<{
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <div className="inline-block w-full max-w-xl my-20 overflow-hidden text-left transition-all transform rounded shadow-xl rounded border border-gray-400/30">
+            <div className="inline-block w-full max-w-3xl my-20 overflow-hidden text-left transition-all transform rounded shadow-xl rounded border border-gray-400/30">
               <Dialog.Title as="h3" className="relative primary-text">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                   <Search size={18} />
@@ -79,7 +79,7 @@ const SearchModal: FC<{
                 />
               </Dialog.Title>
 
-              <div className="primary-text dark:bg-dark-800">
+              <div className="primary-text bg-white dark:bg-dark-800">
                 {results.loading && (
                   <div className="text-center">
                     <div className="animate-pulse">
