@@ -41,8 +41,8 @@ const SearchModal: FC<{
 
   return (
     <Transition appear show={searchOpen} as={Fragment}>
-      <Dialog as="div" className="fixed inset-0 z-10 overflow-y-auto" onClose={closeSearchBox}>
-        <div className="min-h-screen px-4 text-center">
+      <Dialog as="div" className="inset-0 z-10 fixed overflow-y-auto" onClose={closeSearchBox}>
+        <div className="min-h-screen text-center px-4">
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-100"
@@ -52,7 +52,7 @@ const SearchModal: FC<{
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay className="fixed inset-0 bg-light-200/30 dark:bg-dark-200/30 backdrop-filter backdrop-blur" />
+            <Dialog.Overlay className="bg-light-200/30 inset-0 fixed backdrop-filter backdrop-blur dark:bg-dark-200/30" />
           </Transition.Child>
 
           <Transition.Child
@@ -64,34 +64,34 @@ const SearchModal: FC<{
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <div className="inline-block w-full max-w-3xl my-20 overflow-hidden text-left transition-all transform rounded shadow-xl rounded border border-gray-400/30">
+            <div className="border rounded border-gray-400/30 shadow-xl my-20 text-left w-full max-w-3xl transform transition-all inline-block overflow-hidden ">
               <Dialog.Title as="h3" className="relative primary-text">
-                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <div className="flex pl-3 inset-y-0 left-0 absolute items-center pointer-events-none">
                   <Search size={18} />
                 </div>
                 <input
                   type="text"
                   id="search-box"
-                  className="bg-gray-50 border-b border-gray-400/30 pt-4 block w-full pl-10 p-2.5 dark:bg-dark-700"
+                  className="border-b bg-gray-50 border-gray-400/30 w-full p-2.5 pt-4 pl-10 block dark:bg-dark-700 focus:outline-none focus-visible:outline-none"
                   placeholder="Search in blog posts..."
                   value={query}
                   onChange={e => setQuery(e.target.value)}
                 />
               </Dialog.Title>
 
-              <div className="primary-text bg-white dark:bg-dark-800">
+              <div className="bg-white primary-text dark:bg-dark-800">
                 {results.loading && (
                   <div className="text-center">
                     <div className="animate-pulse">
                       <Image src="/images/purr-sleep.png" alt="purr loading" width={300} height={300} />
                     </div>
-                    <div className="secondary-text pb-4">Loading ...</div>
+                    <div className="pb-4 secondary-text">Loading ...</div>
                   </div>
                 )}
                 {results.error && (
                   <div className="text-center">
                     <Image src="/images/error-result.png" alt="errored out" width={450} height={300} />
-                    <div className="secondary-text pb-4">Error: {results.error.message}</div>
+                    <div className="pb-4 secondary-text">Error: {results.error.message}</div>
                   </div>
                 )}
                 {results.result && (
@@ -99,17 +99,19 @@ const SearchModal: FC<{
                     {results.result.length === 0 ? (
                       <div className="text-center">
                         <Image src="/images/empty-list.png" alt="empty list" width={300} height={300} />
-                        <div className="secondary-text pb-4">Nothing here...</div>
+                        <div className="pb-4 secondary-text">Nothing here...</div>
                       </div>
                     ) : (
                       results.result.map((result: any, i: number) => (
                         <Link href={`/blog/${result.properties.slug.rich_text[0].plain_text}`} key={i} passHref>
-                          <div className="p-4 flex justify-between hover:bg-light-200 dark:hover:bg-dark-700 cursor-pointer border-b border-gray-400/30">
+                          <div className="border-b cursor-pointer flex border-gray-400/30 p-4 justify-between hover:bg-light-200 dark:hover:bg-dark-700">
                             <div className="w-9">{result.icon.emoji}</div>
                             <div className="flex-1 overflow-hidden truncate">
                               <div className="font-medium pb-1">{result.properties.name.title[0].text.content}</div>
-                              <div className="secondary-text pb-1">{result.properties.preview.rich_text[0].plain_text}</div>
-                              <div className="secondary-text text-xs font-mono">
+                              <div className="pb-1 secondary-text">
+                                {result.properties.preview.rich_text[0].plain_text}
+                              </div>
+                              <div className="font-mono text-xs secondary-text">
                                 {result.properties.date.date.start}
                               </div>
                             </div>
