@@ -104,7 +104,7 @@ const SearchModal: FC<{
                     ) : (
                       results.result.map((result: any, i: number) => (
                         <Link href={`/blog/${result.properties.slug.rich_text[0].plain_text}`} key={i} passHref>
-                          <div className="border-b cursor-pointer flex border-gray-400/30 p-4 justify-between hover:bg-light-200 dark:hover:bg-dark-700">
+                          <a className="border-b cursor-pointer flex border-gray-400/30 p-4 justify-between hover:bg-light-200 dark:hover:bg-dark-700">
                             <div className="w-9">{result.icon.emoji}</div>
                             <div className="flex-1 overflow-hidden truncate">
                               <div className="font-medium pb-1">{result.properties.name.title[0].text.content}</div>
@@ -115,7 +115,7 @@ const SearchModal: FC<{
                                 {result.properties.date.date.start}
                               </div>
                             </div>
-                          </div>
+                          </a>
                         </Link>
                       ))
                     )}
