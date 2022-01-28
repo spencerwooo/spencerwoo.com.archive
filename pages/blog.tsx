@@ -75,7 +75,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       posts: db,
     },
-    revalidate: 1,
+    revalidate: 60,
   }
 }
 
