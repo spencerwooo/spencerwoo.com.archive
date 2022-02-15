@@ -12,7 +12,7 @@ const generateRSS = (posts: any) => {
     id: domain,
     link: domain,
     title: "Spencer Woo - Spencer's Blog (＠_＠;)",
-    description: "Thoughts, ideas, and more.",
+    description: 'Thoughts, ideas, and more.',
     copyright: `All rights reserved ${year}, Spencer Woo`,
     image: `${domain}/favicon.png`,
     favicon: `${domain}/favicon.ico`,
@@ -41,14 +41,14 @@ const generateRSS = (posts: any) => {
 const FeedComponent = () => null
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  if (res) {
-    const posts = await getDatabase()
-    const xmlFeed = generateRSS(posts)
+  res.setHeader('Cache-Control', 'max-age=0, s-maxage=60, stale-while-revalidate')
 
-    res.setHeader('Content-Type', 'text/xml')
-    res.write(xmlFeed)
-    res.end()
-  }
+  const posts = await getDatabase()
+  const xmlFeed = generateRSS(posts)
+
+  res.setHeader('Content-Type', 'text/xml')
+  res.write(xmlFeed)
+  res.end()
 
   return {
     props: {},
