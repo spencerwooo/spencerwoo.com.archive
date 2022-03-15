@@ -19,7 +19,7 @@ const LinkFollowerText: FC<{ apiUrl: string; followerName: string }> = ({ apiUrl
   if (!data) return <div className="font-mono text-sm">loading...</div>
   return (
     <div className="font-mono text-sm">
-      {data.data.totalSubs} {followerName}
+      {data.count} {followerName}
     </div>
   )
 }
