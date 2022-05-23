@@ -22,7 +22,7 @@ const FriendCard: FC<FriendProps> = props => {
     >
       <p className="flex items-center justify-between hover:opacity-80">
         <div>
-          <div className="font-bold">{props.id}</div>
+          <div className="text-lg font-serif">{props.id}</div>
           <div className="text-sm secondary-text">{props.link}</div>
         </div>
         <Image src={props.avatar} width={32} height={32} alt={props.link} className="rounded-full" />
@@ -54,7 +54,7 @@ const Links: NextPage = () => {
             ))}
           </div>
 
-          <p className="text-center secondary-text">👇 Leave your comments down below 👇</p>
+          <p className="text-center secondary-text my-8">👇 Leave your comments down below 👇</p>
 
           <div className="mx-4">
             <Comments />

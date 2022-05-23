@@ -18,15 +18,15 @@ export const socialLinks: LinkProps[] = [
     apiUrl: 'https://api.swo.moe/stats/github/spencerwooo',
     color: '#24292f',
   },
-  {
-    name: 'RSS',
-    link: 'https://blog.spencerwoo.com/',
-    icon: Rss,
-    apiUrl:
-      'https://api.swo.moe/stats/feedly/https%3A%2F%2Fblog.spencerwoo.com%2Fposts%2Findex.xml',
-    color: '#FFA500',
-    followerName: 'subscribers',
-  },
+  // {
+  //   name: 'RSS',
+  //   link: 'https://blog.spencerwoo.com/',
+  //   icon: Rss,
+  //   apiUrl:
+  //     'https://api.swo.moe/stats/feedly/https%3A%2F%2Fblog.spencerwoo.com%2Fposts%2Findex.xml',
+  //   color: '#FFA500',
+  //   followerName: 'subscribers',
+  // },
   {
     name: 'Telegram',
     link: 'https://t.me/realSpencerWoo',
