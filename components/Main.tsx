@@ -52,8 +52,8 @@ const Main = ({ latestPost }: { latestPost: any }) => {
       <p className="mt-8 leading-7">
         For projects and socials, check out:{' '}
         <Link href="/links">
-          <a className="inline-flex hover-links items-center group">
-            📚 Links
+          <a className="inline-flex flex-wrap items-center group">
+            <span className="hover-links">📚 Links</span>
             <ArrowRight className="group-hover:translate-x-1 transition-all duration-100 w-4 h-4" />
           </a>
         </Link>
@@ -62,8 +62,10 @@ const Main = ({ latestPost }: { latestPost: any }) => {
       <p className="leading-7">
         Latest post:{' '}
         <Link href={`/blog/${latestPost.properties.slug.rich_text[0].text.content}`}>
-          <a className="inline-flex hover-links items-center group">
-            <span>{latestPost.icon?.emoji || '📚'}</span> {latestPost.properties.name.title[0].text.content}
+          <a className="inline-flex flex-wrap items-center group">
+            <span className="hover-links">
+              {latestPost.icon?.emoji || '📚'} {latestPost.properties.name.title[0].text.content}
+            </span>
             <ArrowRight className="group-hover:translate-x-1 transition-all duration-100 w-4 h-4" />
           </a>
         </Link>
