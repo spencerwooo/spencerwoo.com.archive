@@ -19,7 +19,7 @@ import probeImageSize from '../../lib/imaging'
 
 const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
   const router = useRouter()
-  const hostname = typeof window !== 'undefined' ? window.location.origin : 'https://spencerwoo.com'
+  const hostname = 'https://spencerwoo.com'
 
   if (!page || !blocks) return <div></div>
 
@@ -42,7 +42,7 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
             <div className="rounded border-gray-400/30 -mx-4 p-4 md:border">
               <h1 className="flex space-x-2 text-3xl mb-2 justify-between font-serif">
                 <span className="font-bold">{page.properties.name.title[0].plain_text}</span>
-                <span>{page.icon.emoji}</span>
+                <span>{page.icon?.emoji || '📚'}</span>
               </h1>
               <div className="flex flex-wrap space-x-2 secondary-text items-center">
                 <span>{new Date(page.properties.date.date.start).toLocaleDateString()}</span>
@@ -59,7 +59,7 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
                 <Link href="#comments-section" passHref>
                   <a className="hover-links">
                     <MessageCircle size={18} className="inline mr-1" />
-                    <a>comments</a>
+                    <span>comments</span>
                   </a>
                 </Link>
               </div>

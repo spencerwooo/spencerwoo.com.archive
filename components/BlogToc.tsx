@@ -12,7 +12,7 @@ const BlogToc = ({ blocks }: { blocks: any }) => {
   const headings = blocks
     .filter((b: any) => b.type === 'heading_2' || b.type === 'heading_3')
     .map((b: any) => {
-      return { id: b.id, type: b.type, text: b[b.type].text[0].plain_text, children: [] }
+      return { id: b.id, type: b.type, text: b[b.type].rich_text[0].plain_text, children: [] }
     })
 
   if (headings.length === 0) {
