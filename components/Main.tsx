@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Mail } from 'react-feather'
 
-const Main = () => {
+import { ArrowRight, Mail } from 'react-feather'
+
+const Main = ({ latestPost }: { latestPost: any }) => {
   return (
     <main className="container flex flex-col mx-auto flex-1 max-w-3xl px-6 justify-center">
       <div className="mb-2">
@@ -45,11 +46,27 @@ const Main = () => {
         <a href="https://cs.bit.edu.cn" target="_blank" rel="noopener noreferrer" className="hover-links">
           🇨🇳 BIT
         </a>{' '}
-        (BSc, 2020). For projects and socials, check out:{' '}
+        (BSc, 2020).
+      </p>
+
+      <p className="mt-8 leading-7">
+        For projects and socials, check out:{' '}
         <Link href="/links">
-          <a className="hover-links">📚 Links</a>
+          <a className="inline-flex hover-links items-center group">
+            📚 Links
+            <ArrowRight className="group-hover:translate-x-1 transition-all duration-100 w-4 h-4" />
+          </a>
         </Link>
-        .
+      </p>
+
+      <p className="leading-7">
+        Latest post:{' '}
+        <Link href={`/blog/${latestPost.properties.slug.rich_text[0].text.content}`}>
+          <a className="inline-flex hover-links items-center group">
+            <span>{latestPost.icon?.emoji || '📚'}</span> {latestPost.properties.name.title[0].text.content}
+            <ArrowRight className="group-hover:translate-x-1 transition-all duration-100 w-4 h-4" />
+          </a>
+        </Link>
       </p>
 
       <p className="mt-8 leading-7">

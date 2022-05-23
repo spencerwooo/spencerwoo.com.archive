@@ -13,7 +13,7 @@ const generateRSS = (posts: any) => {
     link: domain,
     title: "Spencer Woo - Spencer's Blog (＠_＠;)",
     description: 'Thoughts, ideas, and more.',
-    copyright: `All rights reserved ${year}, Spencer Woo`,
+    copyright: `CC BY-NC-SA 4.0 ©️ ${year}, Spencer Woo`,
     image: `${domain}/favicon.png`,
     favicon: `${domain}/favicon.ico`,
     author: {

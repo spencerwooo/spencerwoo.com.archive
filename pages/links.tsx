@@ -35,7 +35,7 @@ const LinkCard: FC<LinkProps> = props => {
       rel="noopener noreferrer"
       style={{ borderLeftColor: props.color }}
     >
-      <p className="flex items-center justify-between hover:opacity-80">
+      <div className="flex items-center justify-between hover:opacity-80">
         <div>
           <div className="font-bold">{props.name}</div>
           <LinkFollowerText apiUrl={props.apiUrl} followerName={pronoun} />
@@ -45,7 +45,7 @@ const LinkCard: FC<LinkProps> = props => {
         ) : (
           <ExternalLink size={18} className="opacity-70" />
         )}
-      </p>
+      </div>
     </a>
   )
 }

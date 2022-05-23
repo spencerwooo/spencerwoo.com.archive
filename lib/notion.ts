@@ -19,10 +19,16 @@ export const getDatabase = async (slug?: string) => {
   return response.results
 }
 
+export const getLatestPost = async () => {
+  const response = await getDatabase()
+  return response[0]
+}
+
 export const getPage = async (pageId: string) => {
   const response = await notion.pages.retrieve({ page_id: pageId })
   return response
 }
+
 export const getBlocks = async (blockId: string) => {
   const blocks = []
   let cursor
