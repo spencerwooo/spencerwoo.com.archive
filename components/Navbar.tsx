@@ -34,15 +34,15 @@ const MenuItemLink = (props: { [x: string]: any; href: any; children: any }) => 
 
 const Navbar = () => {
   return (
-    <header className="flex p-6 z-10 items-center justify-between primary-text">
+    <header className="flex p-4 z-10 items-center justify-between primary-text">
       <Link href="/" passHref>
-        <a>Spencer</a>
+        <a className="nav-links">Spencer</a>
       </Link>
       <div className="flex space-x-4 items-center">
-        <nav className="flex space-x-4 items-center hidden sm:block">
+        <nav className="space-x-2 items-center hidden sm:flex">
           {navigations.map((n, i) => (
             <Link href={n.link} key={i} passHref>
-              <a>{n.name}</a>
+              <a className="nav-links">{n.name}</a>
             </Link>
           ))}
         </nav>
@@ -61,7 +61,7 @@ const Navbar = () => {
               leaveFrom="transform scale-100 opacity-100"
               leaveTo="transform scale-95 opacity-0"
             >
-              <Menu.Items className="bg-white rounded shadow-lg mt-2 origin-top-right right-0 shadow-gray-600 ring-0 w-32 absolute mobile-menu dark:(bg-dark-700)">
+              <Menu.Items className="bg-white rounded shadow-lg mt-2 origin-top-right right-0 ring-0 w-32 absolute mobile-menu dark:bg-dark-700">
                 {navigations.map((n, i) => (
                   <div className="p-2" key={i}>
                     <Menu.Item>
@@ -74,14 +74,9 @@ const Navbar = () => {
           </Menu>
         </div>
 
-        <div
-          onClick={() => {
-            window.open('/feed')
-          }}
-          className="cursor-pointer hover:text-gray-500"
-        >
+        <a href="/feed" target="_blank" rel="noopener noreferrer" className="nav-links">
           <Rss size={20} />
-        </div>
+        </a>
         {/* <Toggle /> */}
       </div>
     </header>

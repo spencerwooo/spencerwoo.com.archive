@@ -51,19 +51,19 @@ const Bookmark = ({ value }: { value: any }) => {
       }}
     >
       <div className="col-span-3 sm:col-span-2 flex flex-col flex-shrink p-2 overflow-hidden">
-        <p className="font-bold h-6 text-sm mb-1 leading-6 truncate">{title}</p>
-        <p className="h-10 text-sm text-ellipsis mb-1 opacity-80 leading-5 overflow-hidden">{description}</p>
-        <p className="flex space-x-2 h-6 text-sm opacity-70 items-center truncate overflow-hidden">
+        <div className="font-bold h-6 text-sm mb-1 leading-6 truncate">{title}</div>
+        <div className="h-10 text-sm text-ellipsis mb-1 opacity-80 leading-5 overflow-hidden">{description}</div>
+        <div className="flex space-x-2 h-6 text-sm opacity-70 items-center truncate overflow-hidden">
           {favicon ? <img src={favicon} className="h-4 w-4" alt="favicon" /> : <Link size={17} />}
           <span className="transform leading-6 translate-y-0.5 truncate overflow-hidden">{url}</span>
-        </p>
+        </div>
       </div>
       {images && images.length > 0 && (
         <div className="border-l rounded overflow-hidden hidden sm:block">
           <img
             src={images[0].url}
             alt={title}
-            className="rounded object-cover object-center border-gray-400/50 w-full h-28"
+            className="rounded object-cover object-center border-gray-400/50 w-full h-28 m-0"
           />
         </div>
       )}

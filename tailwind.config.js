@@ -34,11 +34,13 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['Overpass', ...defaultTheme.fontFamily.sans],
-        serif: ['"Old Standard TT"', ...defaultTheme.fontFamily.serif],
-        mono: ['"Overpass Mono"', ...defaultTheme.fontFamily.mono],
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        serif: ['"DM Serif Text"', ...defaultTheme.fontFamily.serif],
+        mono: ['"iA Writer Mono"', ...defaultTheme.fontFamily.mono],
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }

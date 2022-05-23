@@ -38,18 +38,22 @@ const BlogToc = ({ blocks }: { blocks: any }) => {
   return (
     <div className="hidden lg:block sticky top-0 col-span-3 h-0">
       <div className="border rounded border-gray-400/30 max-h-screen-md p-4">
-        <h1 className="primary-text leading-8 font-bold">Table of contents</h1>
+        <h1 className="primary-text leading-8 font-serif text-lg">Table of contents</h1>
         <ul className="list-disc list-inside">
           {nestedHeadings.map((h: headingType) => (
             <Link href={`#${slugify(h.text)}`} key={h.id} passHref>
-              <li>
-                <a href={`#${slugify(h.text)}`}>{h.text}</a>
+              <li className="leading-7">
+                <a href={`#${slugify(h.text)}`} className="hover-links">
+                  {h.text}
+                </a>
                 {h.children.length > 0 && (
                   <ul className="list-disc list-inside ml-6">
                     {h.children.map((h: { id: string; type: 'heading_2' | 'heading_3'; text: string }) => (
                       <Link href={`#${slugify(h.text)}`} key={h.id} passHref>
-                        <li>
-                          <a href={`#${slugify(h.text)}`}>{h.text}</a>
+                        <li className="leading-7">
+                          <a href={`#${slugify(h.text)}`} className="hover-links">
+                            {h.text}
+                          </a>
                         </li>
                       </Link>
                     ))}

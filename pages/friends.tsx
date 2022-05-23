@@ -46,7 +46,7 @@ const Links: NextPage = () => {
       <div className="flex flex-col min-h-screen dark:bg-dark-900">
         <Navbar />
         <main className="container flex flex-col mx-auto flex-1 max-w-3xl px-6">
-          <h1 className="font-bold text-xl mb-8 heading-text">Friends</h1>
+          <h1 className="font-serif text-4xl mb-8 heading-text">Friends</h1>
 
           <div className="mb-8 grid gap-4 grid-cols-1 sm:grid-cols-2">
             {friends.map((friend: FriendProps) => (

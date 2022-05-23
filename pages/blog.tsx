@@ -33,7 +33,7 @@ const Blog: NextPage<{ posts: BlogPosts }> = ({ posts }) => {
         <SearchModal searchOpen={searchOpen} setSearchOpen={setSearchOpen} />
 
         <main className="container flex flex-col mx-auto flex-1 max-w-3xl px-6">
-          <h1 className="font-bold text-xl mb-8 heading-text flex items-center justify-between">
+          <h1 className="font-serif text-4xl mb-8 heading-text flex items-center justify-between">
             <span>Blog</span>
             <button className="p-1 cursor-pointer hover:text-gray-500" onClick={openSearchBox}>
               <Search size={20} />
@@ -57,7 +57,7 @@ const Blog: NextPage<{ posts: BlogPosts }> = ({ posts }) => {
                     <span key={person.name}>{person.name?.toLowerCase()}</span>
                   ))}
                   <span>·</span>
-                  <span>{post.properties.tag.select.name.toLowerCase()}</span>
+                  <span>{post.properties.tag.select.name?.toLowerCase()}</span>
                 </div>
               </div>
             </Link>

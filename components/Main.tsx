@@ -14,53 +14,52 @@ const Main = () => {
           priority
         />
       </div>
-      <h1 className="font-bold mb-8 text-2xl heading-text">Spencer Woo</h1>
+      <h1 className="font-serif mb-8 text-4xl heading-text">Spencer Woo</h1>
 
-      <p className="mb-8">
+      <p className="mb-8 leading-7">
         Developer / Designer / Writer /{' '}
-        <a href="https://genshin-impact.fandom.com/wiki/Hu_Tao" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://genshin-impact.fandom.com/wiki/Hu_Tao"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover-links"
+        >
           <abbr title="🔥 C6 by the way" className="!no-underline">
             #HuTao
           </abbr>
         </a>{' '}
-        haver
+        main
       </p>
 
-      <p>
-        Postgrad at the{' '}
-        <a href="https://www.gla.ac.uk/" target="_blank" rel="noopener noreferrer">
-          University of Glasgow
+      <p className="leading-7">
+        PhD student at{' '}
+        <a href="https://cst.bit.edu.cn" target="_blank" rel="noopener noreferrer" className="hover-links">
+          🎓 BIT
         </a>{' '}
-        in Computing Science.{' '}
-        <a href="http://bit.edu.cn" target="_blank" rel="noopener noreferrer">
-          Beijing Institute of Technology
+        on cryptography, AI security, and adversarial attacks. Graduated from{' '}
+        <a href="https://gla.ac.uk" target="_blank" rel="noopener noreferrer" className="hover-links">
+          🇬🇧 UofG
         </a>{' '}
-        alumni, class of 2020. Research interests include deep learning, computer vision, and adversarial attacks.
-        Creator of{' '}
-        <a href="https://github.com/spencerwooo/onedrive-vercel-index" target="_blank" rel="noopener noreferrer">
-          onedrive-vercel-index
-        </a>
-        ,{' '}
-        <a href="https://github.com/spencerwooo/substats" target="_blank" rel="noopener noreferrer">
-          Substats
-        </a>
-        , and{' '}
-        <a href="https://github.com/BITNP/BIThesis" target="_blank" rel="noopener noreferrer">
-          BIThesis
-        </a>
-        .
+        with distinction (MSc, 2022). Graduated from{' '}
+        <a href="https://cs.bit.edu.cn" target="_blank" rel="noopener noreferrer" className="hover-links">
+          🇨🇳 BIT
+        </a>{' '}
+        (BSc, 2020).
       </p>
 
-      <p className="mt-8">
+      <p className="mt-8 leading-7">
         Most of my work can be found on{' '}
         <a href="https://github.com/spencerwooo" target="_blank" rel="noopener noreferrer">
           GitHub
         </a>
         .
       </p>
-      <p className="flex space-x-2 items-center">
-        <Mail size={15} />
-        <a href="mailto:spencer.wushangbo@gmail.com">spencer.wushangbo#gmail.com</a>
+
+      <p className="leading-7">
+        <Mail size={15} className="inline mr-2" />
+        <a href="mailto:spencer.wushangbo@gmail.com" className="hover-links">
+          spencer.wushangbo#gmail.com
+        </a>
       </p>
     </main>
   )
