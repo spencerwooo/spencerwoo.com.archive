@@ -1,4 +1,4 @@
-import { Giscus } from '@giscus/react'
+import Giscus from '@giscus/react'
 
 const Comments = () => {
   return (
@@ -11,6 +11,7 @@ const Comments = () => {
         mapping="pathname"
         reactionsEnabled="1"
         theme="preferred_color_scheme"
+        loading="lazy"
       />
     </div>
   )

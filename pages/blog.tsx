@@ -1,4 +1,4 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
 import type { GetStaticProps, NextPage } from 'next'
 import Link from 'next/link'
@@ -9,7 +9,7 @@ import Footer from '../components/Footer'
 // import SearchModal from '../components/SearchModal'
 
 import { getDatabase } from '../lib/notion'
-import { Search } from 'react-feather'
+// import { Search } from 'react-feather'
 
 type BlogPosts = QueryDatabaseResponse['results']
 

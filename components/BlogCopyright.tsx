@@ -18,14 +18,14 @@ const BlogCopyright = ({ page, absoluteLink }: { page: any; absoluteLink: string
           <path d="m397.157 373.77-50.596-25.08c-17.586 25.643-30.382 42.997-67.34 32.871-29.014-7.95-37.6-39.747-38.702-66.42-1.507-36.434 11.23-78.512 54.744-76.26 27.807 1.435 39.655 17.836 45.986 32.577l55.244-28.32c-27.212-51.914-90.983-69.569-145.036-55.102-57.52 15.395-86.653 68.308-85.632 125.37 1.044 58.33 29.043 108.718 89.192 121.869 29.327 6.41 61.259 4.92 88.416-8.696 21.018-10.537 44.368-30.877 53.724-52.81Zm238.507 0-50.596-25.08c-17.586 25.643-30.382 42.997-67.342 32.871-29.011-7.95-37.598-39.747-38.702-66.42-1.505-36.434 11.232-78.512 54.747-76.26 27.805 1.435 39.652 17.836 45.983 32.577L635 243.138c-27.211-51.914-90.981-69.569-145.037-55.102-57.518 15.395-86.652 68.308-85.63 125.37 1.043 58.33 29.043 108.718 89.192 121.869 29.326 6.41 61.259 4.92 88.416-8.696 21.018-10.537 44.368-30.877 53.724-52.81Z" />
         </svg>
       </div>
-      <p className="font-serif text-lg leading-6">{page.properties.name.title[0].plain_text} - Spencer Woo</p>
-      <p className="opacity-90 leading-5">
+      <div className="font-serif text-lg leading-6">{page.properties.name.title[0].plain_text} - Spencer Woo</div>
+      <div className="opacity-90 leading-5">
         <a href={absoluteLink} target="_blank" rel="noopener noreferrer">
           {/* {`${hostname}/blog/${router.query.slug}`} */}
           {absoluteLink}
         </a>
-      </p>
-      <p className="my-4 opacity-90 grid grid-cols-3 md:w-2/3">
+      </div>
+      <div className="my-4 opacity-90 grid grid-cols-3 md:w-2/3">
         <div>
           <div className="text-xs">Author</div>
           <div>{page.properties.author.people.map((person: { name: string }) => person.name).join(', ')}</div>
@@ -40,7 +40,7 @@ const BlogCopyright = ({ page, absoluteLink }: { page: any; absoluteLink: string
             CC BY-NC-SA 4.0
           </a>
         </div>
-      </p>
+      </div>
       <p className="font-bold leading-6">Attribution, non-commercial, and sharealike.</p>
     </div>
   )
