@@ -1,10 +1,15 @@
-import type { NextPage } from 'next'
+import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
+import type { GetStaticProps, NextPage } from 'next'
+
 import Head from 'next/head'
+
 import Footer from '../components/Footer'
 import Main from '../components/Main'
 import Navbar from '../components/Navbar'
 
-const Home: NextPage = () => (
+import { getLatestPost } from '../lib/notion'
+
+const Home: NextPage<{ latestPost: QueryDatabaseResponse['results'][number] }> = ({ latestPost }) => (
   <>
     <Head>
       <title>Spencer Woo</title>
@@ -17,10 +22,19 @@ const Home: NextPage = () => (
 
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <Main />
+      <Main latestPost={latestPost} />
       <Footer />
     </div>
   </>
 )
+
+export const getStaticProps: GetStaticProps = async () => {
+  const latestPost = await getLatestPost()
+
+  return {
+    props: { latestPost },
+    revalidate: 60,
+  }
+}
 
 export default Home
