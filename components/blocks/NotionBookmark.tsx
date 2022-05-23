@@ -45,12 +45,12 @@ const Bookmark = ({ value }: { value: any }) => {
 
   return (
     <div
-      className="border rounded cursor-pointer flex border-gray-400/50 my-1 max-h-28 primary-text justify-between hover:bg-light-200 dark:hover:bg-dark-700"
+      className="border rounded cursor-pointer grid grid-cols-3 border-gray-400/50 my-1 h-28 primary-text justify-between hover:bg-light-200 dark:hover:bg-dark-700"
       onClick={() => {
         window.open(url)
       }}
     >
-      <div className="flex flex-col flex-shrink p-2 overflow-hidden">
+      <div className="col-span-3 sm:col-span-2 flex flex-col flex-shrink p-2 overflow-hidden">
         <p className="font-bold h-6 text-sm mb-1 leading-6 truncate">{title}</p>
         <p className="h-10 text-sm text-ellipsis mb-1 opacity-80 leading-5 overflow-hidden">{description}</p>
         <p className="flex space-x-2 h-6 text-sm opacity-70 items-center truncate overflow-hidden">
@@ -59,8 +59,12 @@ const Bookmark = ({ value }: { value: any }) => {
         </p>
       </div>
       {images && images.length > 0 && (
-        <div className="flex-shrink-0 h-28 max-w-60 border-l overflow-hidden hidden sm:block">
-          <img src={images[0].url} alt={title} className="rounded object-cover border-gray-400/50 h-27.5" />
+        <div className="border-l rounded overflow-hidden hidden sm:block">
+          <img
+            src={images[0].url}
+            alt={title}
+            className="rounded object-cover object-center border-gray-400/50 w-full h-28"
+          />
         </div>
       )}
     </div>

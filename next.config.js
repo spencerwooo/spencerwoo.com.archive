@@ -1,6 +1,4 @@
 /** @type {import('next').NextConfig} */
-const WindiCSSWebpackPlugin = require('windicss-webpack-plugin')
-
 module.exports = {
   reactStrictMode: true,
   images: {
@@ -14,10 +12,6 @@ module.exports = {
       'avatars2.githubusercontent.com',
       'avatars3.githubusercontent.com'
     ]
-  },
-  webpack(config) {
-    config.plugins.push(new WindiCSSWebpackPlugin())
-    return config
   },
   redirects: [
     {
