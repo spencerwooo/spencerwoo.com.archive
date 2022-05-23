@@ -107,7 +107,7 @@ const SearchModal: FC<{
                           <a className="border-b cursor-pointer flex border-gray-400/30 p-4 justify-between hover:bg-light-200 dark:hover:bg-dark-700">
                             <div className="w-9">{result.icon.emoji}</div>
                             <div className="flex-1 overflow-hidden truncate">
-                              <div className="font-medium pb-1">{result.properties.name.title[0].text.content}</div>
+                              <div className="font-bold pb-1">{result.properties.name.title[0].text.content}</div>
                               <div className="pb-1 secondary-text">
                                 {result.properties.preview.rich_text[0].plain_text}
                               </div>

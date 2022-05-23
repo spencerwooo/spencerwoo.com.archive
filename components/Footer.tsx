@@ -10,7 +10,12 @@ const Footer = () => {
       </div>
       <div>Built with love by Spencer Woo</div>
       <div>
-        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover-links"
+        >
           CC BY-NC-SA 4.0
         </a>{' '}
         ©️ 2017 - {new Date().getFullYear()}

@@ -1,21 +1,21 @@
-import type { GetServerSideProps, GetStaticProps, NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
 import { Fragment } from 'react'
 import { ParsedUrlQuery } from 'querystring'
+import { ArrowLeft, Bookmark, MessageCircle } from 'react-feather'
 
 import Head from 'next/head'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
+import Comments from '../../components/Comments'
+import BlogCopyright from '../../components/BlogCopyright'
+import BlogToc from '../../components/BlogToc'
 import { renderNotionBlock } from '../../components/NotionBlockRenderer'
 
 import { getDatabase, getPage, getBlocks } from '../../lib/notion'
 import probeImageSize from '../../lib/imaging'
-import Comments from '../../components/Comments'
-import Link from 'next/link'
-import { ArrowLeft, Bookmark, MessageCircle } from 'react-feather'
-import BlogCopyright from '../../components/BlogCopyright'
-import BlogToc from '../../components/BlogToc'
 
 const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
   const router = useRouter()
@@ -24,7 +24,7 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
   if (!page || !blocks) return <div></div>
 
   return (
-    <div>
+    <>
       <Head>
         <title>{page.properties.name.title[0].plain_text} - Spencer&apos;s Blog</title>
         <meta name="description" content="Spencer Woo" />
@@ -40,20 +40,20 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
         <main className="container mx-auto max-w-3xl lg:max-w-5xl gap-8 px-6 grid grid-cols-10 relative">
           <div className="flex flex-col col-span-10 lg:col-span-7">
             <div className="rounded border-gray-400/30 -mx-4 p-4 md:border">
-              <h1 className="flex space-x-2 text-xl mb-2 justify-between">
+              <h1 className="flex space-x-2 text-3xl mb-2 justify-between font-serif">
                 <span className="font-bold">{page.properties.name.title[0].plain_text}</span>
                 <span>{page.icon.emoji}</span>
               </h1>
-              <div className="flex flex-wrap space-x-2 h-8 mb-8 secondary-text items-center">
+              <div className="flex flex-wrap space-x-2 h-8 secondary-text items-center">
                 <span>{page.properties.date.date.start}</span>
                 <span>·</span>
                 {page.properties.author.people.map((person: { name: string }) => (
-                  <span key={person.name}>{person.name.toLowerCase()}</span>
+                  <span key={person.name}>{person.name?.toLowerCase()}</span>
                 ))}
                 <span>·</span>
                 <div className="inline-flex items-center space-x-1">
                   <Bookmark size={18} />
-                  <span>{page.properties.tag.select.name.toLowerCase()}</span>
+                  <span>{page.properties.tag.select.name?.toLowerCase()}</span>
                 </div>
                 <span>·</span>
                 <Link href="#comments-section" passHref>
@@ -64,15 +64,17 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
                 </Link>
               </div>
 
-              {blocks.map(block => (
-                <Fragment key={block.id}>{renderNotionBlock(block)}</Fragment>
-              ))}
+              <article className="prose dark:prose-invert my-8">
+                {blocks.map(block => (
+                  <Fragment key={block.id}>{renderNotionBlock(block)}</Fragment>
+                ))}
+              </article>
 
               <BlogCopyright page={page} absoluteLink={`${hostname}/blog/${router.query.slug}`} />
             </div>
 
             <Link href="/blog" passHref>
-              <div className="border rounded cursor-pointer flex border-gray-400/30 mt-4 p-4 items-center justify-between md:-mx-4 hover:(bg-light-200 opacity-80) dark:hover:bg-dark-700 ">
+              <div className="border rounded cursor-pointer flex border-gray-400/30 mt-4 p-4 items-center justify-between md:-mx-4 hover:bg-light-200 hover:opacity-80 dark:hover:bg-dark-700">
                 <span>cd /blog</span>
                 <ArrowLeft />
               </div>
@@ -85,7 +87,7 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
         </main>
         <Footer />
       </div>
-    </div>
+    </>
   )
 }
 

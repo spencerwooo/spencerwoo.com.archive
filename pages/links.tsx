@@ -84,7 +84,7 @@ const Links: NextPage = () => {
       <div className="flex flex-col min-h-screen dark:bg-dark-900">
         <Navbar />
         <main className="container flex flex-col mx-auto flex-1 max-w-3xl px-6">
-          <h1 className="font-bold text-xl mb-8 heading-text">Projects</h1>
+          <h1 className="font-serif text-4xl mb-8 heading-text">Projects</h1>
 
           <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
             {projectLinks.map((project: ProjectProps) => (
@@ -92,7 +92,7 @@ const Links: NextPage = () => {
             ))}
           </div>
 
-          <h1 className="font-bold my-8 text-xl heading-text">Socials</h1>
+          <h1 className="font-serif my-8 text-4xl heading-text">Socials</h1>
 
           <div className="mb-8 grid gap-4 grid-cols-1 sm:grid-cols-2">
             {socialLinks.map((link: LinkProps) => (
