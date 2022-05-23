@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { Mail } from 'react-feather'
 
 const Main = () => {
@@ -44,7 +45,11 @@ const Main = () => {
         <a href="https://cs.bit.edu.cn" target="_blank" rel="noopener noreferrer" className="hover-links">
           🇨🇳 BIT
         </a>{' '}
-        (BSc, 2020).
+        (BSc, 2020). For projects and socials, check out:{' '}
+        <Link href="/links">
+          <a className="hover-links">📚 Links</a>
+        </Link>
+        .
       </p>
 
       <p className="mt-8 leading-7">

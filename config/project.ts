@@ -1,4 +1,4 @@
-import { BookOpen, Cloud, FileText, Hexagon, Icon, Rss } from 'react-feather'
+import { BookOpen, Cloud, FileText, Hexagon, Icon, Rss, Zap } from 'react-feather'
 
 export interface ProjectProps {
   name: string
@@ -15,10 +15,16 @@ export const projectLinks: ProjectProps[] = [
     icon: Cloud,
   },
   {
-    name: 'Substats',
+    name: 'substats',
     link: 'https://github.com/spencerwooo/substats',
     slug: 'spencerwooo/substats',
     icon: Rss,
+  },
+  {
+    name: 'PaimonMenuBar',
+    link: 'https://github.com/spencerwooo/PaimonMenuBar',
+    slug: 'spencerwooo/PaimonMenuBar',
+    icon: Zap,
   },
   {
     name: 'BIThesis',

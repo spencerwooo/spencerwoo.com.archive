@@ -6,7 +6,7 @@ import Head from 'next/head'
 
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import SearchModal from '../components/SearchModal'
+// import SearchModal from '../components/SearchModal'
 
 import { getDatabase } from '../lib/notion'
 import { Search } from 'react-feather'
@@ -14,8 +14,8 @@ import { Search } from 'react-feather'
 type BlogPosts = QueryDatabaseResponse['results']
 
 const Blog: NextPage<{ posts: BlogPosts }> = ({ posts }) => {
-  const [searchOpen, setSearchOpen] = useState(false)
-  const openSearchBox = () => setSearchOpen(true)
+  // const [searchOpen, setSearchOpen] = useState(false)
+  // const openSearchBox = () => setSearchOpen(true)
 
   return (
     <>
@@ -30,19 +30,20 @@ const Blog: NextPage<{ posts: BlogPosts }> = ({ posts }) => {
 
       <div className="flex flex-col min-h-screen dark:bg-dark-900">
         <Navbar />
-        <SearchModal searchOpen={searchOpen} setSearchOpen={setSearchOpen} />
+        {/* <SearchModal searchOpen={searchOpen} setSearchOpen={setSearchOpen} /> */}
 
         <main className="container flex flex-col mx-auto flex-1 max-w-3xl px-6">
-          <h1 className="font-serif text-4xl mb-8 heading-text flex items-center justify-between">
+          <h1 className="font-serif text-4xl mb-8 heading-text">Blog</h1>
+          {/* <h1 className="font-serif text-4xl mb-8 heading-text flex items-center justify-between">
             <span>Blog</span>
             <button className="p-1 cursor-pointer hover:text-gray-500" onClick={openSearchBox}>
               <Search size={20} />
             </button>
-          </h1>
+          </h1> */}
 
           {posts.map((post: any) => (
             <Link key={post.id} href={`/blog/${post.properties.slug.rich_text[0].text.content}`} passHref>
-              <div className="border-none rounded cursor-pointer -mx-2 mb-2 p-2 hover:bg-light-200 hover:opacity-80 dark:hover:bg-dark-700">
+              <div className="border-none rounded cursor-pointer -mx-2 mb-6 p-2 hover:bg-light-200 hover:opacity-80 dark:hover:bg-dark-700">
                 <h2 className="flex space-x-2 text-lg mb-2 justify-between heading-text">
                   <span>{post.properties.name.title[0].text.content}</span>
                   <span>{post.icon.emoji}</span>

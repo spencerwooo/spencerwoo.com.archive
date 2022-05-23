@@ -44,23 +44,23 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
                 <span className="font-bold">{page.properties.name.title[0].plain_text}</span>
                 <span>{page.icon.emoji}</span>
               </h1>
-              <div className="flex flex-wrap space-x-2 h-8 secondary-text items-center">
-                <span>{page.properties.date.date.start}</span>
+              <div className="flex flex-wrap space-x-2 secondary-text items-center">
+                <span>{new Date(page.properties.date.date.start).toLocaleDateString()}</span>
                 <span>·</span>
                 {page.properties.author.people.map((person: { name: string }) => (
                   <span key={person.name}>{person.name?.toLowerCase()}</span>
                 ))}
                 <span>·</span>
-                <div className="inline-flex items-center space-x-1">
-                  <Bookmark size={18} />
+                <div>
+                  <Bookmark size={18} className="inline mr-1" />
                   <span>{page.properties.tag.select.name?.toLowerCase()}</span>
                 </div>
                 <span>·</span>
                 <Link href="#comments-section" passHref>
-                  <div className="inline-flex items-center space-x-1 cursor-pointer">
-                    <MessageCircle size={18} />
+                  <a className="hover-links">
+                    <MessageCircle size={18} className="inline mr-1" />
                     <a>comments</a>
-                  </div>
+                  </a>
                 </Link>
               </div>
 
