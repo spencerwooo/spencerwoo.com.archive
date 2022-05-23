@@ -44,7 +44,7 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
                 <span className="font-bold">{page.properties.name.title[0].plain_text}</span>
                 <span>{page.icon?.emoji || '📚'}</span>
               </h1>
-              <div className="flex flex-wrap space-x-2 secondary-text items-center">
+              <div className="flex flex-wrap gap-2 secondary-text items-center">
                 <span>{new Date(page.properties.date.date.start).toLocaleDateString()}</span>
                 <span>·</span>
                 {page.properties.author.people.map((person: { name: string }) => (
@@ -146,7 +146,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   )
 
   // return { props: { page, blocks: blocksWithChildren }, revalidate: 1 }
-  return { props: { page, blocks: blocksWithChildren } }
+  return { props: { page, blocks: blocksWithChildren }, revalidate: 60 }
 }
 
 export default Post

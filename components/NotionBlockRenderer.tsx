@@ -108,8 +108,8 @@ export function renderNotionBlock(block: any) {
 
       case 'callout':
         return (
-          <p className="rounded flex space-x-2 bg-light-300 border-l-2 p-4 dark:bg-dark-600">
-            <span>{value.icon?.emoji || '🌟'}</span>
+          <p className="rounded bg-light-300 border-l-2 p-4 dark:bg-dark-600">
+            <span className="mr-2">{value.icon?.emoji || '🌟'}</span>
             <Text text={value.rich_text} />
           </p>
         )

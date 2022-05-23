@@ -73,9 +73,7 @@ const Blog: NextPage<{ posts: BlogPosts }> = ({ posts }) => {
 export const getStaticProps: GetStaticProps = async () => {
   const db = await getDatabase()
   return {
-    props: {
-      posts: db,
-    },
+    props: { posts: db },
     revalidate: 60,
   }
 }
