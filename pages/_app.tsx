@@ -1,6 +1,5 @@
 import '../styles/globals.css'
 import 'katex/dist/katex.min.css'
-import 'windi.css'
 
 import { useEffect } from 'react'
 import type { AppProps } from 'next/app'

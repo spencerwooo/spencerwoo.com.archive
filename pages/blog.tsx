@@ -18,7 +18,7 @@ const Blog: NextPage<{ posts: BlogPosts }> = ({ posts }) => {
   const openSearchBox = () => setSearchOpen(true)
 
   return (
-    <div>
+    <>
       <Head>
         <title>Spencer Woo - Blog</title>
         <meta name="description" content="Spencer Woo" />
@@ -54,7 +54,7 @@ const Blog: NextPage<{ posts: BlogPosts }> = ({ posts }) => {
                   <span>{post.properties.date.date.start}</span>
                   <span>·</span>
                   {post.properties.author.people.map((person: { name: string }) => (
-                    <span key={person.name}>{person.name.toLowerCase()}</span>
+                    <span key={person.name}>{person.name?.toLowerCase()}</span>
                   ))}
                   <span>·</span>
                   <span>{post.properties.tag.select.name.toLowerCase()}</span>
@@ -65,7 +65,7 @@ const Blog: NextPage<{ posts: BlogPosts }> = ({ posts }) => {
         </main>
         <Footer />
       </div>
-    </div>
+    </>
   )
 }
 

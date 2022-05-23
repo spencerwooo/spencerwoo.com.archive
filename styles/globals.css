@@ -2,6 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@400;700&display=swap');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 a {
   @apply border-b border-b-dark-200/30 transition-all duration-100 no-underline dark:border-b-light-900/50 hover:border-b-dark-200/60 dark:hover:border-b-light-900/80;
 }
@@ -36,4 +40,16 @@ button {
 
 *::selection {
   @apply bg-sky-300/20 dark:bg-sky-600/20;
+}
+
+body {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 600px),
+    fixed 0 0 / 30px 30px radial-gradient(#d1d1d1 1px, transparent 0),
+    fixed 15px 15px / 30px 30px radial-gradient(#d1d1d1 1px, transparent 0);
+}
+
+.dark body {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #111 600px),
+    fixed 0 0 / 30px 30px radial-gradient(#313131 1px, transparent 0),
+    fixed 15px 15px / 30px 30px radial-gradient(#313131 1px, transparent 0);
 }

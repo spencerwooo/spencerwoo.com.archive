@@ -103,7 +103,7 @@ const Links: NextPage = () => {
           <p className="font-mono text-xs text-center secondary-text">
             Powered by{' '}
             <a href="https://github.com/spencerwooo/substats" target="_blank" rel="noopener noreferrer">
-              Substats
+              substats
             </a>
             .
           </p>
