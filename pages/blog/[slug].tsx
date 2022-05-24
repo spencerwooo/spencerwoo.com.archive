@@ -49,69 +49,60 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
         />
       </Head>
 
-      <div className="flex min-h-screen flex-col dark:bg-dark-900">
-        <Navbar />
-
-        <main className="container relative mx-auto grid max-w-3xl grid-cols-10 gap-8 px-6 lg:max-w-5xl">
-          <div className="col-span-10 flex flex-col lg:col-span-7">
-            <div className="-mx-4 rounded border-gray-400/30 p-4 md:border">
-              <h1 className="mb-2 flex justify-between space-x-2 font-serif text-3xl">
-                <span className="font-bold">
-                  {page.properties.name.title[0].plain_text}
-                </span>
-                <span>{page.icon?.emoji || '📚'}</span>
-              </h1>
-              <div className="secondary-text flex flex-wrap items-center gap-2">
-                <span>
-                  {new Date(
-                    page.properties.date.date.start
-                  ).toLocaleDateString()}
-                </span>
-                <span>·</span>
-                {page.properties.author.people.map(
-                  (person: { name: string }) => (
-                    <span key={person.name}>{person.name?.toLowerCase()}</span>
-                  )
-                )}
-                <span>·</span>
-                <div>
-                  <FiBookmark size={18} className="mr-1 inline" />
-                  <span>{page.properties.tag.select.name?.toLowerCase()}</span>
-                </div>
-                <span>·</span>
-                <Link href="#comments-section" passHref>
-                  <a className="hover-links">
-                    <FiMessageCircle size={18} className="mr-1 inline" />
-                    <span>comments</span>
-                  </a>
-                </Link>
+      <div className="container mx-auto grid max-w-3xl grid-cols-10 gap-8 px-6 lg:max-w-5xl">
+        <div className="col-span-10 lg:col-span-7">
+          <div className="-mx-4 rounded border-gray-400/30 p-4 md:border">
+            <h1 className="mb-2 flex justify-between space-x-2 font-serif text-3xl">
+              <span className="font-bold">
+                {page.properties.name.title[0].plain_text}
+              </span>
+              <span>{page.icon?.emoji || '📚'}</span>
+            </h1>
+            <div className="secondary-text flex flex-wrap items-center gap-2">
+              <span>
+                {new Date(page.properties.date.date.start).toLocaleDateString()}
+              </span>
+              <span>·</span>
+              {page.properties.author.people.map((person: { name: string }) => (
+                <span key={person.name}>{person.name?.toLowerCase()}</span>
+              ))}
+              <span>·</span>
+              <div>
+                <FiBookmark size={18} className="mr-1 inline" />
+                <span>{page.properties.tag.select.name?.toLowerCase()}</span>
               </div>
-
-              <article className="prose my-8 dark:prose-invert">
-                {blocks.map((block) => (
-                  <Fragment key={block.id}>{renderNotionBlock(block)}</Fragment>
-                ))}
-              </article>
-
-              <BlogCopyright
-                page={page}
-                absoluteLink={`${hostname}/blog/${router.query.slug}`}
-              />
+              <span>·</span>
+              <Link href="#comments-section" passHref>
+                <a className="hover-links">
+                  <FiMessageCircle size={18} className="mr-1 inline" />
+                  <span>comments</span>
+                </a>
+              </Link>
             </div>
 
-            <Link href="/blog" passHref>
-              <div className="mt-4 flex cursor-pointer items-center justify-between rounded border border-gray-400/30 p-4 hover:bg-light-200 hover:opacity-80 dark:hover:bg-dark-700 md:-mx-4">
-                <span>cd /blog</span>
-                <FiArrowLeft />
-              </div>
-            </Link>
+            <article className="prose my-8 dark:prose-invert">
+              {blocks.map((block) => (
+                <Fragment key={block.id}>{renderNotionBlock(block)}</Fragment>
+              ))}
+            </article>
 
-            <Comments />
+            <BlogCopyright
+              page={page}
+              absoluteLink={`${hostname}/blog/${router.query.slug}`}
+            />
           </div>
 
-          <BlogToc blocks={blocks} />
-        </main>
-        <Footer />
+          <Link href="/blog" passHref>
+            <div className="mt-4 flex cursor-pointer items-center justify-between rounded border border-gray-400/30 p-4 hover:bg-light-200 hover:opacity-80 dark:hover:bg-dark-700 md:-mx-4">
+              <span>cd /blog</span>
+              <FiArrowLeft />
+            </div>
+          </Link>
+
+          <Comments />
+        </div>
+
+        <BlogToc blocks={blocks} />
       </div>
     </>
   )
