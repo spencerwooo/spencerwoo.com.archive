@@ -2,6 +2,7 @@ import { Menu, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import { FiMenu, FiRss } from 'react-icons/fi'
 
+import Image from 'next/image'
 import Link from 'next/link'
 
 const navigations = [
@@ -23,11 +24,7 @@ const navigations = [
   },
 ]
 
-const MenuItemLink = (props: {
-  [x: string]: any
-  href: any
-  children: any
-}) => {
+const MenuItemLink = (props: { href: string; children: React.ReactNode }) => {
   const { href, children, ...rest } = props
   return (
     <Link href={href}>
@@ -40,8 +37,17 @@ const Navbar = () => {
   return (
     <header className="primary-text z-10 flex items-center justify-between p-4">
       <Link href="/" passHref>
-        <a className="nav-links">Spencer</a>
+        <a className="-my-2 nav-links">
+          <Image
+            className="dark:invert"
+            src="/images/home.png"
+            alt="home"
+            width={42}
+            height={42}
+          />
+        </a>
       </Link>
+
       <div className="flex items-center space-x-4">
         <nav className="hidden items-center space-x-2 sm:flex">
           {navigations.map((n, i) => (

@@ -8,7 +8,7 @@ import Bookmark from './blocks/NotionBookmark'
 import NotionImage, { getMediaCtx } from './blocks/NotionImage'
 import { Text } from './blocks/NotionTextBlock'
 
-export function renderNotionBlock(block: any) {
+const NotionBlock = ({ block }: { block: any }) => {
   const { type, id } = block
   const value = block[type]
 
@@ -86,7 +86,7 @@ export function renderNotionBlock(block: any) {
               <Text text={value.rich_text} />
             </summary>
             {value.children?.map((block: any) => (
-              <Fragment key={block.id}>{renderNotionBlock(block)}</Fragment>
+              <Fragment key={block.id}>{NotionBlock(block)}</Fragment>
             ))}
           </details>
         )
@@ -150,3 +150,5 @@ export function renderNotionBlock(block: any) {
     return <p>{JSON.stringify(value)}</p>
   }
 }
+
+export default NotionBlock

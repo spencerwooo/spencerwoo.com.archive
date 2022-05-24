@@ -1,6 +1,5 @@
 import type { GetStaticProps, NextPage } from 'next'
 import { ParsedUrlQuery } from 'querystring'
-import { Fragment } from 'react'
 import { FiArrowLeft, FiBookmark, FiMessageCircle } from 'react-icons/fi'
 
 import Head from 'next/head'
@@ -10,9 +9,7 @@ import { useRouter } from 'next/router'
 import BlogCopyright from '../../components/BlogCopyright'
 import BlogToc from '../../components/BlogToc'
 import Comments from '../../components/Comments'
-import Footer from '../../components/Footer'
-import Navbar from '../../components/Navbar'
-import { renderNotionBlock } from '../../components/NotionBlockRenderer'
+import NotionBlock from '../../components/NotionBlock'
 import probeImageSize from '../../lib/imaging'
 import { getBlocks, getDatabase, getPage } from '../../lib/notion'
 
@@ -20,7 +17,7 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
   const router = useRouter()
   const hostname = 'https://spencerwoo.com'
 
-  if (!page || !blocks) return <div></div>
+  if (!page || !blocks) return <div />
 
   return (
     <>
@@ -82,7 +79,7 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
 
             <article className="prose my-8 dark:prose-invert">
               {blocks.map((block) => (
-                <Fragment key={block.id}>{renderNotionBlock(block)}</Fragment>
+                <NotionBlock key={block.id} block={block} />
               ))}
             </article>
 
