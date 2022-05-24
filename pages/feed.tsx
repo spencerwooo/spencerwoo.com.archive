@@ -1,5 +1,6 @@
 import { Feed } from 'feed'
 import { GetServerSideProps } from 'next'
+
 import { getDatabase } from '../lib/notion'
 
 const domain = 'https://spencerwoo.com'
@@ -41,7 +42,10 @@ const generateRSS = (posts: any) => {
 const FeedComponent = () => null
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  res.setHeader('Cache-Control', 'max-age=0, s-maxage=60, stale-while-revalidate')
+  res.setHeader(
+    'Cache-Control',
+    'max-age=0, s-maxage=60 * 10, stale-while-revalidate'
+  )
 
   const posts = await getDatabase()
   const xmlFeed = generateRSS(posts)

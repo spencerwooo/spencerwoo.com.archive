@@ -1,7 +1,8 @@
-import { useRouter } from 'next/router'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
-import { Moon, Sun } from 'react-feather'
+import { FiMoon, FiSun } from 'react-icons/fi'
+
+import { useRouter } from 'next/router'
 
 const Toggle = () => {
   const [mounted, setMounted] = useState(false)
@@ -21,9 +22,13 @@ const Toggle = () => {
       onClick={() => {
         setTheme(resolvedTheme === 'light' ? 'dark' : 'light')
       }}
-      className="cursor-pointer inline-flex items-center hover:text-gray-500"
+      className="inline-flex cursor-pointer items-center hover:text-gray-500"
     >
-      {resolvedTheme === 'light' ? <Moon className="inline" size={20} /> : <Sun className="inline" size={20} />}
+      {resolvedTheme === 'light' ? (
+        <FiMoon className="inline" size={20} />
+      ) : (
+        <FiSun className="inline" size={20} />
+      )}
     </button>
   )
 }

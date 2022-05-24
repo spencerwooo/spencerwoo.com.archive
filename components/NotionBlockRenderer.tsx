@@ -1,12 +1,12 @@
 import { Fragment } from 'react'
+import Latex from 'react-latex-next'
 import { LightAsync as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { nord } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import { slugify } from 'transliteration'
-import Latex from 'react-latex-next'
 
-import { Text } from './blocks/NotionTextBlock'
 import Bookmark from './blocks/NotionBookmark'
 import NotionImage, { getMediaCtx } from './blocks/NotionImage'
+import { Text } from './blocks/NotionTextBlock'
 
 export function renderNotionBlock(block: any) {
   const { type, id } = block
@@ -23,21 +23,30 @@ export function renderNotionBlock(block: any) {
 
       case 'heading_1':
         return (
-          <h1 id={slugify(value.rich_text[0].plain_text)} className="font-serif">
+          <h1
+            id={slugify(value.rich_text[0].plain_text)}
+            className="font-serif"
+          >
             {value.rich_text[0].plain_text}
           </h1>
         )
 
       case 'heading_2':
         return (
-          <h2 id={slugify(value.rich_text[0].plain_text)} className="font-serif">
+          <h2
+            id={slugify(value.rich_text[0].plain_text)}
+            className="font-serif"
+          >
             {value.rich_text[0].plain_text}
           </h2>
         )
 
       case 'heading_3':
         return (
-          <h3 id={slugify(value.rich_text[0].plain_text)} className="font-serif">
+          <h3
+            id={slugify(value.rich_text[0].plain_text)}
+            className="font-serif"
+          >
             {value.rich_text[0].plain_text}
           </h3>
         )
@@ -64,7 +73,8 @@ export function renderNotionBlock(block: any) {
         return (
           <div>
             <label htmlFor={id}>
-              <input type="checkbox" id={id} defaultChecked={value.checked} /> <Text text={value.rich_text} />
+              <input type="checkbox" id={id} defaultChecked={value.checked} />{' '}
+              <Text text={value.rich_text} />
             </label>
           </div>
         )
@@ -97,18 +107,18 @@ export function renderNotionBlock(block: any) {
         )
 
       case 'divider':
-        return <p className="font-mono text-center py-2 tracking-[1em]">...</p>
+        return <p className="py-2 text-center font-mono tracking-[1em]">...</p>
 
       case 'quote':
         return (
-          <p className="rounded bg-light-300 p-4 border-l-2 dark:bg-dark-600">
+          <p className="rounded border-l-2 bg-light-300 p-4 dark:bg-dark-600">
             <Text text={value.rich_text} />
           </p>
         )
 
       case 'callout':
         return (
-          <p className="rounded bg-light-300 border-l-2 p-4 dark:bg-dark-600">
+          <p className="rounded border-l-2 bg-light-300 p-4 dark:bg-dark-600">
             <span className="mr-2">{value.icon?.emoji || '🌟'}</span>
             <Text text={value.rich_text} />
           </p>
@@ -128,7 +138,12 @@ export function renderNotionBlock(block: any) {
         return <Latex>{`\\[${value.expression}\\]`}</Latex>
 
       default:
-        return <p>`❌ Unsupported block (${type === 'unsupported' ? 'unsupported by Notion API' : type})`</p>
+        return (
+          <p>
+            `❌ Unsupported block ($
+            {type === 'unsupported' ? 'unsupported by Notion API' : type})`
+          </p>
+        )
     }
   } catch (error) {
     console.error(error)

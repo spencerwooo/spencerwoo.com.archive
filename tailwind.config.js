@@ -2,8 +2,8 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   content: [
-    "./pages/**/*.{js,jsx,ts,tsx}",
-    "./components/**/*.{js,jsx,ts,tsx}",
+    './pages/**/*.{js,jsx,ts,tsx}',
+    './components/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
     extend: {
@@ -37,10 +37,8 @@ module.exports = {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
         serif: ['"DM Serif Text"', ...defaultTheme.fontFamily.serif],
         mono: ['"iA Writer Mono"', ...defaultTheme.fontFamily.mono],
-      }
+      },
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [require('@tailwindcss/typography')],
 }

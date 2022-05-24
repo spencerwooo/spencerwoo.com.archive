@@ -10,19 +10,19 @@ module.exports = {
       'avatars0.githubusercontent.com',
       'avatars1.githubusercontent.com',
       'avatars2.githubusercontent.com',
-      'avatars3.githubusercontent.com'
-    ]
+      'avatars3.githubusercontent.com',
+    ],
   },
   redirects: [
     {
-      source: "/posts/index.xml",
-      destination: "/feed",
-      permanent: false
+      source: '/posts/index.xml',
+      destination: '/feed',
+      permanent: false,
     },
     {
-      source: "/feed.xml",
-      destination: "/feed",
-      permanent: false
-    }
-  ]
+      source: '/feed.xml',
+      destination: '/feed',
+      permanent: false,
+    },
+  ],
 }

@@ -1,7 +1,8 @@
-import { Link } from 'react-feather'
+import { FiLink } from 'react-icons/fi'
 import useSWR from 'swr'
 
-const previewFetcher = (url: string) => fetch(`/api/bookmark/${encodeURIComponent(url)}`).then(res => res.json())
+const previewFetcher = (url: string) =>
+  fetch(`/api/bookmark/${encodeURIComponent(url)}`).then((res) => res.json())
 
 const Bookmark = ({ value }: { value: any }) => {
   const { url } = value
@@ -13,30 +14,30 @@ const Bookmark = ({ value }: { value: any }) => {
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        className="border-none rounded flex space-x-2 p-2 text-gray-600 items-center dark:text-gray-400 hover:bg-light-200 dark:hover:bg-dark-700"
+        className="flex items-center space-x-2 rounded border-none p-2 text-gray-600 hover:bg-light-200 dark:text-gray-400 dark:hover:bg-dark-700"
       >
-        <Link size={16} />
-        <span className="truncate overflow-hidden">{url}</span>
+        <FiLink size={16} />
+        <span className="overflow-hidden truncate">{url}</span>
       </a>
     )
 
   if (!data)
     return (
       <div
-        className="border rounded cursor-pointer flex border-gray-400/50 max-h-30 text-gray-600 dark:text-gray-400 hover:bg-light-200 dark:hover:bg-dark-700"
+        className="max-h-30 flex cursor-pointer rounded border border-gray-400/50 text-gray-600 hover:bg-light-200 dark:text-gray-400 dark:hover:bg-dark-700"
         onClick={() => {
           window.open(url)
         }}
       >
-        <div className="flex flex-col flex-shrink space-y-2 flex-1 p-2">
-          <div className="rounded bg-gray-200 h-5 max-w-40 animate-pulse dark:bg-dark-400" />
-          <div className="rounded bg-gray-200 flex-1 animate-pulse dark:bg-dark-400" />
-          <p className="flex space-x-2 text-sm opacity-70 overflow-hidden">
-            <Link size={16} />
+        <div className="flex flex-1 flex-shrink flex-col space-y-2 p-2">
+          <div className="max-w-40 h-5 animate-pulse rounded bg-gray-200 dark:bg-dark-400" />
+          <div className="flex-1 animate-pulse rounded bg-gray-200 dark:bg-dark-400" />
+          <p className="flex space-x-2 overflow-hidden text-sm opacity-70">
+            <FiLink size={16} />
             <span className="flex-shrink-0">{url}</span>
           </p>
         </div>
-        <div className="bg-gray-200 flex-shrink-0 h-30 animate-pulse w-60 overflow-hidden hidden sm:block dark:bg-dark-400" />
+        <div className="h-30 hidden w-60 flex-shrink-0 animate-pulse overflow-hidden bg-gray-200 dark:bg-dark-400 sm:block" />
       </div>
     )
 
@@ -45,25 +46,35 @@ const Bookmark = ({ value }: { value: any }) => {
 
   return (
     <div
-      className="border rounded cursor-pointer grid grid-cols-3 border-gray-400/50 my-1 h-28 primary-text justify-between hover:bg-light-200 dark:hover:bg-dark-700"
+      className="primary-text my-1 grid h-28 cursor-pointer grid-cols-3 justify-between rounded border border-gray-400/50 hover:bg-light-200 dark:hover:bg-dark-700"
       onClick={() => {
         window.open(url)
       }}
     >
-      <div className="col-span-3 sm:col-span-2 flex flex-col flex-shrink p-2 overflow-hidden">
-        <div className="font-bold h-6 text-sm mb-1 leading-6 truncate">{title}</div>
-        <div className="h-10 text-sm text-ellipsis mb-1 opacity-80 leading-5 overflow-hidden">{description}</div>
-        <div className="flex space-x-2 h-6 text-sm opacity-70 items-center truncate overflow-hidden">
-          {favicon ? <img src={favicon} className="h-4 w-4" alt="favicon" /> : <Link size={17} />}
-          <span className="transform leading-6 translate-y-0.5 truncate overflow-hidden">{url}</span>
+      <div className="col-span-3 flex flex-shrink flex-col overflow-hidden p-2 sm:col-span-2">
+        <div className="mb-1 h-6 truncate text-sm font-bold leading-6">
+          {title}
+        </div>
+        <div className="mb-1 h-10 overflow-hidden text-ellipsis text-sm leading-5 opacity-80">
+          {description}
+        </div>
+        <div className="flex h-6 items-center space-x-2 overflow-hidden truncate text-sm opacity-70">
+          {favicon ? (
+            <img src={favicon} className="h-4 w-4" alt="favicon" />
+          ) : (
+            <FiLink size={17} />
+          )}
+          <span className="translate-y-0.5 transform overflow-hidden truncate leading-6">
+            {url}
+          </span>
         </div>
       </div>
       {images && images.length > 0 && (
-        <div className="border-l rounded overflow-hidden hidden sm:block">
+        <div className="hidden overflow-hidden rounded border-l sm:block">
           <img
             src={images[0].url}
             alt={title}
-            className="rounded object-cover object-center border-gray-400/50 w-full h-28 m-0"
+            className="m-0 h-28 w-full rounded border-gray-400/50 object-cover object-center"
           />
         </div>
       )}
