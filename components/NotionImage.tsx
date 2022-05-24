@@ -12,16 +12,20 @@ const NotionImage = ({ value }: { value: any }) => {
   } = value || {}
 
   return (
-    <figure className="my-2">
+    <figure>
       {width && height ? (
-        <img src={imageSrc} alt={imageCaption} width={width} height={height} />
+        <img
+          src={imageSrc}
+          alt={imageCaption}
+          width={width}
+          height={height}
+          className="rounded"
+        />
       ) : (
-        <img src={imageSrc} alt={imageCaption} />
+        <img src={imageSrc} alt={imageCaption} className="rounded" />
       )}
       {imageCaption && (
-        <figcaption>
-          <p className="my-2 text-center opacity-80">{imageCaption}</p>
-        </figcaption>
+        <figcaption className="text-center">{imageCaption}</figcaption>
       )}
     </figure>
   )
