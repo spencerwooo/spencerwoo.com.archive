@@ -4,8 +4,6 @@ import { FiMenu, FiRss } from 'react-icons/fi'
 
 import Link from 'next/link'
 
-import Toggle from './DarkToggle'
-
 const navigations = [
   {
     name: 'Blog',
@@ -16,8 +14,8 @@ const navigations = [
     link: '/publication',
   },
   {
-    name: 'Links',
-    link: '/links',
+    name: 'Projects & Socials',
+    link: '/projectsnsocials',
   },
   {
     name: 'Friends',
@@ -67,13 +65,13 @@ const Navbar = () => {
               leaveFrom="transform scale-100 opacity-100"
               leaveTo="transform scale-95 opacity-0"
             >
-              <Menu.Items className="mobile-menu absolute right-0 mt-2 w-32 origin-top-right rounded bg-white shadow-lg ring-0 dark:bg-dark-700">
+              <Menu.Items className="absolute right-0 mt-2 w-40 origin-top-right rounded bg-white shadow-lg grid divide-y divide-gray-400/30 dark:bg-dark-700 focus:outline-none">
                 {navigations.map((n, i) => (
-                  <div className="p-2" key={i}>
-                    <Menu.Item>
-                      <MenuItemLink href={n.link}>{n.name}</MenuItemLink>
-                    </Menu.Item>
-                  </div>
+                  <Menu.Item key={i}>
+                    <MenuItemLink href={n.link}>
+                      <div className="p-2">{n.name}</div>
+                    </MenuItemLink>
+                  </Menu.Item>
                 ))}
               </Menu.Items>
             </Transition>
@@ -88,7 +86,6 @@ const Navbar = () => {
         >
           <FiRss size={20} />
         </a>
-        <Toggle />
       </div>
     </header>
   )

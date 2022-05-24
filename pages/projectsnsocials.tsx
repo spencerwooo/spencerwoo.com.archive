@@ -4,8 +4,6 @@ import useSWR from 'swr'
 
 import Head from 'next/head'
 
-import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
 import { LinkProps, socialLinks } from '../config/link'
 import { ProjectProps, projectLinks } from '../config/project'
 
@@ -74,67 +72,46 @@ const ProjectCard = (props: ProjectProps) => {
   )
 }
 
-const Links: NextPage = () => {
+const ProjectsNSocials: NextPage = () => {
   return (
-    <div>
+    <>
       <Head>
         <title>Spencer Woo - Links</title>
-        <meta name="description" content="Spencer Woo" />
-        <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
       </Head>
 
-      <div className="flex min-h-screen flex-col dark:bg-dark-900">
-        <Navbar />
-        <main className="container mx-auto flex max-w-3xl flex-1 flex-col px-6">
-          <h1 className="heading-text mb-8 font-serif text-4xl">Projects</h1>
+      <div className="container mx-auto max-w-3xl px-6">
+        <h1 className="heading-text mb-8 font-serif text-4xl">Projects</h1>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {projectLinks.map((project: ProjectProps) => (
-              <ProjectCard key={project.slug} {...project} />
-            ))}
-          </div>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {projectLinks.map((project: ProjectProps) => (
+            <ProjectCard key={project.slug} {...project} />
+          ))}
+        </div>
 
-          <h1 className="heading-text my-8 font-serif text-4xl">Socials</h1>
+        <h1 className="heading-text my-8 font-serif text-4xl">Socials</h1>
 
-          <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {socialLinks.map((link: LinkProps) => (
-              <LinkCard key={link.name} {...link} />
-            ))}
-          </div>
+        <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {socialLinks.map((link: LinkProps) => (
+            <LinkCard key={link.name} {...link} />
+          ))}
+        </div>
 
-          <p className="secondary-text text-center font-mono text-xs">
-            Powered by{' '}
-            <a
-              href="https://github.com/spencerwooo/substats"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              substats
-            </a>
-            .
-          </p>
-        </main>
-        <Footer />
+        <p className="secondary-text text-center font-mono text-xs">
+          Powered by{' '}
+          <a
+            href="https://github.com/spencerwooo/substats"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            substats
+          </a>
+          .
+        </p>
       </div>
-    </div>
+
+      <div className="flex-1" />
+    </>
   )
 }
 
-export default Links
+export default ProjectsNSocials

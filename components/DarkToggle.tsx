@@ -15,7 +15,7 @@ const Toggle = () => {
   }, [])
 
   // do not render theme toggle if not on home page or if not mounted
-  if (!mounted || asPath === '/') return null
+  // if (!mounted || asPath === '/') return null
 
   return (
     <button
