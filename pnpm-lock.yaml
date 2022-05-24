@@ -4,6 +4,7 @@ specifiers:
   '@fontsource/dm-serif-text': ^4.5.7
   '@fontsource/ia-writer-mono': ^4.5.3
   '@fontsource/inter': ^4.5.10
+  '@genshin-kit/core': ^2.6.2
   '@giscus/react': ^2.0.5
   '@headlessui/react': ^1.6.2
   '@notionhq/client': ^1.0.4
@@ -43,6 +44,7 @@ dependencies:
   '@fontsource/dm-serif-text': 4.5.7
   '@fontsource/ia-writer-mono': 4.5.3
   '@fontsource/inter': 4.5.10
+  '@genshin-kit/core': 2.6.2
   '@giscus/react': 2.0.5_ef5jwxihqo6n7gxfmzogljlgcm
   '@headlessui/react': 1.6.2_ef5jwxihqo6n7gxfmzogljlgcm
   '@notionhq/client': 1.0.4
@@ -353,6 +355,15 @@ packages:
 
   /@fontsource/inter/4.5.10:
     resolution: {integrity: sha512-YOt2/K8yo25MVBjrTImHxVimmyZEt0GcrWp2w7O29sdFX9SJqbGlOqjFJ1wI5yBbP6AmTeimyPE0UC/jjFRoIA==}
+    dev: false
+
+  /@genshin-kit/core/2.6.2:
+    resolution: {integrity: sha512-Bzi/dALBlSRn6CQISS/YHVXxwBkFbNcsjrmG33EE+55UX2IF7LCZROgFZngNuBaGo+JCVRnlzm+IzcmtTQpHWg==}
+    dependencies:
+      axios: 0.24.0
+      tslib: 2.4.0
+    transitivePeerDependencies:
+      - debug
     dev: false
 
   /@giscus/react/2.0.5_ef5jwxihqo6n7gxfmzogljlgcm:
@@ -891,6 +902,14 @@ packages:
     resolution: {integrity: sha512-LVAaGp/wkkgYJcjmHsoKx4juT1aQvJyPcW09MLCjVTh3V2cc6PnyempiLMNH5iMdfIX/zdbjUx2KDjMLCTdPeA==}
     engines: {node: '>=12'}
     dev: true
+
+  /axios/0.24.0:
+    resolution: {integrity: sha512-Q6cWsys88HoPgAaFAVUb0WpPk0O8iTeisR9IMqy9G8AbO4NlpVknrnQS03zzF9PGAWgO3cgletO3VjV/P7VztA==}
+    dependencies:
+      follow-redirects: 1.15.0
+    transitivePeerDependencies:
+      - debug
+    dev: false
 
   /axobject-query/2.2.0:
     resolution: {integrity: sha512-Td525n+iPOOyUQIeBfcASuG6uJsDOITl7Mds5gFyerkWiX7qhUTdYUBlSgNMyVqtSJqwpt1kXGLdUt6SykLMRA==}
@@ -1626,6 +1645,16 @@ packages:
   /flatted/3.2.5:
     resolution: {integrity: sha512-WIWGi2L3DyTUvUrwRKgGi9TwxQMUEqPOPQBVi71R96jZXJdFskXEmf54BoZaS1kknGODoIGASGEzBUYdyMCBJg==}
     dev: true
+
+  /follow-redirects/1.15.0:
+    resolution: {integrity: sha512-aExlJShTV4qOUOL7yF1U5tvLCB0xQuudbf6toyYA0E/acBNw71mvjFTnLaRp50aQaYocMR0a/RMMBIHeZnGyjQ==}
+    engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
+    dev: false
 
   /form-data/3.0.1:
     resolution: {integrity: sha512-RHkBKtLWUVwd7SqRIvCZMEvAMoGUp0XU+seQiZejj0COz3RI3hWP4sCv3gZWWLjJTd7rGwcsF5eKZGii0r/hbg==}
@@ -3006,6 +3035,10 @@ packages:
   /tslib/1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
     dev: true
+
+  /tslib/2.4.0:
+    resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
+    dev: false
 
   /tsutils/3.21.0_typescript@4.6.4:
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}

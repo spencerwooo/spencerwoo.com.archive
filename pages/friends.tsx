@@ -34,7 +34,7 @@ const FriendCard = (props: FriendProps) => {
   )
 }
 
-const Links: NextPage = () => {
+const Friends: NextPage = () => {
   return (
     <>
       <Head>
@@ -62,4 +62,4 @@ const Links: NextPage = () => {
   )
 }
 
-export default Links
+export default Friends
