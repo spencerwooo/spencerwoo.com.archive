@@ -75,9 +75,9 @@ const Home: NextPage<{
 
       <p className="mt-8 leading-7">
         For projects and socials, check out:{' '}
-        <Link href="/links">
+        <Link href="/projectsnsocials">
           <a className="group inline-flex flex-wrap items-center">
-            <span className="hover-links">📚 Links</span>
+            <span className="hover-links">📚 Projects & Socials</span>
             <FiArrowRight className="h-4 w-4 transition-all duration-100 group-hover:translate-x-1" />
           </a>
         </Link>

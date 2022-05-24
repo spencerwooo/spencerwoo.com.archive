@@ -6,12 +6,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write '{!(.next),**}/*.{js,jsx,ts,tsx,css,json}'"
+    "format": "prettier --write '{components,config,lib,pages,styles}/*.{js,jsx,ts,tsx,css,json}'"
   },
   "dependencies": {
     "@fontsource/dm-serif-text": "^4.5.7",
     "@fontsource/ia-writer-mono": "^4.5.3",
     "@fontsource/inter": "^4.5.10",
+    "@genshin-kit/core": "^2.6.2",
     "@giscus/react": "^2.0.5",
     "@headlessui/react": "^1.6.2",
     "@notionhq/client": "^1.0.4",
