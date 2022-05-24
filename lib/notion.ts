@@ -2,7 +2,8 @@ import { Client } from '@notionhq/client'
 import { ListBlockChildrenResponse } from '@notionhq/client/build/src/api-endpoints'
 
 const notion = new Client({ auth: process.env.NOTION_KEY })
-const databaseId = process.env.NOTION_DATABASE_ID || '7021cba3b8a04865850473d4037762ad'
+const databaseId =
+  process.env.NOTION_DATABASE_ID || '7021cba3b8a04865850473d4037762ad'
 
 export const getDatabase = async (slug?: string) => {
   let dbQuery: any = {
@@ -33,14 +34,14 @@ export const getBlocks = async (blockId: string) => {
   const blocks = []
   let cursor
   while (true) {
-    const { results, next_cursor }: ListBlockChildrenResponse = await notion.blocks.children.list({
-      start_cursor: cursor,
-      block_id: blockId,
-    })
+    const { results, next_cursor }: ListBlockChildrenResponse =
+      await notion.blocks.children.list({
+        start_cursor: cursor,
+        block_id: blockId,
+      })
+
     blocks.push(...results)
-    if (!next_cursor) {
-      break
-    }
+    if (!next_cursor) break
     cursor = next_cursor
   }
   return blocks

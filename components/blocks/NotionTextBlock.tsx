@@ -12,7 +12,9 @@ export function Text({ text }: { text: any }) {
         key={index}
         className={[
           bold ? 'font-bold' : '',
-          code ? 'font-mono text-sm px-1 text-sky-500 dark:text-sky-400 bg-sky-300/20 dark:bg-sky-800/30 rounded' : '',
+          code
+            ? 'rounded bg-sky-300/20 px-1 font-mono text-sm text-sky-500 dark:bg-sky-800/30 dark:text-sky-400'
+            : '',
           italic ? 'italic' : '',
           strikethrough ? 'line-through' : '',
           underline ? 'underline' : '',

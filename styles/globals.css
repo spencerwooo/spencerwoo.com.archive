@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 .hover-links {
-  @apply border-b border-b-dark-200/30 transition-all duration-100 no-underline dark:border-b-light-900/50 hover:border-b-dark-200/60 dark:hover:border-b-light-900/80;
+  @apply border-b border-b-dark-200/30 no-underline transition-all duration-100 hover:border-b-dark-200/60 dark:border-b-light-900/50 dark:hover:border-b-light-900/80;
 }
 
 .nav-links {
-  @apply border-none rounded cursor-pointer p-2 hover:bg-light-200 hover:opacity-80 dark:hover:bg-dark-700;
+  @apply cursor-pointer rounded border-none p-2 hover:bg-light-200 hover:opacity-80 dark:hover:bg-dark-700;
 }
 
 .heading-text {
@@ -22,7 +22,7 @@
 }
 
 button {
-  @apply focus-visible:outline-none focus:outline-none !important;
+  @apply focus:outline-none focus-visible:outline-none !important;
 }
 
 * {
@@ -34,7 +34,11 @@ button {
 }
 
 body {
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 600px),
+  background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 1) 600px
+    ),
     fixed 0 0 / 30px 30px radial-gradient(#d1d1d1 1px, transparent 0),
     fixed 15px 15px / 30px 30px radial-gradient(#d1d1d1 1px, transparent 0);
 }

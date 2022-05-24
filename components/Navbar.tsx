@@ -1,8 +1,10 @@
-import Link from 'next/link'
 import { Menu, Transition } from '@headlessui/react'
-import { Menu as MenuIcon, Rss } from 'react-feather'
 import { Fragment } from 'react'
-// import Toggle from './DarkToggle'
+import { FiMenu, FiRss } from 'react-icons/fi'
+
+import Link from 'next/link'
+
+import Toggle from './DarkToggle'
 
 const navigations = [
   {
@@ -23,7 +25,11 @@ const navigations = [
   },
 ]
 
-const MenuItemLink = (props: { [x: string]: any; href: any; children: any }) => {
+const MenuItemLink = (props: {
+  [x: string]: any
+  href: any
+  children: any
+}) => {
   const { href, children, ...rest } = props
   return (
     <Link href={href}>
@@ -34,12 +40,12 @@ const MenuItemLink = (props: { [x: string]: any; href: any; children: any }) => 
 
 const Navbar = () => {
   return (
-    <header className="flex p-4 z-10 items-center justify-between primary-text">
+    <header className="primary-text z-10 flex items-center justify-between p-4">
       <Link href="/" passHref>
         <a className="nav-links">Spencer</a>
       </Link>
-      <div className="flex space-x-4 items-center">
-        <nav className="space-x-2 items-center hidden sm:flex">
+      <div className="flex items-center space-x-4">
+        <nav className="hidden items-center space-x-2 sm:flex">
           {navigations.map((n, i) => (
             <Link href={n.link} key={i} passHref>
               <a className="nav-links">{n.name}</a>
@@ -48,9 +54,9 @@ const Navbar = () => {
         </nav>
 
         <div className="block sm:hidden">
-          <Menu as="div" className="text-left relative">
-            <Menu.Button className="flex text-current items-center">
-              <MenuIcon size={20} />
+          <Menu as="div" className="relative text-left">
+            <Menu.Button className="flex items-center text-current">
+              <FiMenu size={20} />
             </Menu.Button>
             <Transition
               as={Fragment}
@@ -61,7 +67,7 @@ const Navbar = () => {
               leaveFrom="transform scale-100 opacity-100"
               leaveTo="transform scale-95 opacity-0"
             >
-              <Menu.Items className="bg-white rounded shadow-lg mt-2 origin-top-right right-0 ring-0 w-32 absolute mobile-menu dark:bg-dark-700">
+              <Menu.Items className="mobile-menu absolute right-0 mt-2 w-32 origin-top-right rounded bg-white shadow-lg ring-0 dark:bg-dark-700">
                 {navigations.map((n, i) => (
                   <div className="p-2" key={i}>
                     <Menu.Item>
@@ -74,10 +80,15 @@ const Navbar = () => {
           </Menu>
         </div>
 
-        <a href="/feed" target="_blank" rel="noopener noreferrer" className="nav-links">
-          <Rss size={20} />
+        <a
+          href="/feed"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="nav-links"
+        >
+          <FiRss size={20} />
         </a>
-        {/* <Toggle /> */}
+        <Toggle />
       </div>
     </header>
   )

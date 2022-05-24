@@ -1,7 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { unfurl } from 'unfurl.js'
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<Awaited<ReturnType<typeof unfurl>>>) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<Awaited<ReturnType<typeof unfurl>>>
+) {
   const { url } = req.query
 
   const linkPreview = await unfurl(url as string, {

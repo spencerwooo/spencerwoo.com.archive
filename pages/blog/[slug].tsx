@@ -1,21 +1,20 @@
 import type { GetStaticProps, NextPage } from 'next'
-import { Fragment } from 'react'
 import { ParsedUrlQuery } from 'querystring'
-import { ArrowLeft, Bookmark, MessageCircle } from 'react-feather'
+import { Fragment } from 'react'
+import { FiArrowLeft, FiBookmark, FiMessageCircle } from 'react-icons/fi'
 
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-import Navbar from '../../components/Navbar'
-import Footer from '../../components/Footer'
-import Comments from '../../components/Comments'
 import BlogCopyright from '../../components/BlogCopyright'
 import BlogToc from '../../components/BlogToc'
+import Comments from '../../components/Comments'
+import Footer from '../../components/Footer'
+import Navbar from '../../components/Navbar'
 import { renderNotionBlock } from '../../components/NotionBlockRenderer'
-
-import { getDatabase, getPage, getBlocks } from '../../lib/notion'
 import probeImageSize from '../../lib/imaging'
+import { getBlocks, getDatabase, getPage } from '../../lib/notion'
 
 const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
   const router = useRouter()
@@ -26,57 +25,84 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
   return (
     <>
       <Head>
-        <title>{page.properties.name.title[0].plain_text} - Spencer&apos;s Blog</title>
+        <title>
+          {page.properties.name.title[0].plain_text} - Spencer&apos;s Blog
+        </title>
         <meta name="description" content="Spencer Woo" />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
       </Head>
 
-      <div className="flex flex-col min-h-screen dark:bg-dark-900">
+      <div className="flex min-h-screen flex-col dark:bg-dark-900">
         <Navbar />
 
-        <main className="container mx-auto max-w-3xl lg:max-w-5xl gap-8 px-6 grid grid-cols-10 relative">
-          <div className="flex flex-col col-span-10 lg:col-span-7">
-            <div className="rounded border-gray-400/30 -mx-4 p-4 md:border">
-              <h1 className="flex space-x-2 text-3xl mb-2 justify-between font-serif">
-                <span className="font-bold">{page.properties.name.title[0].plain_text}</span>
+        <main className="container relative mx-auto grid max-w-3xl grid-cols-10 gap-8 px-6 lg:max-w-5xl">
+          <div className="col-span-10 flex flex-col lg:col-span-7">
+            <div className="-mx-4 rounded border-gray-400/30 p-4 md:border">
+              <h1 className="mb-2 flex justify-between space-x-2 font-serif text-3xl">
+                <span className="font-bold">
+                  {page.properties.name.title[0].plain_text}
+                </span>
                 <span>{page.icon?.emoji || '📚'}</span>
               </h1>
-              <div className="flex flex-wrap gap-2 secondary-text items-center">
-                <span>{new Date(page.properties.date.date.start).toLocaleDateString()}</span>
+              <div className="secondary-text flex flex-wrap items-center gap-2">
+                <span>
+                  {new Date(
+                    page.properties.date.date.start
+                  ).toLocaleDateString()}
+                </span>
                 <span>·</span>
-                {page.properties.author.people.map((person: { name: string }) => (
-                  <span key={person.name}>{person.name?.toLowerCase()}</span>
-                ))}
+                {page.properties.author.people.map(
+                  (person: { name: string }) => (
+                    <span key={person.name}>{person.name?.toLowerCase()}</span>
+                  )
+                )}
                 <span>·</span>
                 <div>
-                  <Bookmark size={18} className="inline mr-1" />
+                  <FiBookmark size={18} className="mr-1 inline" />
                   <span>{page.properties.tag.select.name?.toLowerCase()}</span>
                 </div>
                 <span>·</span>
                 <Link href="#comments-section" passHref>
                   <a className="hover-links">
-                    <MessageCircle size={18} className="inline mr-1" />
+                    <FiMessageCircle size={18} className="mr-1 inline" />
                     <span>comments</span>
                   </a>
                 </Link>
               </div>
 
-              <article className="prose dark:prose-invert my-8">
-                {blocks.map(block => (
+              <article className="prose my-8 dark:prose-invert">
+                {blocks.map((block) => (
                   <Fragment key={block.id}>{renderNotionBlock(block)}</Fragment>
                 ))}
               </article>
 
-              <BlogCopyright page={page} absoluteLink={`${hostname}/blog/${router.query.slug}`} />
+              <BlogCopyright
+                page={page}
+                absoluteLink={`${hostname}/blog/${router.query.slug}`}
+              />
             </div>
 
             <Link href="/blog" passHref>
-              <div className="border rounded cursor-pointer flex border-gray-400/30 mt-4 p-4 items-center justify-between md:-mx-4 hover:bg-light-200 hover:opacity-80 dark:hover:bg-dark-700">
+              <div className="mt-4 flex cursor-pointer items-center justify-between rounded border border-gray-400/30 p-4 hover:bg-light-200 hover:opacity-80 dark:hover:bg-dark-700 md:-mx-4">
                 <span>cd /blog</span>
-                <ArrowLeft />
+                <FiArrowLeft />
               </div>
             </Link>
 
@@ -94,7 +120,9 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
 export const getStaticPaths = async () => {
   const db = await getDatabase()
   return {
-    paths: db.map((p: any) => ({ params: { slug: p.properties.slug.rich_text[0].text.content } })),
+    paths: db.map((p: any) => ({
+      params: { slug: p.properties.slug.rich_text[0].text.content },
+    })),
     fallback: 'blocking',
   }
 }
@@ -116,7 +144,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const childBlocks = await Promise.all(
     blocks
       .filter((b: any) => b.has_children)
-      .map(async b => {
+      .map(async (b) => {
         return {
           id: b.id,
           children: await getBlocks(b.id),
@@ -125,7 +153,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   )
   const blocksWithChildren = blocks.map((b: any) => {
     if (b.has_children && !b[b.type].children) {
-      b[b.type]['children'] = childBlocks.find(x => x.id === b.id)?.children
+      b[b.type]['children'] = childBlocks.find((x) => x.id === b.id)?.children
     }
     return b
   })
@@ -134,10 +162,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   await Promise.all(
     blocksWithChildren
       .filter((b: any) => b.type === 'image')
-      .map(async b => {
+      .map(async (b) => {
         const { type } = b
         const value = b[type]
-        const src = value.type === 'external' ? value.external.url : value.file.url
+        const src =
+          value.type === 'external' ? value.external.url : value.file.url
 
         const { width, height } = await probeImageSize(src)
         value['dim'] = { width, height }
@@ -146,7 +175,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   )
 
   // return { props: { page, blocks: blocksWithChildren }, revalidate: 1 }
-  return { props: { page, blocks: blocksWithChildren }, revalidate: 60 }
+  return { props: { page, blocks: blocksWithChildren }, revalidate: 60 * 60 } // 1 hour
 }
 
 export default Post
