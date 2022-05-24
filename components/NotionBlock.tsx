@@ -4,9 +4,9 @@ import { LightAsync as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { nord } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import { slugify } from 'transliteration'
 
-import Bookmark from './blocks/NotionBookmark'
-import NotionImage, { getMediaCtx } from './blocks/NotionImage'
-import { Text } from './blocks/NotionTextBlock'
+import Bookmark from './NotionBookmark'
+import NotionImage, { getMediaCtx } from './NotionImage'
+import { Text } from './NotionTextBlock'
 
 const NotionBlock = ({ block }: { block: any }) => {
   const { type, id } = block

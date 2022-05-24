@@ -1,7 +1,6 @@
 export function Text({ text }: { text: any }) {
-  if (!text) {
-    return null
-  }
+  if (!text) return null
+
   return text.map((value: any, index: number) => {
     const {
       annotations: { bold, code, color, italic, strikethrough, underline },
