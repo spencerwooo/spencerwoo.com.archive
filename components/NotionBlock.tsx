@@ -101,7 +101,7 @@ const NotionBlock = ({ block }: { block: any }) => {
         const { src: videoSrc, caption: videoCaption } = getMediaCtx(value)
         return (
           <figure>
-            <video src={videoSrc} controls />
+            <video src={videoSrc} loop muted autoPlay playsInline />
             <figcaption className="text-center">{videoCaption}</figcaption>
           </figure>
         )
