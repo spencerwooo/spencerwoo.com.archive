@@ -12,8 +12,6 @@ export const getPublications = async () => {
   )
   const html = await resp.text()
 
-  console.log(html)
-
   const dom = new JSDOM(html)
   const document = dom.window.document
   const elements = document.querySelectorAll('.gsc_a_tr')
