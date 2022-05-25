@@ -1,19 +1,6 @@
 import { JSDOM } from 'jsdom'
-import type { NextApiRequest, NextApiResponse } from 'next'
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<
-    {
-      title: string
-      author: string
-      publication: string
-      date: string
-      link: string
-      citations: string
-    }[]
-  >
-) {
+export const getPublications = async () => {
   const resp = await fetch(
     'https://scholar.google.com/citations?user=Mf-JoyQAAAAJ&hl=en'
   )
@@ -42,5 +29,5 @@ export default async function handler(
     return { title, author, publication, date, link, citations }
   })
 
-  res.status(200).json(data)
+  return data
 }

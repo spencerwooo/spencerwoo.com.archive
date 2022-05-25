@@ -3,6 +3,8 @@ import { FiBookmark } from 'react-icons/fi'
 
 import Head from 'next/head'
 
+import { getPublications } from '../lib/scholar'
+
 const Publication: NextPage<{
   data: {
     title: string
@@ -98,8 +100,7 @@ const Publication: NextPage<{
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const resp = await fetch('https://spencerwoo.com/api/scholar')
-  const data = await resp.json()
+  const data = await getPublications()
   return {
     props: { data },
     revalidate: 86400, // 24 hrs
