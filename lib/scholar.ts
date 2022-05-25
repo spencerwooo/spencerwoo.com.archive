@@ -11,14 +11,14 @@ export const getPublications = async () => {
     }
   )
   const html = await resp.text()
+  console.log(html)
 
   const dom = new JSDOM(html)
   const document = dom.window.document
   const elements = document.querySelectorAll('.gsc_a_tr')
   const data = Array.from(elements).map((element) => {
     const title =
-      element.querySelector('.gsc_a_at')?.textContent?.replace(/‐/g, '-') ||
-      ''
+      element.querySelector('.gsc_a_at')?.textContent?.replace(/‐/g, '-') || ''
 
     // author and publication are in the same element called .gs_gray
     const gray = Array.from(element.querySelectorAll('.gs_gray'))
