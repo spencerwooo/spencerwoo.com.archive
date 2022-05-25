@@ -12,7 +12,7 @@ export const getPublications = async () => {
     }
   )
   const html = await resp.text()
-  console.log(html)
+  // console.log(html) // this route fails often, keep this as a debug option
 
   const dom = new JSDOM(html)
   const document = dom.window.document
