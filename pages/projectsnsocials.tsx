@@ -167,6 +167,11 @@ const ProjectsNSocials: NextPage<{ genshinUserInfo: UserInfo }> = ({
           </div>
         </div>
 
+        <div className="secondary-text text-center font-mono text-xs mt-4">
+          Updates every 24 hrs. Background images shot by myself in-game.
+          (=ﾟωﾟ)ﾉ
+        </div>
+
         <h1 className="heading-text my-8 font-serif text-4xl">Projects</h1>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -183,7 +188,7 @@ const ProjectsNSocials: NextPage<{ genshinUserInfo: UserInfo }> = ({
           ))}
         </div>
 
-        <p className="secondary-text text-center font-mono text-xs">
+        <div className="secondary-text text-center font-mono text-xs">
           Powered by{' '}
           <a
             className="hover-links"
@@ -194,7 +199,7 @@ const ProjectsNSocials: NextPage<{ genshinUserInfo: UserInfo }> = ({
             substats
           </a>
           .
-        </p>
+        </div>
       </div>
 
       <div className="flex-1" />
