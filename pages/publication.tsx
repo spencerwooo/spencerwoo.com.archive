@@ -3,7 +3,7 @@ import { FiBookmark } from 'react-icons/fi'
 
 import Head from 'next/head'
 
-import { getPublications } from '../lib/scholar'
+import getPublications from '../lib/scholar'
 
 const Publication: NextPage<{
   data: {

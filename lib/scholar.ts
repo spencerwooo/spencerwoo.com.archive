@@ -1,6 +1,6 @@
 import { JSDOM } from 'jsdom'
 
-export const getPublications = async () => {
+const getPublications = async () => {
   const resp = await fetch(
     'https://scholar.google.com/citations?user=Mf-JoyQAAAAJ&hl=en',
     {
@@ -36,5 +36,20 @@ export const getPublications = async () => {
     return { title, author, publication, date, link, citations }
   })
 
+  if (data.length === 0) {
+    // failed to parse HTML from Google Scholar, return default publication
+    return {
+      title:
+        'Demiguise attack: Crafting invisible semantic adversarial perturbations with perceptual similarity',
+      author: 'Y Wang, S Wu, W Jiang, S Hao, Y Tan, Q Zhang',
+      publication:
+        'Thirtieth International Joint Conference on Artificial Intelligence IJCAI-21, 2021',
+      date: '2021',
+      link: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Mf-JoyQAAAAJ&citation_for_view=Mf-JoyQAAAAJ:d1gkVwhDpl0C',
+      citations: '4',
+    }
+  }
+
   return data
 }
+export default getPublications
