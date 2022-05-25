@@ -82,6 +82,8 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
 
         <BlogTOC blocks={blocks} />
       </div>
+
+      <div className="flex-1" />
     </>
   )
 }
