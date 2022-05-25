@@ -10,7 +10,7 @@ type headingType = {
   children: headingType[]
 }
 
-const BlogTOC = ({ blocks }: { blocks: any }) => {
+const BlogTableOfContent = ({ blocks }: { blocks: any }) => {
   const headings = blocks
     .filter((b: any) => b.type === 'heading_2' || b.type === 'heading_3')
     .map((b: any) => {
@@ -91,4 +91,4 @@ const BlogTOC = ({ blocks }: { blocks: any }) => {
   )
 }
 
-export default BlogTOC
+export default BlogTableOfContent

@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import BlogCopyright from '../../components/BlogCopyright'
-import BlogTOC from '../../components/BlogTOC'
+import BlogTableOfContent from '../../components/BlogTableOfContent'
 import Comments from '../../components/Comments'
 import NotionBlock from '../../components/NotionBlock'
 import probeImageSize from '../../lib/imaging'
@@ -80,7 +80,7 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
           <Comments />
         </div>
 
-        <BlogTOC blocks={blocks} />
+        <BlogTableOfContent blocks={blocks} />
       </div>
 
       <div className="flex-1" />
