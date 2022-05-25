@@ -74,7 +74,11 @@ const Home: NextPage<{
       </p>
 
       <p className="mt-8 leading-7">
-        For projects and socials, check out:{' '}
+        For projects, links, and{' '}
+        <span className="border-b border-red-600 font-bold">
+          Genshin Impact
+        </span>{' '}
+        stats:{' '}
         <Link href="/projectsnsocials">
           <a className="group inline-flex flex-wrap items-center">
             <span className="hover-links">📚 Projects & Socials</span>
