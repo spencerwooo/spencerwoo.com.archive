@@ -2,7 +2,13 @@ import { JSDOM } from 'jsdom'
 
 export const getPublications = async () => {
   const resp = await fetch(
-    'https://scholar.google.com/citations?user=Mf-JoyQAAAAJ&hl=en'
+    'https://scholar.google.com/citations?user=Mf-JoyQAAAAJ&hl=en',
+    {
+      headers: {
+        'user-agent':
+          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.64 Safari/537.36',
+      },
+    }
   )
   const html = await resp.text()
 
