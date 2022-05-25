@@ -17,7 +17,7 @@ export const getPublications = async () => {
   const elements = document.querySelectorAll('.gsc_a_tr')
   const data = Array.from(elements).map((element) => {
     const title =
-      element.querySelector('.gsc_a_at')?.textContent?.replaceAll('‐', '-') ||
+      element.querySelector('.gsc_a_at')?.textContent?.replace(/‐/g, '-') ||
       ''
 
     // author and publication are in the same element called .gs_gray
