@@ -98,7 +98,7 @@ const Publication: NextPage<{
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const resp = await fetch('http://localhost:3000/api/scholar')
+  const resp = await fetch('https://spencerwoo.com/api/scholar')
   const data = await resp.json()
   return {
     props: { data },
