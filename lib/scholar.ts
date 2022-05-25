@@ -7,18 +7,19 @@ export const getPublications = async () => {
       headers: {
         'user-agent':
           'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.64 Safari/537.36',
+        cookie: process.env.GOOGLE_SCHOLAR_COOKIE || '',
       },
     }
   )
   const html = await resp.text()
+  // console.log(html) // this route fails often, keep this as a debug option
 
   const dom = new JSDOM(html)
   const document = dom.window.document
   const elements = document.querySelectorAll('.gsc_a_tr')
   const data = Array.from(elements).map((element) => {
     const title =
-      element.querySelector('.gsc_a_at')?.textContent?.replace(/‐/g, '-') ||
-      ''
+      element.querySelector('.gsc_a_at')?.textContent?.replace(/‐/g, '-') || ''
 
     // author and publication are in the same element called .gs_gray
     const gray = Array.from(element.querySelectorAll('.gs_gray'))
