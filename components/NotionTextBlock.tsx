@@ -10,14 +10,16 @@ export function Text({ text }: { text: any }) {
       <span
         key={index}
         className={[
-          bold ? 'font-bold' : '',
+          bold ? 'font-bold' : null,
           code
             ? 'rounded bg-sky-300/20 px-1 font-mono text-sm text-sky-500 dark:bg-sky-800/30 dark:text-sky-400'
-            : '',
-          italic ? 'italic' : '',
-          strikethrough ? 'line-through' : '',
-          underline ? 'underline' : '',
-        ].join(' ')}
+            : null,
+          italic ? 'italic' : null,
+          strikethrough ? 'line-through' : null,
+          underline ? 'underline' : null,
+        ]
+          .filter((x) => x) // remove nulls
+          .join(' ')}
         style={color !== 'default' ? { color } : {}}
       >
         {text.link ? (

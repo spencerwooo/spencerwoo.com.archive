@@ -15,6 +15,7 @@ const Comments = () => {
         reactionsEnabled="1"
         theme="preferred_color_scheme"
         loading="lazy"
+        inputPosition="top"
       />
     </div>
   )

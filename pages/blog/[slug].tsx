@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import BlogCopyright from '../../components/BlogCopyright'
-import BlogToc from '../../components/BlogToc'
+import BlogTOC from '../../components/BlogTOC'
 import Comments from '../../components/Comments'
 import NotionBlock from '../../components/NotionBlock'
 import probeImageSize from '../../lib/imaging'
@@ -25,25 +25,6 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
         <title>
           {page.properties.name.title[0].plain_text} - Spencer&apos;s Blog
         </title>
-        <meta name="description" content="Spencer Woo" />
-        <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
       </Head>
 
       <div className="container mx-auto grid max-w-3xl grid-cols-10 gap-8 px-6 lg:max-w-5xl">
@@ -99,7 +80,7 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
           <Comments />
         </div>
 
-        <BlogToc blocks={blocks} />
+        <BlogTOC blocks={blocks} />
       </div>
     </>
   )

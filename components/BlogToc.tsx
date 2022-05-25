@@ -1,3 +1,4 @@
+import { RiBookmark2Line } from 'react-icons/ri'
 import { slugify } from 'transliteration'
 
 import Link from 'next/link'
@@ -9,7 +10,7 @@ type headingType = {
   children: headingType[]
 }
 
-const BlogToc = ({ blocks }: { blocks: any }) => {
+const BlogTOC = ({ blocks }: { blocks: any }) => {
   const headings = blocks
     .filter((b: any) => b.type === 'heading_2' || b.type === 'heading_3')
     .map((b: any) => {
@@ -47,9 +48,10 @@ const BlogToc = ({ blocks }: { blocks: any }) => {
 
   return (
     <div className="sticky top-16 col-span-3 hidden h-0 lg:block">
-      <div className="max-h-screen-md rounded border border-gray-400/30 p-4">
+      <div className="max-h-screen-md rounded border border-gray-400/30 p-4 relative">
+        <RiBookmark2Line className="text-red-600 absolute top-4 right-4" size={20} />
         <h1 className="primary-text font-serif text-lg leading-8">
-          Table of contents
+          <span>Table of contents </span>
         </h1>
         <ul className="list-inside list-disc">
           {nestedHeadings.map((h: headingType) => (
@@ -89,4 +91,4 @@ const BlogToc = ({ blocks }: { blocks: any }) => {
   )
 }
 
-export default BlogToc
+export default BlogTOC
