@@ -32,7 +32,7 @@ const LinkFollowerText = ({
 }
 
 const LinkCard = (props: LinkProps) => {
-  const pronoun = props.followerName ? props.followerName : 'followers'
+  const pronoun = props.followerName ? props.followerName : 'subs'
 
   return (
     <a
@@ -99,7 +99,7 @@ const ProjectsNSocials: NextPage<{ genshinUserInfo: UserInfo }> = ({
   const exploration = genshinUserInfo.world_explorations.map(
     (a) => a.exploration_percentage
   )
-  const worldExploationPercentage =
+  const worldExplorationPercentage =
     exploration.reduce((sum, val) => sum + val) / exploration.length
 
   return (
@@ -122,9 +122,9 @@ const ProjectsNSocials: NextPage<{ genshinUserInfo: UserInfo }> = ({
               </div>
             </div>
 
-            <div className="text-right text-xs tracking-wider">
+            <div className="text-right text-xs tracking-wider hidden sm:block">
               <div className="opacity-60 uppercase">Server 天空岛</div>
-              <div className="font-mono mt-2 items-center space-x-1 hidden sm:flex">
+              <div className="font-mono mt-2 flex items-center space-x-1">
                 <GiChest className="inline text-orange-500" />
                 <span>{stats.luxurious_chest_number}</span>
                 <GiChest className="inline text-orange-400" />
@@ -137,7 +137,7 @@ const ProjectsNSocials: NextPage<{ genshinUserInfo: UserInfo }> = ({
             </div>
           </div>
 
-          <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-6">
+          <div className="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-6">
             <GenshinCardStat
               stat={stats.active_day_number}
               name={'Active days'}
@@ -149,14 +149,14 @@ const ProjectsNSocials: NextPage<{ genshinUserInfo: UserInfo }> = ({
             />
             <GenshinCardStat stat={stats.spiral_abyss} name={'Spiral Abyss'} />
             <GenshinCardStat
-              stat={`${Math.round(worldExploationPercentage / 10)}%`}
+              stat={`${Math.round(worldExplorationPercentage / 10)}%`}
               name={'Exploration'}
             />
           </div>
 
           <div className="absolute top-0 bottom-0 left-0 right-0 w-full h-full -z-10 bg-gradient-to-b from-white/20 via-white/0 to-white/40 dark:from-gray-800/20 dark:via-gray-800/40 dark:to-gray-800/40" />
 
-          <div className="absolute top-0 left-0 right-0 bottom-0 -z-20">
+          <div className="absolute top-0 left-0 right-0 bottom-0 -z-20 bg-gray-800">
             <Image
               src={randomGenshinBackground()}
               alt="Genshin Background"
@@ -177,7 +177,7 @@ const ProjectsNSocials: NextPage<{ genshinUserInfo: UserInfo }> = ({
 
         <h1 className="heading-text my-8 font-serif text-4xl">Socials</h1>
 
-        <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
           {socialLinks.map((link: LinkProps) => (
             <LinkCard key={link.name} {...link} />
           ))}
@@ -186,6 +186,7 @@ const ProjectsNSocials: NextPage<{ genshinUserInfo: UserInfo }> = ({
         <p className="secondary-text text-center font-mono text-xs">
           Powered by{' '}
           <a
+            className="hover-links"
             href="https://github.com/spencerwooo/substats"
             target="_blank"
             rel="noopener noreferrer"
