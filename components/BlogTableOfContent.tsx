@@ -49,7 +49,10 @@ const BlogTableOfContent = ({ blocks }: { blocks: any }) => {
   return (
     <div className="sticky top-16 col-span-3 hidden h-0 lg:block">
       <div className="max-h-screen-md rounded border border-gray-400/30 p-4 relative">
-        <RiBookmark2Line className="text-red-600 absolute top-4 right-4" size={20} />
+        <RiBookmark2Line
+          className="text-red-600 absolute top-4 right-4"
+          size={20}
+        />
         <h1 className="primary-text font-serif text-lg leading-8">
           <span>Table of contents </span>
         </h1>

@@ -6,9 +6,9 @@ import Link from 'next/link'
 
 import { getDatabase } from '../lib/notion'
 
-type BlogPosts = QueryDatabaseResponse['results']
-
-const Blog: NextPage<{ posts: BlogPosts }> = ({ posts }) => {
+const Blog: NextPage<{ posts: QueryDatabaseResponse['results'] }> = ({
+  posts,
+}) => {
   // const [searchOpen, setSearchOpen] = useState(false)
   // const openSearchBox = () => setSearchOpen(true)
 
