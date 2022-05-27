@@ -38,16 +38,18 @@ const getPublications = async () => {
 
   if (data.length === 0) {
     // failed to parse HTML from Google Scholar, return default publication
-    return {
-      title:
-        'Demiguise attack: Crafting invisible semantic adversarial perturbations with perceptual similarity',
-      author: 'Y Wang, S Wu, W Jiang, S Hao, Y Tan, Q Zhang',
-      publication:
-        'Thirtieth International Joint Conference on Artificial Intelligence IJCAI-21, 2021',
-      date: '2021',
-      link: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Mf-JoyQAAAAJ&citation_for_view=Mf-JoyQAAAAJ:d1gkVwhDpl0C',
-      citations: '4',
-    }
+    return [
+      {
+        title:
+          'Demiguise attack: Crafting invisible semantic adversarial perturbations with perceptual similarity',
+        author: 'Y Wang, S Wu, W Jiang, S Hao, Y Tan, Q Zhang',
+        publication:
+          'Thirtieth International Joint Conference on Artificial Intelligence IJCAI-21, 2021',
+        date: '2021',
+        link: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Mf-JoyQAAAAJ&citation_for_view=Mf-JoyQAAAAJ:d1gkVwhDpl0C',
+        citations: '4',
+      },
+    ]
   }
 
   return data
