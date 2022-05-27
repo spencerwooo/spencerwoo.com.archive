@@ -36,24 +36,32 @@ const Blog: NextPage<{ posts: QueryDatabaseResponse['results'] }> = ({
             href={`/blog/${post.properties.slug.rich_text[0].text.content}`}
             passHref
           >
-            <a className="-mx-2 mb-6 cursor-pointer rounded block p-2 hover:bg-light-200 hover:opacity-80 dark:hover:bg-dark-700">
-              <h2 className="heading-text mb-2 flex justify-between space-x-2 text-lg">
-                <span>{post.properties.name.title[0].text.content}</span>
-                <span>{post.icon?.emoji || '📚'}</span>
-              </h2>
+            <a className="mb-4 border border-gray-400/30 cursor-pointer rounded block hover:opacity-80">
+              <div className="relative heading-text p-4 text-lg bg-white border-b border-gray-400/30 dark:bg-dark-900">
+                {post.properties.name.title[0].text.content}
+                <span className="absolute right-4 -bottom-4 text-2xl">
+                  {post.icon?.emoji || '📚'}
+                </span>
+              </div>
 
-              <p className="primary-text text-sm">
-                {post.properties.preview.rich_text[0].text.content}
-              </p>
+              <div className="bg-light-300 p-4 dark:bg-dark-700">
+                <div className="primary-text text-sm truncate">
+                  {post.properties.preview.rich_text[0].text.content}
+                </div>
 
-              <div className="secondary-text flex flex-wrap items-center space-x-2 text-sm">
-                <span>{post.properties.date.date.start}</span>
-                <span>·</span>
-                {post.properties.author.people.map((person: any) => (
-                  <span key={person.id}>{person.name?.toLowerCase()}</span>
-                ))}
-                <span>·</span>
-                <span>{post.properties.tag.select.name?.toLowerCase()}</span>
+                <div className="secondary-text flex flex-wrap items-center space-x-2 text-sm">
+                  <span>
+                    {new Date(
+                      post.properties.date.date.start
+                    ).toLocaleDateString()}
+                  </span>
+                  <span>·</span>
+                  {post.properties.author.people.map((person: any) => (
+                    <span key={person.id}>{person.name?.toLowerCase()}</span>
+                  ))}
+                  <span>·</span>
+                  <span>{post.properties.tag.select.name?.toLowerCase()}</span>
+                </div>
               </div>
             </a>
           </Link>

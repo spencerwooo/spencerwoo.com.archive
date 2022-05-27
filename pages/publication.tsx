@@ -30,52 +30,60 @@ const Publication: NextPage<{
             href={item.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="-m-2 rounded block border-none p-2 mb-4 hover:bg-light-200 dark:hover:bg-dark-700"
+            className="mb-4 border border-gray-400/30 cursor-pointer rounded block hover:opacity-80"
           >
-            <span className="rounded-full bg-red-200 px-2 dark:bg-red-700 dark:text-white text-sm uppercase tracking-wider">
-              {item.date}
-            </span>
+            <div className="p-4 relative bg-white border-b border-gray-400/30 dark:bg-dark-900">
+              <div className="font-serif text-lg primary-text tracking-wider">
+                {item.title}
+              </div>
 
-            {item.citations !== '' && (
-              <span className="rounded-full bg-blue-200 px-2 dark:bg-blue-700 dark:text-white ml-2 text-sm uppercase tracking-wider">
-                Cited by {item.citations}
-              </span>
-            )}
+              <div className="absolute -bottom-3 right-3">
+                <span className="rounded-full bg-red-200 text-red-700 px-2 dark:bg-red-700 dark:text-red-200 text-sm uppercase tracking-wider">
+                  {item.date}
+                </span>
 
-            <div className="font-serif text-lg primary-text mb-2 tracking-wider">
-              {item.title}
+                {item.citations !== '' && (
+                  <span className="rounded-full bg-blue-200 text-blue-700 px-2 dark:bg-blue-700 dark:text-blue-200 ml-2 text-sm uppercase tracking-wider">
+                    Cited by {item.citations}
+                  </span>
+                )}
+              </div>
             </div>
 
-            <div className="text-sm secondary-text">
-              {item.title.startsWith('Demiguise') ? (
-                <>
-                  <span className="opacity-100 font-bold">Y Wang*, S Wu*</span>
-                  <span className="opacity-80">
-                    , W Jiang, S Hao, Y Tan, Q Zhang
-                  </span>
-                </>
-              ) : (
-                item.author.split(', ').map((author, index) => (
-                  <span key={index}>
-                    {author.toLowerCase() === 's wu' ? (
-                      <span className="opacity-100 font-bold">
-                        {author + '*'}
-                      </span>
-                    ) : (
-                      <span className="opacity-80">{author}</span>
-                    )}
+            <div className="bg-light-300 p-4 dark:bg-dark-700">
+              <div className="text-sm secondary-text truncate">
+                {item.title.startsWith('Demiguise') ? (
+                  <>
+                    <span className="opacity-100 font-bold">
+                      Y Wang*, S Wu*
+                    </span>
+                    <span className="opacity-80">
+                      , W Jiang, S Hao, Y Tan, Q Zhang
+                    </span>
+                  </>
+                ) : (
+                  item.author.split(', ').map((author, index) => (
+                    <span key={index}>
+                      {author.toLowerCase() === 's wu' ? (
+                        <span className="opacity-100 font-bold">
+                          {author + '*'}
+                        </span>
+                      ) : (
+                        <span className="opacity-80">{author}</span>
+                      )}
 
-                    {index !== item.author.split(', ').length - 1 && (
-                      <span>, </span>
-                    )}
-                  </span>
-                ))
-              )}
-            </div>
+                      {index !== item.author.split(', ').length - 1 && (
+                        <span>, </span>
+                      )}
+                    </span>
+                  ))
+                )}
+              </div>
 
-            <div className="text-sm opacity-60 secondary-text">
-              <FiBookmark className="inline mr-1" />
-              {item.publication}
+              <div className="text-sm opacity-60 secondary-text truncate">
+                <FiBookmark className="inline mr-1" />
+                {item.publication}
+              </div>
             </div>
           </a>
         ))}
