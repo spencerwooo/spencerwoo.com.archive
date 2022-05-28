@@ -44,7 +44,9 @@ const BlogCopyright = ({
         </div>
         <div>
           <div className="text-xs">Date</div>
-          <div>{page.properties.date.date.start}</div>
+          <div>
+            {new Date(page.properties.date.date.start).toLocaleDateString()}
+          </div>
         </div>
         <div>
           <div className="text-xs">License</div>

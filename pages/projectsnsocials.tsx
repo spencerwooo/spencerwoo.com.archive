@@ -65,7 +65,7 @@ const ProjectCard = (props: ProjectProps) => {
       target="_blank"
       rel="noopener noreferrer"
     >
-      <div className="primary-text flex items-center justify-between space-x-4 transition-all duration-100 hover:opacity-80">
+      <div className="primary-text flex items-center justify-between space-x-4 transition-all duration-200 hover:opacity-80">
         <div className="truncate">
           <div className="font-bold">{props.name}</div>
           <div className="font-mono text-sm">{props.slug}</div>

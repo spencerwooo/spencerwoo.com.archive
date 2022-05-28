@@ -2,8 +2,8 @@ import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpo
 import type { GetStaticProps, NextPage } from 'next'
 
 import Head from 'next/head'
-import Link from 'next/link'
 
+import HoverCard from '../components/HoverCard'
 import { getDatabase } from '../lib/notion'
 
 const Blog: NextPage<{ posts: QueryDatabaseResponse['results'] }> = ({
@@ -16,7 +16,6 @@ const Blog: NextPage<{ posts: QueryDatabaseResponse['results'] }> = ({
     <>
       <Head>
         <title>Spencer Woo - Blog</title>
-        <meta name="description" content="Spencer Woo" />
       </Head>
 
       {/* <SearchModal searchOpen={searchOpen} setSearchOpen={setSearchOpen} /> */}
@@ -31,40 +30,37 @@ const Blog: NextPage<{ posts: QueryDatabaseResponse['results'] }> = ({
           </h1> */}
 
         {posts.map((post: any) => (
-          <Link
+          <HoverCard
             key={post.id}
             href={`/blog/${post.properties.slug.rich_text[0].text.content}`}
-            passHref
-          >
-            <a className="mb-4 border border-gray-400/30 cursor-pointer rounded block hover:opacity-80">
-              <div className="relative heading-text p-4 text-lg bg-white border-b border-gray-400/30 dark:bg-dark-900">
+            isExternal={false}
+            headingSlot={
+              <span className="font-bold text-lg">
                 {post.properties.name.title[0].text.content}
-                <span className="absolute right-4 -bottom-4 text-2xl">
-                  {post.icon?.emoji || '📚'}
-                </span>
+              </span>
+            }
+            iconSlot={
+              <div className="absolute right-4 -bottom-4 text-2xl">
+                {post.icon?.emoji || '📚'}
               </div>
+            }
+          >
+            <div className="primary-text text-sm truncate">
+              {post.properties.preview.rich_text[0].text.content}
+            </div>
 
-              <div className="bg-light-300 p-4 dark:bg-dark-700">
-                <div className="primary-text text-sm truncate">
-                  {post.properties.preview.rich_text[0].text.content}
-                </div>
-
-                <div className="secondary-text flex flex-wrap items-center space-x-2 text-sm">
-                  <span>
-                    {new Date(
-                      post.properties.date.date.start
-                    ).toLocaleDateString()}
-                  </span>
-                  <span>·</span>
-                  {post.properties.author.people.map((person: any) => (
-                    <span key={person.id}>{person.name?.toLowerCase()}</span>
-                  ))}
-                  <span>·</span>
-                  <span>{post.properties.tag.select.name?.toLowerCase()}</span>
-                </div>
-              </div>
-            </a>
-          </Link>
+            <div className="secondary-text flex flex-wrap items-center space-x-2 text-sm">
+              <span>
+                {new Date(post.properties.date.date.start).toLocaleDateString()}
+              </span>
+              <span>·</span>
+              {post.properties.author.people.map((person: any) => (
+                <span key={person.id}>{person.name?.toLowerCase()}</span>
+              ))}
+              <span>·</span>
+              <span>{post.properties.tag.select.name?.toLowerCase()}</span>
+            </div>
+          </HoverCard>
         ))}
       </div>
 
