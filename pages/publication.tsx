@@ -3,6 +3,7 @@ import { FiBookmark } from 'react-icons/fi'
 
 import Head from 'next/head'
 
+import HoverCard from '../components/HoverCard'
 import getPublications from '../lib/scholar'
 
 const Publication: NextPage<{
@@ -25,18 +26,14 @@ const Publication: NextPage<{
         <h1 className="heading-text mb-8 font-serif text-4xl">Publication</h1>
 
         {data.map((item, index) => (
-          <a
+          <HoverCard
             key={index}
             href={item.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mb-4 border border-gray-400/30 cursor-pointer rounded block hover:opacity-80"
-          >
-            <div className="p-4 relative bg-white border-b border-gray-400/30 dark:bg-dark-900">
-              <div className="font-serif text-lg primary-text tracking-wider">
-                {item.title}
-              </div>
-
+            isExternal
+            headingSlot={
+              <span className="font-serif text-xl">{item.title}</span>
+            }
+            iconSlot={
               <div className="absolute -bottom-3 right-3">
                 <span className="rounded-full bg-red-200 text-red-700 px-2 dark:bg-red-700 dark:text-red-200 text-sm uppercase tracking-wider">
                   {item.date}
@@ -48,44 +45,40 @@ const Publication: NextPage<{
                   </span>
                 )}
               </div>
+            }
+          >
+            <div className="text-sm secondary-text truncate">
+              {item.title.startsWith('Demiguise') ? (
+                <>
+                  <span className="opacity-100 font-bold">Y Wang*, S Wu*</span>
+                  <span className="opacity-80">
+                    , W Jiang, S Hao, Y Tan, Q Zhang
+                  </span>
+                </>
+              ) : (
+                item.author.split(', ').map((author, index) => (
+                  <span key={index}>
+                    {author.toLowerCase() === 's wu' ? (
+                      <span className="opacity-100 font-bold">
+                        {author + '*'}
+                      </span>
+                    ) : (
+                      <span className="opacity-80">{author}</span>
+                    )}
+
+                    {index !== item.author.split(', ').length - 1 && (
+                      <span>, </span>
+                    )}
+                  </span>
+                ))
+              )}
             </div>
 
-            <div className="bg-light-300 p-4 dark:bg-dark-700">
-              <div className="text-sm secondary-text truncate">
-                {item.title.startsWith('Demiguise') ? (
-                  <>
-                    <span className="opacity-100 font-bold">
-                      Y Wang*, S Wu*
-                    </span>
-                    <span className="opacity-80">
-                      , W Jiang, S Hao, Y Tan, Q Zhang
-                    </span>
-                  </>
-                ) : (
-                  item.author.split(', ').map((author, index) => (
-                    <span key={index}>
-                      {author.toLowerCase() === 's wu' ? (
-                        <span className="opacity-100 font-bold">
-                          {author + '*'}
-                        </span>
-                      ) : (
-                        <span className="opacity-80">{author}</span>
-                      )}
-
-                      {index !== item.author.split(', ').length - 1 && (
-                        <span>, </span>
-                      )}
-                    </span>
-                  ))
-                )}
-              </div>
-
-              <div className="text-sm opacity-60 secondary-text truncate">
-                <FiBookmark className="inline mr-1" />
-                {item.publication}
-              </div>
+            <div className="text-sm opacity-60 secondary-text truncate">
+              <FiBookmark className="inline mr-1" />
+              {item.publication}
             </div>
-          </a>
+          </HoverCard>
         ))}
 
         <div className="secondary-text text-center font-mono text-xs mt-8">
