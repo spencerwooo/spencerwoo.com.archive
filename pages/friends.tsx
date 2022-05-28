@@ -8,16 +8,13 @@ import { FriendProps, friends } from '../config/friend'
 
 const FriendCard = (props: FriendProps) => {
   return (
-    <a
-      className="relative overflow-hidden rounded border-b-0 border-l-4 bg-light-300 p-4 dark:bg-dark-700"
-      href={props.link}
-      target="_blank"
-      rel="noopener noreferrer"
-      style={{
-        borderLeftColor: props.bgColor,
-      }}
-    >
-      <div className="flex items-center justify-between hover:opacity-80">
+    <a href={props.link} target="_blank" rel="noopener noreferrer">
+      <div
+        className="flex items-center justify-between overflow-hidden rounded border-b-4 bg-light-300 p-4 transition-all duration-200 hover:shadow-lg hover:opacity-80 dark:bg-dark-700"
+        style={{
+          borderBottomColor: props.bgColor,
+        }}
+      >
         <div>
           <div className="font-serif text-lg">{props.id}</div>
           <div className="secondary-text text-sm">{props.link}</div>

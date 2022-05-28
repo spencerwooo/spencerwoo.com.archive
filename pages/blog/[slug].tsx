@@ -71,9 +71,9 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
           </div>
 
           <Link href="/blog" passHref>
-            <div className="mt-4 flex cursor-pointer items-center justify-between rounded border border-gray-400/30 p-4 hover:bg-light-200 hover:opacity-80 dark:hover:bg-dark-700 md:-mx-4">
+            <div className="group mt-4 flex cursor-pointer items-center justify-between rounded border border-gray-400/30 p-4 hover:bg-light-200 hover:opacity-80 dark:hover:bg-dark-700 md:-mx-4">
               <span>cd /blog</span>
-              <FiArrowLeft />
+              <FiArrowLeft className="h-4 w-4 transition-all duration-100 group-hover:-translate-x-1" />
             </div>
           </Link>
 
