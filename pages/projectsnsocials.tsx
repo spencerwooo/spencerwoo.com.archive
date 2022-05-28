@@ -22,8 +22,8 @@ const LinkFollowerText = ({
 }) => {
   const { data, error } = useSWR(apiUrl, fetcher)
 
-  if (error) return <div className="font-mono text-sm">failed to load</div>
-  if (!data) return <div className="font-mono text-sm">loading...</div>
+  if (error) return <div className="font-mono text-sm">-</div>
+  if (!data) return <div className="font-mono text-sm">...</div>
   return (
     <div className="font-mono text-sm">
       {data.count} {followerName}
@@ -35,14 +35,11 @@ const LinkCard = (props: LinkProps) => {
   const pronoun = props.followerName ? props.followerName : 'subs'
 
   return (
-    <a
-      className="relative overflow-hidden rounded border-b-0 border-l-4 bg-light-300 p-4 dark:bg-dark-700"
-      href={props.link}
-      target="_blank"
-      rel="noopener noreferrer"
-      style={{ borderLeftColor: props.color }}
-    >
-      <div className="flex items-center justify-between hover:opacity-80">
+    <a href={props.link} target="_blank" rel="noopener noreferrer">
+      <div
+        className="flex items-center justify-between overflow-hidden rounded border-b-4 bg-light-300 p-4 transition-all duration-200 dark:bg-dark-700 hover:opacity-80 hover:shadow-lg"
+        style={{ borderBottomColor: props.color }}
+      >
         <div>
           <div className="font-bold">{props.name}</div>
           <LinkFollowerText apiUrl={props.apiUrl} followerName={pronoun} />
@@ -59,13 +56,8 @@ const LinkCard = (props: LinkProps) => {
 
 const ProjectCard = (props: ProjectProps) => {
   return (
-    <a
-      href={props.link}
-      className="rounded border-b-0 border-l-4 bg-light-300 p-4 dark:bg-dark-700"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <div className="primary-text flex items-center justify-between space-x-4 transition-all duration-200 hover:opacity-80">
+    <a href={props.link} target="_blank" rel="noopener noreferrer">
+      <div className="primary-text flex items-center justify-between rounded border-b-4 bg-light-300 p-4 space-x-4 transition-all duration-200 hover:opacity-80 hover:shadow-lg dark:bg-dark-700">
         <div className="truncate">
           <div className="font-bold">{props.name}</div>
           <div className="font-mono text-sm">{props.slug}</div>
@@ -113,7 +105,7 @@ const ProjectsNSocials: NextPage<{ genshinUserInfo: UserInfo }> = ({
           Genshin Impact
         </h1>
 
-        <div className="relative shadow p-4 rounded overflow-hidden text-white">
+        <div className="relative shadow-lg p-4 rounded overflow-hidden text-white">
           <div className="flex justify-between">
             <div>
               <div className="text-2xl">阿巴阿巴 Lv.58</div>
