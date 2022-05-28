@@ -85,7 +85,7 @@ const ProjectsNSocials: NextPage<{ genshinUserInfo: UserInfo }> = ({
   genshinUserInfo,
 }) => {
   const randomGenshinBackground = () =>
-    `/images/genshin/${Math.floor(Math.random() * 19) + 1}.jpg`
+    `/images/genshin/${Math.floor(Math.random() * 21) + 1}.jpg`
 
   const stats = genshinUserInfo.stats
   const exploration = genshinUserInfo.world_explorations.map(
