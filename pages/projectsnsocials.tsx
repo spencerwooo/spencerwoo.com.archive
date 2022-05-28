@@ -37,7 +37,7 @@ const LinkCard = (props: LinkProps) => {
   return (
     <a href={props.link} target="_blank" rel="noopener noreferrer">
       <div
-        className="flex items-center justify-between overflow-hidden rounded border-b-4 bg-light-300 p-4 transition-all duration-200 dark:bg-dark-700 hover:opacity-80 hover:shadow-lg"
+        className="flex items-center justify-between overflow-hidden rounded border-b-4 bg-light-300 p-4 transition-all duration-150 dark:bg-dark-700 hover:opacity-80 hover:shadow-lg"
         style={{ borderBottomColor: props.color }}
       >
         <div>
@@ -57,7 +57,7 @@ const LinkCard = (props: LinkProps) => {
 const ProjectCard = (props: ProjectProps) => {
   return (
     <a href={props.link} target="_blank" rel="noopener noreferrer">
-      <div className="primary-text flex items-center justify-between rounded border-b-4 bg-light-300 p-4 space-x-4 transition-all duration-200 hover:opacity-80 hover:shadow-lg dark:bg-dark-700">
+      <div className="primary-text flex items-center justify-between rounded border-b-4 bg-light-300 p-4 space-x-4 transition-all duration-150 hover:opacity-80 hover:shadow-lg dark:bg-dark-700">
         <div className="truncate">
           <div className="font-bold">{props.name}</div>
           <div className="font-mono text-sm">{props.slug}</div>
@@ -181,7 +181,7 @@ const ProjectsNSocials: NextPage<{ genshinUserInfo: UserInfo }> = ({
         </div>
 
         <div className="secondary-text text-center font-mono text-xs">
-          Powered by{' '}
+          Real-time stats, powered by{' '}
           <a
             className="hover-links"
             href="https://github.com/spencerwooo/substats"

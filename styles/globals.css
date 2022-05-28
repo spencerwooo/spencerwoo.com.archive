@@ -7,7 +7,7 @@
 }
 
 .nav-links {
-  @apply cursor-pointer rounded border-none p-2 transition-all duration-200 hover:bg-light-200 hover:opacity-80 dark:hover:bg-dark-700;
+  @apply cursor-pointer rounded border-none p-2 transition-all duration-150 hover:bg-light-200 hover:opacity-80 dark:hover:bg-dark-700;
 }
 
 .heading-text {
