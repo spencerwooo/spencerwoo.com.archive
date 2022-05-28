@@ -33,7 +33,7 @@ const Home: NextPage<{
           href="https://genshin-impact.fandom.com/wiki/Hu_Tao"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover-links"
+          className="bg-pink-600/10 text-pink-600 p-1 rounded font-bold transition-all duration-150 hover:bg-pink-600/20"
         >
           <abbr title="🔥 C6 by the way" className="!no-underline">
             #HuTao
@@ -48,7 +48,7 @@ const Home: NextPage<{
           href="https://cst.bit.edu.cn"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover-links"
+          className="bg-emerald-600/10 text-emerald-600 p-1 rounded font-bold transition-all duration-150 hover:bg-emerald-600/20"
         >
           🎓 BIT
         </a>{' '}
@@ -57,7 +57,7 @@ const Home: NextPage<{
           href="https://gla.ac.uk"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover-links"
+          className="bg-indigo-600/10 text-indigo-600 p-1 rounded font-bold transition-all duration-150 hover:bg-indigo-600/20"
         >
           🇬🇧 UofG
         </a>{' '}
@@ -74,11 +74,7 @@ const Home: NextPage<{
       </p>
 
       <p className="mt-8 leading-7">
-        For projects, links, and{' '}
-        <span className="border-b border-red-600 font-bold">
-          Genshin Impact
-        </span>{' '}
-        stats:{' '}
+        More about me (projects, links, Genshin Impact):{' '}
         <Link href="/projectsnsocials">
           <a className="group inline-flex flex-wrap items-center">
             <span className="hover-links">📚 Projects & Socials</span>
