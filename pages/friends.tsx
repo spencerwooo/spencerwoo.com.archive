@@ -10,7 +10,7 @@ const FriendCard = (props: FriendProps) => {
   return (
     <a href={props.link} target="_blank" rel="noopener noreferrer">
       <div
-        className="flex items-center justify-between overflow-hidden rounded border-b-4 bg-light-300 p-4 transition-all duration-200 hover:shadow-lg hover:opacity-80 dark:bg-dark-700"
+        className="flex items-center justify-between overflow-hidden rounded border-b-4 bg-light-300 p-4 transition-all duration-150 hover:shadow-lg hover:opacity-80 dark:bg-dark-700"
         style={{
           borderBottomColor: props.bgColor,
         }}
