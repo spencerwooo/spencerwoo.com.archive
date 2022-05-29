@@ -29,7 +29,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => (
 
     <div className="flex min-h-screen flex-col">
       <Navbar />
-      <main className="mt-8 flex-1 flex flex-col justify-center">{children}</main>
+      <main className="mt-8 flex-1 flex flex-col justify-center">
+        {children}
+      </main>
       <Footer />
     </div>
   </>
