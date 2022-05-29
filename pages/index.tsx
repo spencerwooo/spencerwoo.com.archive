@@ -5,6 +5,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import NowPlaying from '../components/NowPlaying'
 import { getLatestPost } from '../lib/notion'
 
 const Home: NextPage<{
@@ -110,12 +111,14 @@ const Home: NextPage<{
         .
       </p>
 
-      <p className="leading-7">
+      <p className="leading-7 mb-8">
         <FiMail size={15} className="mr-2 inline" />
         <a href="mailto:spencer.wushangbo@gmail.com" className="hover-links">
           spencer.wushangbo#gmail.com
         </a>
       </p>
+
+      <NowPlaying />
     </div>
   </>
 )
