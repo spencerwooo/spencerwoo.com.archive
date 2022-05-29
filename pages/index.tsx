@@ -79,7 +79,7 @@ const Home: NextPage<{
         <Link href="/projectsnsocials">
           <a className="group inline-flex flex-wrap items-center">
             <span className="hover-links">📚 Projects & Socials</span>
-            <FiArrowRight className="h-4 w-4 transition-all duration-100 group-hover:translate-x-1" />
+            <FiArrowRight className="h-4 w-4 transition-all duration-150 group-hover:translate-x-1" />
           </a>
         </Link>
       </p>
@@ -94,7 +94,7 @@ const Home: NextPage<{
               {latestPost.icon?.emoji || '📚'}{' '}
               {latestPost.properties.name.title[0].text.content}
             </span>
-            <FiArrowRight className="h-4 w-4 transition-all duration-100 group-hover:translate-x-1" />
+            <FiArrowRight className="h-4 w-4 transition-all duration-150 group-hover:translate-x-1" />
           </a>
         </Link>
       </p>

@@ -20,7 +20,7 @@ const HoverCard = ({
 
   return (
     <AsComponent href={href} {...aTagAttributes}>
-      <div className="mb-6 border border-gray-400/30 cursor-pointer rounded block transition-all duration-100 hover:opacity-80 hover:shadow-lg">
+      <div className="mb-6 border border-gray-400/30 cursor-pointer rounded block transition-all duration-150 hover:opacity-80 hover:shadow-lg">
         <div className="relative heading-text p-4 bg-white border-b border-gray-400/30 dark:bg-dark-900">
           {headingSlot}
           {iconSlot}
