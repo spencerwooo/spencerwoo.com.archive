@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .hover-links {
-  @apply border-b border-b-dark-200/30 no-underline transition-all duration-100 hover:border-b-dark-200/60 dark:border-b-light-900/50 dark:hover:border-b-light-900/80;
+  @apply border-b border-b-dark-200/30 no-underline transition-all duration-150 hover:border-b-dark-200/60 dark:border-b-light-900/50 dark:hover:border-b-light-900/80;
 }
 
 .nav-links {
