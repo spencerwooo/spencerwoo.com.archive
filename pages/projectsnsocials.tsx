@@ -108,7 +108,7 @@ const ProjectsNSocials: NextPage<{ genshinUserInfo: UserInfo }> = ({
         <div className="relative shadow-lg p-4 rounded overflow-hidden text-white">
           <div className="flex justify-between">
             <div>
-              <div className="text-2xl">阿巴阿巴 Lv.58</div>
+              <div className="text-2xl">阿巴阿巴 Lv.59</div>
               <div className="font-mono text-sm font-bold opacity-80">
                 UID: 168305666
               </div>
