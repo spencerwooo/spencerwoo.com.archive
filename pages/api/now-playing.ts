@@ -8,6 +8,7 @@ export type SpotifyTrack =
       is_playing: boolean
       item: string
       album: string
+      artist: string
       external_url: string
       progress_ms: number
       duration_ms: number
@@ -55,6 +56,7 @@ export default async function handler(
       is_playing: result.is_playing,
       item: result.item.name,
       album: result.item.album.name,
+      artist: result.item.artists[0].name,
       external_url: result.item.external_urls.spotify,
       progress_ms: result.progress_ms,
       duration_ms: result.item.duration_ms,

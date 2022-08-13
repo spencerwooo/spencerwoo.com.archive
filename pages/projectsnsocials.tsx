@@ -25,7 +25,7 @@ const LinkFollowerText = ({
   if (error) return <div className="font-mono text-sm">-</div>
   if (!data) return <div className="font-mono text-sm">...</div>
   return (
-    <div className="font-mono text-sm">
+    <div className="font-mono text-xs">
       {data.count} {followerName}
     </div>
   )
@@ -41,7 +41,7 @@ const LinkCard = (props: LinkProps) => {
         style={{ borderBottomColor: props.color }}
       >
         <div>
-          <div className="font-bold">{props.name}</div>
+          <div className="font-bold text-sm">{props.name}</div>
           <LinkFollowerText apiUrl={props.apiUrl} followerName={pronoun} />
         </div>
         {props.icon ? (
