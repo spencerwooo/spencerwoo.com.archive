@@ -29,13 +29,15 @@ const NowPlaying = () => {
     '/api/now-playing',
     nowPlayingFetcher,
     {
-      refreshInterval: 1000,
+      refreshInterval: 10 * 1000,
     }
   )
 
   if (error) return <Idle />
   if (!data) return <Idle />
   if ('error' in data) return <Idle />
+
+  console.log(data)
 
   return (
     <div className="flex items-center transition-all duration-150 opacity-60 hover:opacity-100">
@@ -47,7 +49,7 @@ const NowPlaying = () => {
           rel="noopener noreferrer"
           className="truncate p-1 max-w-[18rem] sm:max-w-[36rem] group-hover:text-emerald-700 dark:group-hover:text-emerald-500"
         >
-          Listening: {data.item} - {data.album}
+          Listening: {data.item} - {data.artist}
         </a>
 
         <span
