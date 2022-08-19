@@ -1,3 +1,7 @@
+import type {
+  GetPagePropertyResponse,
+  PageObjectResponse,
+} from '@notionhq/client/build/src/api-endpoints'
 import type { GetStaticProps, NextPage } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import { FiArrowLeft, FiBookmark, FiMessageCircle } from 'react-icons/fi'
@@ -11,43 +15,61 @@ import BlogTableOfContent from '../../components/BlogTableOfContent'
 import Comments from '../../components/Comments'
 import NotionBlock from '../../components/NotionBlock'
 import probeImageSize from '../../lib/imaging'
-import { getBlocks, getDatabase, getPage } from '../../lib/notion'
+import {
+  type PageCompletePropertyRecord,
+  getBlocks,
+  getDatabase,
+  getPage,
+} from '../../lib/notion'
 
-const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
+const Post: NextPage<{ page: PageObjectResponse; blocks: any[] }> = ({
+  page,
+  blocks,
+}) => {
   const router = useRouter()
   const hostname = 'https://spencerwoo.com'
 
   if (!page || !blocks) return <div />
 
+  const emoji = page.icon?.type === 'emoji' ? page.icon.emoji : '🎑'
+  const prop = page.properties as unknown as PageCompletePropertyRecord
+
+  const name =
+    'results' in prop.name && prop.name.results[0].type === 'title'
+      ? prop.name.results[0].title.plain_text
+      : ''
+  const date = prop.date.type === 'date' ? prop.date.date?.start ?? '' : ''
+
+  const author = 'results' in prop.author ? prop.author.results : []
+  const tag = 'select' in prop.tag ? prop.tag.select : null
+
   return (
     <>
       <Head>
-        <title>
-          {page.properties.name.title[0].plain_text} - Spencer&apos;s Blog
-        </title>
+        <title>{name} - Spencer&apos;s Blog</title>
       </Head>
 
       <div className="container mx-auto grid max-w-3xl grid-cols-10 gap-8 px-6 lg:max-w-5xl">
         <div className="col-span-10 lg:col-span-7">
           <div className="-mx-4 rounded border-gray-400/30 p-4 md:border">
             <h1 className="mb-2 flex justify-between space-x-2 font-serif text-3xl">
-              <span className="font-bold">
-                {page.properties.name.title[0].plain_text}
-              </span>
-              <span>{page.icon?.emoji || '📚'}</span>
+              <span className="font-bold">{name}</span>
+              <span>{emoji}</span>
             </h1>
             <div className="secondary-text flex flex-wrap items-center gap-2">
-              <span>
-                {new Date(page.properties.date.date.start).toLocaleDateString()}
-              </span>
+              <span>{new Date(date).toLocaleDateString()}</span>
               <span>·</span>
-              {page.properties.author.people.map((person: { name: string }) => (
-                <span key={person.name}>{person.name?.toLowerCase()}</span>
+              {author.map((person) => (
+                <span key={person.id}>
+                  {'people' in person && 'name' in person.people
+                    ? person.people.name?.toLowerCase()
+                    : ''}
+                </span>
               ))}
               <span>·</span>
               <div>
                 <FiBookmark size={18} className="mr-1 inline" />
-                <span>{page.properties.tag.select.name?.toLowerCase()}</span>
+                <span>{tag?.name.toLowerCase()}</span>
               </div>
               <span>·</span>
               <Link href="#comments-section" passHref>
@@ -65,7 +87,9 @@ const Post: NextPage<{ page: any; blocks: any[] }> = ({ page, blocks }) => {
             </article>
 
             <BlogCopyright
-              page={page}
+              title={name}
+              author={author}
+              date={date}
               absoluteLink={`${hostname}/blog/${router.query.slug}`}
             />
           </div>
@@ -92,7 +116,7 @@ export const getStaticPaths = async () => {
   const db = await getDatabase()
   return {
     paths: db.map((p: any) => ({
-      params: { slug: p.properties.slug.rich_text[0].text.content },
+      params: { slug: p.properties.slug.results[0].rich_text.plain_text },
     })),
     fallback: 'blocking',
   }
@@ -145,7 +169,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       })
   )
 
-  // return { props: { page, blocks: blocksWithChildren }, revalidate: 1 }
   return { props: { page, blocks: blocksWithChildren }, revalidate: 60 * 60 } // 1 hour
 }
 
