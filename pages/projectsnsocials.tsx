@@ -22,8 +22,8 @@ const LinkFollowerText = ({
 }) => {
   const { data, error } = useSWR(apiUrl, fetcher)
 
-  if (error) return <div className="font-mono text-sm">-</div>
-  if (!data) return <div className="font-mono text-sm">...</div>
+  if (error) return <div className="font-mono text-xs">-</div>
+  if (!data) return <div className="font-mono text-xs">...</div>
   return (
     <div className="font-mono text-xs">
       {data.count} {followerName}
