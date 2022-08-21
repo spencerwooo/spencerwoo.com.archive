@@ -1,18 +1,20 @@
+import type {
+  PageObjectResponse,
+  PartialPageObjectResponse,
+} from '@notionhq/client/build/src/api-endpoints'
 import { Feed } from 'feed'
 import { GetServerSideProps } from 'next'
 
-import { getDatabase } from '../lib/notion'
+import { type PageCompletePropertyRecord, getDatabase } from '../lib/notion'
 
 const domain = 'https://spencerwoo.com'
 const year = new Date().getFullYear()
 
-// Function for generating the RSS feed
-const generateRSS = (posts: any) => {
-  // Create new feed object
+const generateRSS = (posts: PageObjectResponse[]) => {
   const feed = new Feed({
     id: domain,
     link: domain,
-    title: "Spencer Woo - Spencer's Blog (＠_＠;)",
+    title: "Spencer Woo - Spencer's Blog (@_@;)",
     description: 'Thoughts, ideas, and more.',
     copyright: `CC BY-NC-SA 4.0 ©️ ${year}, Spencer Woo`,
     image: `${domain}/favicon.png`,
@@ -25,13 +27,29 @@ const generateRSS = (posts: any) => {
   })
 
   // Add posts to feed based on queried data from Notion
-  posts.forEach((post: any) => {
+  posts.forEach((post) => {
+    const prop = post.properties as unknown as PageCompletePropertyRecord
+
+    const slug =
+      'results' in prop.slug && prop.slug.results[0].type === 'rich_text'
+        ? prop.slug.results[0].rich_text.plain_text
+        : ''
+    const name =
+      'results' in prop.name && prop.name.results[0].type === 'title'
+        ? prop.name.results[0].title.plain_text
+        : ''
+    const preview =
+      'results' in prop.preview && prop.preview.results[0].type === 'rich_text'
+        ? prop.preview.results[0].rich_text.plain_text
+        : ''
+    const date = prop.date.type === 'date' ? prop.date.date?.start ?? '' : ''
+
     feed.addItem({
-      title: post.properties.name.title[0].text.content,
+      title: name,
       id: post.id,
-      link: `${domain}/blog/${post.properties.slug.rich_text[0].text.content}`,
-      description: post.properties.preview.rich_text[0].text.content,
-      date: new Date(post.properties.date.date.start),
+      link: `${domain}/blog/${slug}`,
+      description: preview,
+      date: new Date(date),
     })
   })
 
@@ -48,7 +66,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   )
 
   const posts = await getDatabase()
-  const xmlFeed = generateRSS(posts)
+  const xmlFeed = generateRSS(posts as PageObjectResponse[])
 
   res.setHeader('Content-Type', 'text/xml')
   res.write(xmlFeed)
