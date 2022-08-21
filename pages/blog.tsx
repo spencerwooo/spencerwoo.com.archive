@@ -1,7 +1,4 @@
-import type {
-  GetPagePropertyResponse,
-  PageObjectResponse,
-} from '@notionhq/client/build/src/api-endpoints'
+import type { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 import type { GetStaticProps, NextPage } from 'next'
 
 import Head from 'next/head'
