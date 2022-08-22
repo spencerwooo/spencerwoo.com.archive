@@ -3,6 +3,7 @@ import type {
   GetPagePropertyResponse,
   ListBlockChildrenResponse,
 } from '@notionhq/client/build/src/api-endpoints'
+import { retry } from 'ts-retry-promise'
 
 export type PageCompletePropertyResponse = {
   id: string
@@ -20,6 +21,17 @@ export type LatestPostProps = {
 const notion = new Client({ auth: process.env.NOTION_KEY })
 const databaseId =
   process.env.NOTION_DATABASE_ID || '7021cba3b8a04865850473d4037762ad'
+
+const getPageProperty = async (pageId: string, propId: string) => {
+  return await retry(
+    () =>
+      notion.pages.properties.retrieve({
+        page_id: pageId,
+        property_id: propId,
+      }),
+    { retries: 5 }
+  )
+}
 
 export const getDatabase = async (slug?: string) => {
   let dbQuery: any = {
@@ -42,10 +54,7 @@ export const getDatabase = async (slug?: string) => {
         for (const prop in res.properties) {
           if (res.properties.hasOwnProperty(prop)) {
             const propId = res.properties[prop].id
-            const propObj = await notion.pages.properties.retrieve({
-              page_id: res.id,
-              property_id: propId,
-            })
+            const propObj = await getPageProperty(res.id, propId)
 
             // Dumping every property into the result object as there is much
             // to take care of (which will happen in React)
@@ -98,10 +107,9 @@ export const getPage = async (pageId: string) => {
     for (const prop in response.properties) {
       if (response.properties.hasOwnProperty(prop)) {
         const propId = response.properties[prop].id
-        const propObj = await notion.pages.properties.retrieve({
-          page_id: response.id,
-          property_id: propId,
-        })
+        const propObj = getPageProperty(response.id, propId)
+
+        // Same as the above implementation
         response.properties[prop] = { id: propId, ...propObj }
       }
     }
