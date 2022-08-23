@@ -26,7 +26,7 @@ button {
 }
 
 * {
-  @apply box-border;
+  @apply box-border scroll-pt-16;
 }
 
 *::selection {
