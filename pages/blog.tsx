@@ -90,7 +90,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const db = await getDatabase()
   return {
     props: { posts: db },
-    revalidate: 60 * 10, // 10 minutes
+    revalidate: 60 * 60, // 10 minutes
   }
 }
 
