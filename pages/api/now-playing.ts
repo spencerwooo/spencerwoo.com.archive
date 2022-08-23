@@ -8,6 +8,7 @@ export type SpotifyTrack =
       is_playing: boolean
       item: string
       album: string
+      images: Array<{ url: string; height: number; width: number }>
       artist: string
       external_url: string
       progress_ms: number
@@ -58,6 +59,7 @@ export default async function handler(
       is_playing: result.is_playing,
       item: result.item.name,
       album: result.item.album.name,
+      images: result.item.album.images,
       artist: result.item.artists[0].name,
       external_url: result.item.external_urls.spotify,
       progress_ms: result.progress_ms,

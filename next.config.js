@@ -8,6 +8,7 @@ module.exports = {
       'avatars1.githubusercontent.com',
       'avatars2.githubusercontent.com',
       'avatars3.githubusercontent.com',
+      'i.scdn.co',
     ],
   },
   async redirects() {
