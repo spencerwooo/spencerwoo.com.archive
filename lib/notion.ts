@@ -107,7 +107,7 @@ export const getPage = async (pageId: string) => {
     for (const prop in response.properties) {
       if (response.properties.hasOwnProperty(prop)) {
         const propId = response.properties[prop].id
-        const propObj = getPageProperty(response.id, propId)
+        const propObj = await getPageProperty(response.id, propId)
 
         // Same as the above implementation
         response.properties[prop] = { id: propId, ...propObj }

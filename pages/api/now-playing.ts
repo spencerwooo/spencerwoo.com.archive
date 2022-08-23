@@ -19,6 +19,8 @@ const basicAuthToken = Buffer.from(
 ).toString('base64')
 
 const getAccessToken = async () => {
+  // Spotify clientId and clientSecrets: https://developer.spotify.com/dashboard/login
+  // Spotify refreshToken: https://benwiz.com/blog/create-spotify-refresh-token/
   const resp = await fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
     headers: {
