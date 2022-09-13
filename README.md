@@ -1,6 +1,6 @@
 <samp><a href="https://spencerwoo.com" target="_blank" rel="noopener noreferrer">spencerwoo.com</a></samp>
 
-personal portfolio powered by **Next.js**.
+personal portfolio.
 
 <br>
 
