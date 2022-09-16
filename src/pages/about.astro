@@ -1,12 +1,16 @@
 ---
+import type { UserInfo } from '@genshin-kit/core/lib/types'
 import PageLayout from '@/layouts/Base'
-// import { Image } from '@astrojs/image/components'
-// import aboutImg from '../assets/about-astro.png'
+import GenshinAvatar from '@/components/GenshinAvatar'
+import { Image } from '@astrojs/image/components'
+import Icon from 'astro-icon'
 
 const meta = {
   title: 'About',
   description: 'I am Spencer Woo',
 }
+const response = await fetch('http://localhost:3000/api/genshin')
+const data = (await response.json()) as UserInfo | null
 ---
 
 <PageLayout meta={meta}>
@@ -64,6 +68,72 @@ const meta = {
     </p>
 
     <hr />
-    <p><b>I play a whole lot of Genshin Impact.</b></p>
+    <h2 class="font-bold relative">
+      Oh, and I play <em>A WHOLE LOT</em> of Genshin Impact. <span
+        class="font-sans font-bold italic px-1 rounded bg-accent text-white sm:absolute right-0"
+        >AR 59 - 168305666 天空岛</span
+      >
+    </h2>
+
+    <div class="flex gap-2 overflow-x-scroll rounded">
+      {
+        data.avatars
+          .slice(0, 16)
+          .map((avatar) => <GenshinAvatar avatar={avatar} />)
+      }
+    </div>
+
+    <ul class="list-disc list-inside">
+      <li>
+        {data.stats.active_day_number} days, {data.stats.achievement_number} achievements.
+        {data.stats.avatar_number} friends pulled. Spiral abyss {
+          data.stats.spiral_abyss
+        }.
+      </li>
+      <li>
+        Chests: <Icon
+          pack="mdi"
+          name="treasure-chest"
+          class="inline-block w-4 h-4 text-accent opacity-100"
+        />
+        {data.stats.luxurious_chest_number}
+        <Icon
+          pack="mdi"
+          name="treasure-chest"
+          class="inline-block w-4 h-4 text-accent opacity-80"
+        />
+        {data.stats.precious_chest_number}
+        <Icon
+          pack="mdi"
+          name="treasure-chest"
+          class="inline-block w-4 h-4 text-accent opacity-60"
+        />
+        {data.stats.exquisite_chest_number}
+        <Icon
+          pack="mdi"
+          name="treasure-chest"
+          class="inline-block w-4 h-4 text-accent opacity-40"
+        />
+        {data.stats.common_chest_number}
+      </li>
+      <li>
+        Explorations: {
+          data.world_explorations.map((world) => (
+            <span>
+              <Image
+                src={world.icon}
+                alt={world.name}
+                width={18}
+                height={18}
+                class="inline invert dark:invert-0"
+              />
+              {world.name} ({world.exploration_percentage / 10}%)
+            </span>
+          ))
+        }
+      </li>
+    </ul>
+
+    <p class="opacity-60">* These are real-time data from Genshin's API.</p>
   </div>
 </PageLayout>

@@ -48,6 +48,7 @@
     "@astrojs/partytown": "^1.0.0",
     "@astrojs/vercel": "^2.0.0",
     "@fontsource/overpass-mono": "^4.5.9",
+    "@genshin-kit/core": "^2.6.2",
     "astro-icon": "^0.7.3"
   }
 }

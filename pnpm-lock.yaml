@@ -8,6 +8,7 @@ specifiers:
   '@astrojs/tailwind': ^2.0.0
   '@astrojs/vercel': ^2.0.0
   '@fontsource/overpass-mono': ^4.5.9
+  '@genshin-kit/core': ^2.6.2
   '@tailwindcss/aspect-ratio': ^0.4.2
   '@tailwindcss/line-clamp': ^0.4.2
   '@tailwindcss/typography': ^0.5.7
@@ -42,6 +43,7 @@ dependencies:
   '@astrojs/partytown': 1.0.0
   '@astrojs/vercel': 2.0.0
   '@fontsource/overpass-mono': 4.5.9
+  '@genshin-kit/core': 2.6.2
   astro-icon: 0.7.3
 
 devDependencies:
@@ -575,6 +577,15 @@ packages:
 
   /@fontsource/overpass-mono/4.5.9:
     resolution: {integrity: sha512-Mryk/f7CAyRKgqzvrDgRR+WdBSYL0Fpwu7QcwOYnJEbt9+NAAYmeNDr3uILhx0X3ymEmwm4QFnm/QE1nfPYTNA==}
+    dev: false
+
+  /@genshin-kit/core/2.6.2:
+    resolution: {integrity: sha512-Bzi/dALBlSRn6CQISS/YHVXxwBkFbNcsjrmG33EE+55UX2IF7LCZROgFZngNuBaGo+JCVRnlzm+IzcmtTQpHWg==}
+    dependencies:
+      axios: 0.24.0
+      tslib: 2.4.0
+    transitivePeerDependencies:
+      - debug
     dev: false
 
   /@humanwhocodes/config-array/0.10.4:
@@ -1437,6 +1448,14 @@ packages:
     resolution: {integrity: sha512-32+ub6kkdhhWick/UjvEwRchgoetXqTK14INLqbGm5U2TzBkBNF3nQtLYm8ovxSkQWArjEQvftCKryjZaATu3w==}
     engines: {node: '>=4'}
     dev: true
+
+  /axios/0.24.0:
+    resolution: {integrity: sha512-Q6cWsys88HoPgAaFAVUb0WpPk0O8iTeisR9IMqy9G8AbO4NlpVknrnQS03zzF9PGAWgO3cgletO3VjV/P7VztA==}
+    dependencies:
+      follow-redirects: 1.15.2
+    transitivePeerDependencies:
+      - debug
+    dev: false
 
   /axobject-query/2.2.0:
     resolution: {integrity: sha512-Td525n+iPOOyUQIeBfcASuG6uJsDOITl7Mds5gFyerkWiX7qhUTdYUBlSgNMyVqtSJqwpt1kXGLdUt6SykLMRA==}
@@ -3051,6 +3070,16 @@ packages:
   /flatted/3.2.7:
     resolution: {integrity: sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==}
     dev: true
+
+  /follow-redirects/1.15.2:
+    resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}
+    engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
+    dev: false
 
   /format/0.2.2:
     resolution: {integrity: sha512-wzsgA6WOq+09wrU1tsJ09udeR/YZRaeArL9e1wPbFg3GG2yDnC2ldKpxs4xunpFF9DgqCqOIra3bc1HWrJ37Ww==}
@@ -6389,7 +6418,6 @@ packages:
 
   /tslib/2.4.0:
     resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
-    dev: true
 
   /tsm/2.2.2:
     resolution: {integrity: sha512-bXkt675NbbqfwRHSSn8kSNEEHvoIUFDM9G6tUENkjEKpAEbrEzieO3PxUiRJylMw8fEGpcf5lSjadzzz12pc2A==}

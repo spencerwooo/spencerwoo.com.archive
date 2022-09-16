@@ -1,0 +1,26 @@
+---
+import type { Character } from '@genshin-kit/core/lib/types'
+import { Image } from '@astrojs/image/components'
+export interface Props {
+  avatar: Character
+}
+
+const { avatar } = Astro.props
+---
+
+<div class="flex-shrink-0 relative text-center">
+  <Image
+    alt={avatar.name}
+    src={avatar.image}
+    width={72}
+    height={72}
+    class="rounded-full border"
+  />
+  <p class="text-xs font-sans font-bold tracking-tightest italic">
+    Lv.{avatar.level} (C{avatar.actived_constellation_num})
+  </p>
+  <span
+    class="text-xs font-sans font-bold italic absolute top-0 right-0 bg-red-600 text-white px-1 rounded"
+    >♥️{avatar.fetter}
+  </span>
+</div>
