@@ -3,7 +3,7 @@ import mdx from '@astrojs/mdx'
 import tailwind from '@astrojs/tailwind'
 import image from '@astrojs/image'
 import sitemap from '@astrojs/sitemap'
-import vercel from '@astrojs/vercel/static'
+import vercel from '@astrojs/vercel/serverless'
 import partytown from '@astrojs/partytown'
 
 // https://astro.build/config
@@ -22,6 +22,6 @@ export default defineConfig({
     sitemap(),
     partytown({ config: { forward: ['dataLayer.push'] } }),
   ],
-  output: 'static',
+  output: 'server',
   adapter: vercel(),
 })

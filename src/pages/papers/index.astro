@@ -1,42 +1,16 @@
 ---
 import PageLayout from '@/layouts/Base'
 import BlogPostPreview from '@/components/BlogPostPreview'
-import Pagination from '@/components/Paginator'
 import { getAllTags, sortMDByDate } from 'src/util'
-import type { Post, Page, MDXInstance } from '@/types'
+import type { Post } from '@/types'
 
-export async function getStaticPaths({ paginate }) {
-  const allPosts = await Astro.glob<Post>('./*.mdx')
-  const allPostsByDate = sortMDByDate(allPosts)
-  const allTags = getAllTags(allPosts)
-  return paginate(allPostsByDate, { props: { allTags }, pageSize: 10 })
-}
-
-export interface Props {
-  page: Page<MDXInstance<Post>>
-  allTags: string[]
-}
-
-const { page, allTags } = Astro.props as Props
+const allPosts = await Astro.glob<Post>('./*.mdx')
+const allPostsByDate = sortMDByDate(allPosts)
+const allTags = getAllTags(allPosts)
 
 const meta = {
   title: 'Papers',
   description: 'Papers that I have written or contributed to.',
-}
-
-const paginationProps = {
-  ...(page.url.prev && {
-    prevUrl: {
-      url: page.url.prev,
-      text: `← Previous`,
-    },
-  }),
-  ...(page.url.next && {
-    nextUrl: {
-      url: page.url.next,
-      text: `Next →`,
-    },
-  }),
 }
 ---
 
@@ -46,14 +20,13 @@ const paginationProps = {
     <section aria-label="Blog post list">
       <ul class="text-left space-y-8">
         {
-          page.data.map((p) => (
+          allPostsByDate.map((p) => (
             <li class="[&_q]:w-full flex flex-wrap items-center gap-x-2">
               <BlogPostPreview post={p} as="h2" withDesc />
             </li>
           ))
         }
       </ul>
-      <Pagination {...paginationProps} />
     </section>
     {
       allTags.length && (

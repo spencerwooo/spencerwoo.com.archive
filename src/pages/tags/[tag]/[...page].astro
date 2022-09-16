@@ -2,34 +2,25 @@
 import PageLayout from '@/layouts/Base'
 import BlogPostPreview from '@/components/BlogPostPreview'
 import { getAllTags, sortMDByDate } from '@/util'
-import type { MDXInstance, Page, Post } from '@/types'
+import type { MDXInstance, Post } from '@/types'
 
-export async function getStaticPaths({ paginate }) {
-  const allPosts = await Astro.glob<Post>('../../papers/*.mdx')
-  const allPostsByDate = sortMDByDate(allPosts)
-  const allTags = getAllTags(allPostsByDate)
+const allPosts = await Astro.glob<Post>('../../papers/*.mdx')
+const allPostsByDate = sortMDByDate(allPosts)
+const allTags = getAllTags(allPostsByDate)
 
-  return allTags.map((tag) => {
-    const filterPosts = allPostsByDate.filter((post) =>
-      post.frontmatter.tags?.includes(tag)
-    )
-    return paginate(filterPosts, {
-      params: { tag },
-      pageSize: 10,
-    })
-  })
-}
+const postsWithTag = new Map<string | number, MDXInstance<Post>[]>()
+allTags.forEach((tag) => {
+  postsWithTag.set(
+    tag,
+    allPostsByDate.filter((post) => post.frontmatter.tags?.includes(tag))
+  )
+})
 
-export interface Props {
-  page: Page<MDXInstance<Post>>
-}
-
-const { page } = Astro.props as Props
 const { tag } = Astro.params
 
 const meta = {
   title: `Tag: ${tag}`,
-  description: `View all posts tagged with ${tag}`,
+  description: `View all papers tagged with ${tag}`,
 }
 ---
 
@@ -40,7 +31,7 @@ const meta = {
   <section aria-label="Blog post list">
     <ul class="text-left space-y-8">
       {
-        page.data.map((p) => (
+        postsWithTag.get(tag).map((p) => (
           <li class="[&_q]:w-full flex flex-wrap items-center gap-x-2">
             <BlogPostPreview post={p} as="h2" withDesc />
           </li>
