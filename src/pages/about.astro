@@ -9,7 +9,7 @@ const meta = {
   title: 'About',
   description: 'I am Spencer Woo',
 }
-const response = await fetch('http://localhost:3000/api/genshin')
+const response = await fetch(`${Astro.url.origin}/api/genshin`)
 const data = (await response.json()) as UserInfo | null
 ---
 
