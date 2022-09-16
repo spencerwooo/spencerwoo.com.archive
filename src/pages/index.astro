@@ -1,45 +1,66 @@
 ---
+import PageLayout from '@/layouts/Base'
+import BlogPostPreview from '@/components/BlogPostPreview'
+import SocialList from '@/components/SocialList'
+import { sortMDByDate } from '@/util'
+import type { Post } from '@/types'
+
+const meta = {
+  title: 'Spencer',
+  description: "Spencer's personal website",
+}
+
+const MAX_POSTS = 5
+const allPosts = await Astro.glob<Post>('./papers/*.mdx')
+const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <title>Spencer Woo</title>
-  </head>
-  <body class="h-full mx-auto 2xl:max-w-7xl dark:bg-black">
-    <section class="relative flex items-center">
-      <div class="relative max-w-3xl p-4 py-24 sm:p-20 lg:p-28">
-        <div class="space-y-24">
-          <div class="space-y-3">
-            <h1 class="text-base font-light leading-none dark:text-white">
-              A work in progress (Astro and Tailwind CSS)
-            </h1>
-
-            <p class="text-base font-light leading-none dark:text-white">
-              If you are looking for old articles, go to <a
-                class="no-underline hover:underline"
-                href="https://spwo.notion.site/7021cba3b8a04865850473d4037762ad"
-                target="_blank"
-                rel="noopener noreferrer">spwo.notion.site</a
-              >
-            </p>
-            <hr
-              class="border border-dotted border-b-transparent border-x-transparent dark:border-white/10"
-            />
-            <p>
-              <a
-                class="font-light no-underline text-[#707070] hover:underline"
-                href="https://spencerwoo.com">spencerwoo.com</a
-              >
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </body>
-</html>
+<PageLayout meta={meta}>
+  <section>
+    <h1 class="mb-6 title">Yoo!</h1>
+    <p class="mb-4">I'm Spencer. I hack your average deep learning models.</p>
+    <SocialList />
+  </section>
+  <section aria-label="Selected papers list" class="mt-16">
+    <h2 class="mb-4 text-xl title">Papers</h2>
+    <ul class="space-y-4 sm:space-y-2">
+      {
+        allPostsByDate.map((p) => (
+          <li class="flex flex-wrap items-center gap-x-2 [&_q]:w-full">
+            <BlogPostPreview post={p} as="h2" />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+  <section class="mt-16">
+    <h2 class="mb-4 text-xl title">Misc</h2>
+    <ul class="space-y-4 sm:space-y-2 list-disc list-inside">
+      <li>
+        🎓 I am currently a PhD Student at <a
+          href="https://cst.bit.edu.cn/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block cactus-link">Beijing Institute of Technology</a
+        > (2022 - present).
+      </li>
+      <li>
+        📒️ I used to have a blog <a
+          href="https://spwo.notion.site/7021cba3b8a04865850473d4037762ad"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block cactus-link">on Notion</a
+        >, if you are wondering about where that went.
+      </li>
+      <li>
+        📓 Papers listed here are curated - not an exhausive enumeration. Feel
+        free to check my <a
+          href="https://scholar.google.com/citations?user=Mf-JoyQAAAAJ"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block cactus-link">Google Scholar</a
+        > for more of my research.
+      </li>
+    </ul>
+  </section>
+</PageLayout>
