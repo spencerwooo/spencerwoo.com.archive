@@ -47,7 +47,7 @@ const paginationProps = {
       <ul class="text-left space-y-8">
         {
           page.data.map((p) => (
-            <li class="flex flex-wrap items-center gap-x-2 [&_q]:w-full">
+            <li class="[&_q]:w-full flex flex-wrap items-center gap-x-2">
               <BlogPostPreview post={p} as="h2" withDesc />
             </li>
           ))
@@ -77,11 +77,11 @@ const paginationProps = {
             </svg>
             Tags
           </h2>
-          <ul class="flex flex-wrap gap-2 text-bgColor">
+          <ul class="text-bgColor flex flex-wrap gap-2">
             {allTags.map((tag) => (
               <li>
                 <a
-                  class="flex items-center justify-center truncate rounded-lg bg-accent p-1"
+                  class="bg-accent flex items-center justify-center truncate rounded-lg p-1"
                   href={`/tags/${tag}`}
                   aria-label={`View all posts with the tag: ${tag}`}
                 >

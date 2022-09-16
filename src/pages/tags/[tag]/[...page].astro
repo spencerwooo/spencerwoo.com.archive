@@ -41,7 +41,7 @@ const meta = {
     <ul class="text-left space-y-8">
       {
         page.data.map((p) => (
-          <li class="flex flex-wrap items-center gap-x-2 [&_q]:w-full">
+          <li class="[&_q]:w-full flex flex-wrap items-center gap-x-2">
             <BlogPostPreview post={p} as="h2" withDesc />
           </li>
         ))
