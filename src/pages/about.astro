@@ -67,7 +67,8 @@ const data = (await response.json()) as UserInfo | null
       > - check their website for my previous articles.
     </p>
 
-    <hr />
+    <hr class="dark:opacity-30" />
+
     <h2 class="font-bold relative">
       Oh, and I play <em>A WHOLE LOT</em> of Genshin Impact. <span
         class="font-sans font-bold italic px-1 rounded bg-accent text-white sm:absolute right-0"
@@ -85,10 +86,10 @@ const data = (await response.json()) as UserInfo | null
 
     <ul class="list-disc list-inside">
       <li>
-        {data.stats.active_day_number} days, {data.stats.achievement_number} achievements.
-        {data.stats.avatar_number} friends pulled. Spiral abyss {
-          data.stats.spiral_abyss
-        }.
+        <b>{data.stats.active_day_number}</b> days, <b
+          >{data.stats.achievement_number}
+        </b> achievements. <b>{data.stats.avatar_number}</b> friends pulled. Spiral
+        abyss <b>{data.stats.spiral_abyss}</b>.
       </li>
       <li>
         Chests: <Icon
@@ -134,6 +135,27 @@ const data = (await response.json()) as UserInfo | null
       </li>
     </ul>
 
-    <p class="opacity-60">* These are real-time data from Genshin's API.</p>
+    <p class="opacity-60 text-right">
+      ⛄ These are real-time data from Genshin's API.
+    </p>
+
+    <hr class="dark:opacity-30" />
+
+    <p>
+      This site is built with <a
+        href="https://astro.build/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block cactus-link">🚀 Astro</a
+      > and
+      <a
+        href="https://github.com/chrismwilliams/astro-theme-cactus"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block cactus-link"
+      >
+        🌵 Theme Cactus
+      </a>.
+    </p>
   </div>
 </PageLayout>

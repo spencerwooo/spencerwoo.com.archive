@@ -10,7 +10,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'mono': ['"Overpass Mono"', ...defaultTheme.fontFamily.mono],
+        mono: ['"Overpass Mono"', ...defaultTheme.fontFamily.mono],
       },
       colors: {
         bgColor: 'hsl(var(--theme-bg) / <alpha-value>)',
