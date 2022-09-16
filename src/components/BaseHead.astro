@@ -49,3 +49,21 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 {image && <meta property="twitter:image" content={image} />}
+
+<!-- Google tag (gtag.js) -->
+<script
+  type="text/partytown"
+  src={`https://www.googletagmanager.com/gtag/js?id=${
+    import.meta.env.PUBLIC_GANALYTICS_ID
+  }`}
+></script>
+<script type="text/partytown">
+  window.dataLayer = window.dataLayer || []
+  function gtag() {
+    // eslint-disable-next-line no-undef
+    dataLayer.push(arguments)
+  }
+  gtag('js', new Date())
+
+  gtag('config', import.meta.env.PUBLIC_GANALYTICS_ID)
+</script>

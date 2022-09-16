@@ -34,3 +34,12 @@ export type {
   PaginationLink,
   Post,
 }
+
+interface ImportMetaEnv {
+  readonly MIHOYO_COOKIE: string
+  readonly PUBLIC_GANALYTICS_ID: string
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv
+}
