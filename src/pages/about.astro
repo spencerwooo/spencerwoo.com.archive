@@ -76,7 +76,7 @@ const data = (await response.json()) as UserInfo | null
       >
     </h2>
 
-    <div class="flex gap-2 overflow-x-scroll rounded">
+    <div class="flex gap-2 overflow-x-scroll">
       {
         data.avatars
           .slice(0, 16)
@@ -135,13 +135,13 @@ const data = (await response.json()) as UserInfo | null
       </li>
     </ul>
 
-    <p class="opacity-60 text-right">
+    <p class="opacity-60 text-right text-xs">
       ⛄ These are real-time data from Genshin's API.
     </p>
 
     <hr class="dark:opacity-30" />
 
-    <p>
+    <p class="opacity-60 text-xs">
       This site is built with <a
         href="https://astro.build/"
         target="_blank"
