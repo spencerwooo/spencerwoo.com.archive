@@ -8,4 +8,31 @@ tags: ['adversarial example', 'ijcai']
 
 import { Image } from '@astrojs/image/components'
 
-I am the co-first author of this paper, which was accepted at IJCAI 2021.
+[arXiv](https://arxiv.org/abs/2107.01396) | [DOI](https://doi.org/10.24963/ijcai.2021/430) | [BibTeX](https://www.ijcai.org/proceedings/2021/bibtex/0430)
+
+Yajie Wang*, **Shangbo Wu***, Wenyi Jiang, Shengang Hao, Yu-an Tan, Quanxin Zhang†
+
+## TL;DR
+
+Adversarial examples are malicious images with visually imperceptible perturbations. Tight Lp-norm bounds do a bad job for constraining adversarial perturbation. To this end, we propose *Demiguise Attack* - to craft **unrestricted perturbation** via Perceptual Similarity.
+
+## Figures
+
+<Image src="/images/demi.jpg" alt="Attack demo - First figure in the paper" width={874} height={606} />
+
+Adversarial examples are crafted with Demiguise-C&W (top) and C&W (L2) (bottom). C&W (L2) crafts spottable perturbations with arbitrary noise. Demiguise-C&W crafts much larger perturbations with rich semantic information while maintaining imperceptibility.
+
+## Comments
+
+I am the co-first author of this paper, which was accepted at [IJCAI 2021](https://www.ijcai.org/proceedings/2021/0430). This work was done when I was research assistant after I graduated (BSc. at Beijing Institute of Technology). I am responsible for most of the experiments and paper writing.
+
+## Citing our work
+
+```bibtex
+@inproceedings{Wang2021DemiguiseAC,
+  title={Demiguise Attack: Crafting Invisible Semantic Adversarial Perturbations with Perceptual Similarity},
+  author={Yajie Wang and Shangbo Wu and Wenyi Jiang and Shengang Hao and Yu-an Tan and Quanxin Zhang},
+  booktitle={IJCAI},
+  year={2021}
+}
+```
