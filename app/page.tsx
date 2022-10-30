@@ -1,6 +1,6 @@
 'use client'
 
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import type { IconType } from 'react-icons'
 
 import { FaCompass, FaGamepad, FaGraduationCap } from 'react-icons/fa'
@@ -13,7 +13,8 @@ import {
   RiTwitterLine,
   RiWeiboLine,
 } from 'react-icons/ri'
-const sidebarCardData = [
+
+const whereaboutsData = [
   {
     name: '@spencerwooo',
     link: 'https://github.com/spencerwooo',
@@ -36,7 +37,11 @@ const sidebarCardData = [
   },
 ]
 
-const SidebarCard = (props: { name: string; link: string; icon: IconType }) => {
+function WhereaboutsCard(props: {
+  name: string
+  link: string
+  icon: IconType
+}) {
   return (
     <a
       href={props.link}
@@ -46,6 +51,44 @@ const SidebarCard = (props: { name: string; link: string; icon: IconType }) => {
     >
       <span className="font-mono text-sm">{props.name}</span>
       <props.icon />
+    </a>
+  )
+}
+
+function EduCard({
+  name,
+  major,
+  img,
+  year,
+  link,
+  bgColor,
+}: {
+  name: string
+  major: string
+  img: StaticImageData
+  year: string
+  link: string
+  bgColor: string
+}) {
+  return (
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="relative p-4 rounded-lg overflow-hidden flex items-center justify-between text-white hover:opacity-90 transition-all duration-150"
+      style={{ backgroundColor: bgColor }}
+    >
+      <Image
+        src={img}
+        alt={name}
+        className="w-24 absolute right-3 -top-2 blur"
+      />
+      <div>
+        <p className="text-xs text-slate-300 tracking-wider">{name}</p>
+        <p className="text-sm">{major}</p>
+        <p className="font-bold italic mt-3 text-lg">{year}</p>
+      </div>
+      <Image src={img} alt={name} className="w-auto h-12 z-10" />
     </a>
   )
 }
@@ -68,31 +111,23 @@ export default function Page() {
           <span className="ml-2.5">Previously</span>
         </h2>
 
-        <div className="mt-2 grid grid-cols-2">
-          <div className="flex items-center mt-4">
-            <Image
-              src={uofg}
-              alt="university of glasgow"
-              className="w-9 mx-1.5"
-            />
-            <div className="ml-2.5">
-              <p className="text-xs text-slate-500">University of Glasgow</p>
-              <p className="text-sm">MSc. Computing Science</p>
-            </div>
-          </div>
-          <div className="flex items-center mt-6">
-            <Image
-              src={bit}
-              alt="beijing institute of technology"
-              className="w-12"
-            />
-            <div className="ml-2.5">
-              <p className="text-xs text-slate-500">
-                Beijing Institute of Technology
-              </p>
-              <p className="text-sm">BSc. Computer Science</p>
-            </div>
-          </div>
+        <div className="mt-4 grid grid-cols-2 gap-4">
+          <EduCard
+            name="University of Glasgow"
+            major="MSc. Computing Science"
+            img={uofg}
+            year="2021-2022"
+            link="https://www.gla.ac.uk/"
+            bgColor="#042F55"
+          />
+          <EduCard
+            name="Beijing Institute of Technology"
+            major="BSc. Computer Science"
+            img={bit}
+            year="2016-2020"
+            link="https://www.bit.edu.cn/"
+            bgColor="#0A512E"
+          />
         </div>
       </section>
 
@@ -116,8 +151,8 @@ export default function Page() {
         </h2>
 
         <div className="mt-4 grid grid-cols-2 gap-4">
-          {sidebarCardData.map(item => (
-            <SidebarCard
+          {whereaboutsData.map(item => (
+            <WhereaboutsCard
               key={item.name}
               name={item.name}
               link={item.link}

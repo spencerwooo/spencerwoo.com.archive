@@ -11,7 +11,7 @@ export default function Nav() {
       </li>
       <span className="w-1 h-1 rounded-full bg-teal-600" />
       <li>
-        <Link href="/about">Genshin</Link>
+        <Link href="/genshin">Genshin</Link>
       </li>
       <span className="w-1 h-1 rounded-full bg-pink-600" />
       <li>
