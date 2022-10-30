@@ -1,24 +1,25 @@
 import Link from 'next/link'
 
-const Nav = () => {
+export default function Nav() {
   return (
-    <ul className="hidden lg:sticky lg:top-0 lg:flex lg:w-16 lg:flex-none lg:items-center lg:whitespace-nowrap lg:py-12 lg:text-sm lg:leading-7 lg:[writing-mode:vertical-rl] space-y-8">
-      <span className="w-1.5 h-1.5 rounded-full bg-green-200"></span>
-      <span className="w-1.5 h-1.5 rounded-full bg-green-400"></span>
-      <span className="w-1.5 h-1.5 rounded-full bg-green-600"></span>
+    <ul className="flex items-center space-x-4 list-none justify-center mt-2 text-sm font-light">
+      <span className="w-1 h-1 rounded-full bg-green-200" />
+      <span className="w-1 h-1 rounded-full bg-green-400" />
+      <span className="w-1 h-1 rounded-full bg-green-600" />
       <li>
         <Link href="/">Home</Link>
       </li>
-      <span className="w-1.5 h-1.5 rounded-full bg-teal-600"></span>
+      <span className="w-1 h-1 rounded-full bg-teal-600" />
       <li>
         <Link href="/about">Genshin</Link>
       </li>
-      <span className="w-1.5 h-1.5 rounded-full bg-pink-600"></span>
+      <span className="w-1 h-1 rounded-full bg-pink-600" />
       <li>
         <Link href="/papers">Papers</Link>
       </li>
+      <span className="w-1 h-1 rounded-full bg-rose-600" />
+      <span className="w-1 h-1 rounded-full bg-rose-400" />
+      <span className="w-1 h-1 rounded-full bg-rose-200" />
     </ul>
   )
 }
-
-export default Nav

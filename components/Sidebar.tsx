@@ -1,4 +1,4 @@
-import Image from 'next/future/image'
+import Image from 'next/image'
 import type { IconType } from 'react-icons'
 import { FaCompass, FaGamepad, FaGraduationCap } from 'react-icons/fa'
 import {
@@ -69,7 +69,7 @@ const Sidebar = () => {
 
         <section className="mt-16 hidden lg:block">
           <h2 className="flex items-center text-sm font-medium leading-7 text-slate-900">
-            <FaGraduationCap className="w-4 h-4" />
+            <FaGraduationCap size={16} />
             <span className="ml-2.5">Previously</span>
           </h2>
 
@@ -116,7 +116,7 @@ const Sidebar = () => {
 
         <section className="lg:mt-16">
           <h2 className="items-center text-sm font-medium leading-7 text-slate-900 hidden lg:flex">
-            <FaCompass className="w-4 h-4" />
+            <FaCompass size={16} />
             <span className="ml-2.5">Whereabouts</span>
           </h2>
 
