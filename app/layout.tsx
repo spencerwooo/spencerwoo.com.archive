@@ -6,32 +6,14 @@ import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html className={inter.className}>
       <head>
         <title>Spencer Woo</title>
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
 
@@ -42,9 +24,7 @@ export default function RootLayout({
           <Nav />
         </header>
 
-        <main className="bg-white max-w-3xl mx-auto p-4 pt-40 rounded-xl">
-          {children}
-        </main>
+        <main className="bg-white max-w-3xl mx-auto p-4 pt-40 rounded-xl">{children}</main>
 
         <Footer />
       </body>

@@ -1,12 +1,7 @@
 import Image from 'next/image'
 import type { IconType } from 'react-icons'
 import { FaCompass, FaGamepad, FaGraduationCap } from 'react-icons/fa'
-import {
-  RiGithubLine,
-  RiMailLine,
-  RiTwitterLine,
-  RiWeiboLine,
-} from 'react-icons/ri'
+import { RiGithubLine, RiMailLine, RiTwitterLine, RiWeiboLine } from 'react-icons/ri'
 import bit from '../public/bit.png'
 import icon from '../public/icon.jpg'
 import uofg from '../public/uofg.png'
@@ -58,9 +53,7 @@ const Sidebar = () => {
 
       <div className="mt-10 text-center lg:mt-16 lg:text-left">
         <p className="text-xl font-bold text-slate-900">Spencer Woo</p>
-        <p className="mt-3 text-lg font-medium leading-8 text-slate-700">
-          PhD student in AI Security
-        </p>
+        <p className="mt-3 text-lg font-medium leading-8 text-slate-700">PhD student in AI Security</p>
         <p className="mt-3 text-xs text-slate-500">
           Beijing Institute of Technology
           <br />
@@ -75,26 +68,16 @@ const Sidebar = () => {
 
           <div className="mt-2">
             <div className="flex items-center mt-4">
-              <Image
-                src={uofg}
-                alt="university of glasgow"
-                className="w-9 mx-1.5"
-              />
+              <Image src={uofg} alt="university of glasgow" className="w-9 mx-1.5" />
               <div className="ml-2.5">
                 <p className="text-xs text-slate-500">University of Glasgow</p>
                 <p className="text-sm">MSc. Computing Science</p>
               </div>
             </div>
             <div className="flex items-center mt-6">
-              <Image
-                src={bit}
-                alt="beijing institute of technology"
-                className="w-12"
-              />
+              <Image src={bit} alt="beijing institute of technology" className="w-12" />
               <div className="ml-2.5">
-                <p className="text-xs text-slate-500">
-                  Beijing Institute of Technology
-                </p>
+                <p className="text-xs text-slate-500">Beijing Institute of Technology</p>
                 <p className="text-sm">BSc. Computer Science</p>
               </div>
             </div>
@@ -121,13 +104,9 @@ const Sidebar = () => {
           </h2>
 
           <ul className="mt-2 lg:block flex items-center justify-center space-x-8 lg:space-x-0">
-            {sidebarCardData.map(item => (
+            {sidebarCardData.map((item) => (
               <li key={item.name} className="mt-4 inline lg:block">
-                <SidebarCard
-                  name={item.name}
-                  link={item.link}
-                  icon={item.icon}
-                />
+                <SidebarCard name={item.name} link={item.link} icon={item.icon} />
               </li>
             ))}
           </ul>

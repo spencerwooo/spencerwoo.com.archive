@@ -7,12 +7,7 @@ import { FaCompass, FaGamepad, FaGraduationCap } from 'react-icons/fa'
 import bit from '../public/bit.png'
 import uofg from '../public/uofg.png'
 
-import {
-  RiGithubLine,
-  RiMailLine,
-  RiTwitterLine,
-  RiWeiboLine,
-} from 'react-icons/ri'
+import { RiGithubLine, RiMailLine, RiTwitterLine, RiWeiboLine } from 'react-icons/ri'
 
 const whereaboutsData = [
   {
@@ -37,11 +32,7 @@ const whereaboutsData = [
   },
 ]
 
-function WhereaboutsCard(props: {
-  name: string
-  link: string
-  icon: IconType
-}) {
+function WhereaboutsCard(props: { name: string; link: string; icon: IconType }) {
   return (
     <a
       href={props.link}
@@ -78,11 +69,7 @@ function EduCard({
       className="relative p-4 rounded-lg overflow-hidden flex items-center justify-between text-white hover:opacity-90 transition-all duration-150"
       style={{ backgroundColor: bgColor }}
     >
-      <Image
-        src={img}
-        alt={name}
-        className="w-24 absolute right-3 -top-2 blur"
-      />
+      <Image src={img} alt={name} className="w-24 absolute right-3 -top-2 blur" />
       <div>
         <p className="text-xs text-slate-300 tracking-wider">{name}</p>
         <p className="text-sm">{major}</p>
@@ -97,12 +84,8 @@ export default function Page() {
   return (
     <>
       <section className="text-center">
-        <p className="font-medium leading-8 text-slate-700">
-          PhD student in AI Security
-        </p>
-        <p className="mt-1 text-xs text-slate-500">
-          Beijing Institute of Technology · 2022 - present
-        </p>
+        <p className="font-medium leading-8 text-slate-700">PhD student in AI Security</p>
+        <p className="mt-1 text-xs text-slate-500">Beijing Institute of Technology · 2022 - present</p>
       </section>
 
       <section className="mt-12">
@@ -151,13 +134,8 @@ export default function Page() {
         </h2>
 
         <div className="mt-4 grid grid-cols-2 gap-4">
-          {whereaboutsData.map(item => (
-            <WhereaboutsCard
-              key={item.name}
-              name={item.name}
-              link={item.link}
-              icon={item.icon}
-            />
+          {whereaboutsData.map((item) => (
+            <WhereaboutsCard key={item.name} name={item.name} link={item.link} icon={item.icon} />
           ))}
         </div>
       </section>
