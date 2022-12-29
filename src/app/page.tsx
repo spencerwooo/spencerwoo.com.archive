@@ -4,8 +4,8 @@ import Image, { StaticImageData } from 'next/image'
 import type { IconType } from 'react-icons'
 
 import { FaCompass, FaGamepad, FaGraduationCap } from 'react-icons/fa'
-import bit from '../public/bit.png'
-import uofg from '../public/uofg.png'
+import bit from '../assets/bit.png'
+import uofg from '../assets/uofg.png'
 
 import { RiGithubLine, RiMailLine, RiTwitterLine, RiWeiboLine } from 'react-icons/ri'
 
