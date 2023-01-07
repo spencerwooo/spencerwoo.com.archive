@@ -9,8 +9,7 @@ body {
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+  @apply hover:opacity-80 transition-all duration-150;
 }
 
 * {

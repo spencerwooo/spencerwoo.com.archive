@@ -52,30 +52,19 @@ function EduCard({
   img,
   year,
   link,
-  bgColor,
 }: {
   name: string
   major: string
   img: StaticImageData
   year: string
   link: string
-  bgColor: string
 }) {
   return (
-    <a
-      href={link}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="relative p-4 rounded-lg overflow-hidden flex items-center justify-between text-white hover:opacity-90 transition-all duration-150"
-      style={{ backgroundColor: bgColor }}
-    >
-      <Image src={img} alt={name} className="w-24 absolute right-3 -top-2 blur" />
-      <div>
-        <p className="text-xs text-slate-300 tracking-wider">{name}</p>
-        <p className="text-sm">{major}</p>
-        <p className="font-bold italic mt-3 text-lg">{year}</p>
-      </div>
-      <Image src={img} alt={name} className="w-auto h-12 z-10" />
+    <a href={link} target="_blank" rel="noopener noreferrer" className="hover:opacity-90 transition-all duration-150">
+      <p className="font-medium text-sm opacity-90 leading-8">{major}</p>
+      <p className="text-xs opacity-80">
+        {name} · {year}
+      </p>
     </a>
   )
 }
@@ -83,25 +72,24 @@ function EduCard({
 export default function Page() {
   return (
     <>
-      <section className="text-center">
-        <p className="font-medium leading-8 text-slate-700">PhD student in AI Security</p>
-        <p className="mt-1 text-xs text-slate-500">Beijing Institute of Technology · 2022 - present</p>
+      <section>
+        <p className="font-medium leading-8 opacity-90">PhD student in AI Security</p>
+        <p className="mt-1 text-xs opacity-80">Beijing Institute of Technology · 2022 - present</p>
       </section>
 
       <section className="mt-12">
-        <h2 className="flex items-center text-sm font-medium leading-7 text-slate-900">
+        <h2 className="flex items-center text-sm font-medium leading-7">
           <FaGraduationCap size={16} />
           <span className="ml-2.5">Previously</span>
         </h2>
 
-        <div className="mt-4 grid grid-cols-2 gap-4">
+        <div className="mt-4 space-y-2">
           <EduCard
             name="University of Glasgow"
             major="MSc. Computing Science"
             img={uofg}
             year="2021-2022"
             link="https://www.gla.ac.uk/"
-            bgColor="#042F55"
           />
           <EduCard
             name="Beijing Institute of Technology"
@@ -109,13 +97,12 @@ export default function Page() {
             img={bit}
             year="2016-2020"
             link="https://www.bit.edu.cn/"
-            bgColor="#0A512E"
           />
         </div>
       </section>
 
       <section className="mt-12">
-        <h2 className="flex items-center text-sm font-medium leading-7 text-slate-900">
+        <h2 className="flex items-center text-sm font-medium leading-7">
           <FaGamepad />
           <span className="ml-2.5">Genshin Impact</span>
         </h2>
@@ -128,7 +115,7 @@ export default function Page() {
       </section>
 
       <section className="mt-12">
-        <h2 className="flex items-center text-sm font-medium leading-7 text-slate-900">
+        <h2 className="flex items-center text-sm font-medium leading-7">
           <FaCompass size={16} />
           <span className="ml-2.5">Whereabouts</span>
         </h2>
